@@ -9,7 +9,17 @@ Dies ist eine einfache Website, die eine Chatbox und eine Sandbox für Code-Ausf
 - **Sandbox**: Erlaubt die Eingabe von HTML, CSS und JavaScript, um Code in Echtzeit auszuführen.
 
 ## Verzeichnisstruktur
-my-website-repo/ ├── .github/ │ └── workflows/ │ └── deploy.yml // Workflow-Datei ├── index.html // Hauptseite ├── styles.css // Stylesheet ├── script.js // JavaScript ├── README.md // Beschreibung └── assets/ // Ordner für Ressourcen
+my-website-repo/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml         // Workflow-Datei
+├── index.html                 // Hauptseite
+├── styles.css                 // Stylesheet
+├── script.js                  // JavaScript
+├── link.html                  // Link zur generierten Website
+├── README.md                  // Beschreibung des Projekts
+└── assets/                    // Ordner für Ressourcen
+
 
 
 ## Lizenz
