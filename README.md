@@ -10,13 +10,16 @@ Dies ist eine einfache Website, die eine Chatbox und eine Sandbox für Code-Ausf
 
 ## Verzeichnisstruktur
 my-website-repo/
+
+my-website-repo/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml         // Workflow-Datei
-├── index.html                 // Hauptseite
-├── styles.css                 // Stylesheet
-├── script.js                  // JavaScript
-├── link.html                  // Link zur generierten Website
+│       └── deploy.yml         // Workflow-Datei für Automatisierung
+├── index.html                 // Hauptseite mit PRAI Chat Box & Sandbox
+├── styles.css                 // Stylesheet für Design
+├── script.js                  // JavaScript für Interaktivität
+├── link.html                  // Datei mit dem Website-Link
+├── CNAME                      // Datei für benutzerdefinierte Domain
 ├── README.md                  // Beschreibung des Projekts
 └── assets/                    // Ordner für Ressourcen
 
