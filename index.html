@@ -4,19 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PRAI Chat Box & Sandbox</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"> <link rel="stylesheet" href="menu_styles.css"> <style>
+    /* Zusätzliche Styles, falls nötig, die nicht in styles.css oder menu_styles.css passen.
+       Hier könnte z.B. body-Margin auf 0 gesetzt werden, falls styles.css das nicht tut.
+       body { margin: 0; padding: 0; }
+    */
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Willkommen auf der PRAI Controller Sandbox!</h1>
-  </header>
-
+  <div class="header-container">
+    <h1 class="site-title">PRAI Chat Box & Sandbox</h1> <nav class="navbar">
+        <div class="hamburger-icon" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="https://rfof-network.github.io/">RFOF-NETWORK (Hauptseite)</a></li> <li><a href="https://rfof-network-ready-for-our-future.github.io/RFOF-spider-NET-/">RFOF-spider-NET</a></li>
+            <li><a href="https://qch-l-c.github.io/PRAI-KI-/">PRAI-KI</a></li>
+            <li><a href="https://rfof-network.github.io/RFOF-NETWORK/">RFOF-NETWORK</a></li> <li><a href="https://rfof-network.github.io/PRAI/">PRAI</a></li>
+            <li><a href="https://rfof-network.github.io/rfof-network.org/">rfof-network.org</a></li>
+            <li><a href="https://rfof-network.github.io/Comprensive-rfof-bitcoin.org-PRAI-BOx-Blockchain-System_Programm-Fusions-Reactor-System/">PRAI-BOx Blockchain-System</a></li>
+            <li><a href="https://rfof-network.github.io/BUBATZ-COIN-official-CSC-DCV-/">BUBATZ-COIN</a></li>
+        </ul>
+    </nav>
+  </div>
   <main>
     <section id="chatbox">
       <h2>PRAI Chat Box</h2>
       <div id="chat-container">
-        <!-- Chat content dynamically added -->
-      </div>
+        </div>
       <textarea id="chat-input" placeholder="Schreibe eine Nachricht..."></textarea>
       <button id="send-btn">Senden</button>
     </section>
@@ -33,7 +50,6 @@
   <footer>
     <p>&copy; 2025 Erstellt für Satoramy.</p>
   </footer>
-  
-  <script src="script.js"></script>
-</body>
+
+  <script src="script.js"></script> <script src="menu_script.js"></script> </body>
 </html>
