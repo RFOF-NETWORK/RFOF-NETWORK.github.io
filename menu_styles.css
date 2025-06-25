@@ -1,141 +1,122 @@
-/* Grundlegende Styles für Header und Menü */
-.header-container {
+/* menu_styles.css für RFOFSpiderWeb.NET - Konsistentes Dropdown-Menü-Design */
+
+/* Allgemeine Navigation */
+.main-nav {
     display: flex;
-    justify-content: space-between; /* Elemente auseinanderziehen */
-    align-items: center; /* Vertikal zentrieren */
-    padding: 10px 20px;
-    background-color: white; /* Optional: Hintergrundfarbe für den Headerbereich */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: relative; /* Wichtig für absolute Positionierung des Menüs auf kleineren Bildschirmen */
-    z-index: 100; /* Stellt sicher, dass der Header über anderen Inhalten liegt */
+    align-items: center;
 }
 
-/* Dein PRAI-Titel – hier wird der Titel deiner Seite platziert */
-.site-title {
-    color: #2c3e50; /* Angepasst an deine Standard-Überschriftenfarbe */
-    font-size: 2em; /* Etwas kleiner als dein h1, da es im Header ist */
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Standard Desktop Ansicht */
+}
+
+.main-nav li {
+    margin-left: 40px;
+    position: relative; /* Für Dropdowns, falls implementiert */
+}
+
+.main-nav a {
+    font-size: 1.1rem;
     font-weight: bold;
-    margin: 0;
-    padding: 0;
+    color: var(--color-text);
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
 }
 
-/* Styling für die Navigationslinks (normale Ansicht) */
-.navbar {
-    display: flex;
-    align-items: center; /* Vertikal zentrieren */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
 }
 
-.nav-links {
-    list-style: none; /* Entfernt die Listenpunkte */
-    margin: 0;
-    padding: 0;
-    display: flex; /* Zeigt Links nebeneinander an */
+.main-nav a:hover {
+    color: var(--color-primary);
 }
 
-.nav-links li a {
-    color: #333; /* Links passend zum weißen Hintergrund */
-    text-decoration: none;
-    padding: 10px 15px;
-    display: block;
-    transition: background-color 0.3s ease;
+.main-nav a:hover::after {
+    width: 100%;
 }
 
-.nav-links li a:hover {
-    background-color: #e0e0e0;
-}
-
-/* Styling für den Hamburger-Icon (drei graue Striche) */
+/* Hamburger Icon (für mobile Ansicht) */
 .hamburger-icon {
-    display: none; /* Standardmäßig versteckt auf großen Bildschirmen */
+    display: none; /* Standardmäßig ausgeblendet auf größeren Bildschirmen */
     flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 25px;
     cursor: pointer;
-    z-index: 1000; /* Stellt sicher, dass es über anderen Elementen liegt */
-    margin-left: 20px; /* Abstand zum rechten Rand oder anderen Elementen */
+    background: none;
+    border: none;
+    padding: 10px;
+    z-index: 1001; /* Sicherstellen, dass es über dem Menü liegt */
 }
 
 .hamburger-icon .bar {
-    width: 100%;
+    width: 25px;
     height: 3px;
-    background-color: #aaa; /* Graue Farbe für die Striche */
-    border-radius: 5px;
-    transition: all 0.3s ease-in-out;
+    background-color: var(--color-text);
+    margin: 4px 0;
+    transition: 0.4s;
+    border-radius: 2px;
 }
 
-/* Media Queries für responsive Design (wichtig für das Hamburger-Menü) */
-@media (max-width: 768px) { /* Wenn Bildschirm kleiner als 768px ist */
-    .nav-links {
-        display: none; /* Standardmäßig versteckt das gesamte Menü */
-        flex-direction: column; /* Links untereinander */
+/* Responsive Design für Navigation (Mobile First Anpassung im CSS) */
+@media (max-width: 768px) {
+    .main-nav {
+        display: none; /* Menü verstecken */
+        flex-direction: column;
         width: 100%;
-        background-color: #f4f4f4; /* Hintergrund für das aufgeklappte Menü */
-        padding: 10px 0;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        position: absolute;
+        top: 100%; /* Unter dem Header */
+        left: 0;
+        background-color: var(--color-background-light);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        border-top: 1px solid var(--color-border);
+        padding: 20px 0;
         z-index: 999;
     }
 
-    .nav-links.active { /* Klasse wird per JavaScript hinzugefügt, wenn Menü offen ist */
-        display: flex; /* Menü anzeigen, wenn aktiv */
+    .main-nav.active { /* Klasse wird von menu_script.js gesetzt */
+        display: flex; /* Menü anzeigen */
     }
 
-    .nav-links li {
-        text-align: center;
-        margin: 10px 0;
-    }
-
-    .hamburger-icon {
-        display: flex; /* Hamburger-Icon anzeigen */
-    }
-
-    /* Anpassung für die Positionierung des Menüs, wenn es aufgeklappt ist */
-    .nav-links {
-        position: fixed; /* Fixiert das Menü im Viewport */
-        top: 0;
-        right: 0;
-        height: 100%; /* Nimmt die volle Höhe ein */
-        width: 250px; /* Eine feste Breite für das Menü */
-        background-color: #333; /* Dunkler Hintergrund für das Menü */
+    .main-nav ul {
         flex-direction: column;
-        align-items: flex-start; /* Links oben ausrichten */
-        padding-top: 60px; /* Platz für den Hamburger-Icon */
-        transform: translateX(100%); /* Zuerst komplett nach rechts verschieben (unsichtbar) */
-        transition: transform 0.3s ease-in-out; /* Sanfte Animation */
-        z-index: 998; /* Unter dem Hamburger Icon */
-    }
-
-    .nav-links.active {
-        transform: translateX(0); /* Menü einblenden */
-    }
-
-    .nav-links li a {
-        color: white; /* Weiße Links im dunklen Menü */
         width: 100%;
-        padding: 15px 20px;
-        text-align: left; /* Links in der Sidebar */
+        text-align: center;
     }
 
-    .nav-links li a:hover {
-        background-color: #575757;
+    .main-nav li {
+        margin: 10px 0; /* Vertikaler Abstand */
+        width: 100%;
+    }
+
+    .main-nav a {
+        padding: 10px 0;
+        display: block; /* Links füllen die Breite */
     }
 
     .hamburger-icon {
-        /* Sicherstellen, dass das Hamburger-Icon immer sichtbar und anklickbar ist */
-        position: relative; /* Wichtig, damit es vom z-Index betroffen ist */
-        z-index: 1001; /* Liegt über dem aufgeklappten Menü */
+        display: flex; /* Hamburger Icon anzeigen */
+    }
+
+    /* Animation für das Hamburger-Icon */
+    .hamburger-icon.active .bar:nth-child(2) {
+        opacity: 0; /* Mittlerer Balken verschwindet */
+    }
+
+    .hamburger-icon.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg); /* Oberer Balken dreht sich */
+    }
+
+    .hamburger-icon.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg); /* Unterer Balken dreht sich */
     }
 }
-
-/* Animation für das Hamburger-Icon, wenn es aktiv ist (optional, aber schön) */
-.hamburger-icon.active .bar:nth-child(2) {
-    opacity: 0; /* Mittlerer Balken verschwindet */
-}
-
-.hamburger-icon.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg); /* Oberer Balken dreht sich */
-}
-
-.hamburger-icon.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg); /* Unterer Balken dreht sich */
-      }
