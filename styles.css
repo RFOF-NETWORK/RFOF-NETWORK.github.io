@@ -1,58 +1,177 @@
-ody {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  background-color: #f4f4f4;
+/* General body and container styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1a202c; /* Dark charcoal */
+    color: #e2e8f0; /* Light gray text */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-header, footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 1em 0;
+/* Content Container */
+.content-container {
+    max-width: 960px; /* Slightly wider content area */
+    margin: 2rem auto; /* Top/bottom margin, auto left/right for centering */
+    padding: 2.5rem; /* Increased padding for more inner space */
+    background-color: #1f2937; /* Even darker background for content */
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box; /* Include padding in width calculation */
+    flex-grow: 1; /* Allows main content to grow and push footer down */
 }
 
-h1, h2 {
-  color: #333;
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #4299e1; /* Vibrant blue for headings */
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(66, 153, 225, 0.3); /* Subtle blue underline */
+}
+h2 { font-size: 2.5em; margin-top: 2.5rem; }
+h3 { font-size: 1.8em; margin-top: 2rem; }
+h4 { font-size: 1.4em; margin-top: 1.5rem; }
+
+/* Paragraphs and Lists */
+p {
+    margin-bottom: 1rem;
+    font-size: 1.1em;
+}
+ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1.05em;
 }
 
-main {
-  padding: 20px;
+/* Links */
+a {
+    color: #63b3ed; /* Lighter blue for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: #90cdf4; /* Even lighter blue on hover */
+    text-decoration: underline;
 }
 
-#chatbox, #sandbox {
-  margin: 20px 0;
-  padding: 15px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+/* Code Blocks - Styled for IT Experts */
+pre {
+    background-color: #232d3a; /* Darker background for code */
+    color: #a0aec0; /* Lighter gray for code text */
+    padding: 1.2em;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-bottom: 1.5em;
+    font-family: 'Fira Code', 'Cascadia Code', monospace; /* Monospace font for code */
+    font-size: 0.95em;
+    border: 1px solid #36404e;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+}
+code {
+    background-color: #36404e; /* Inline code background */
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    color: #b3d9ff; /* Light blue for inline code */
+}
+/* Specific styling for list items containing code */
+ul code {
+    display: block; /* Make code blocks in lists behave like blocks */
+    white-space: pre-wrap; /* Preserve line breaks */
+    margin-top: 0.5em;
+    background-color: #232d3a;
+    padding: 0.8em;
+    border-left: 3px solid #4299e1;
+    color: #a0aec0;
 }
 
-textarea {
-  width: 100%;
-  height: 100px;
-  margin: 10px 0;
-  padding: 10px;
-  font-family: monospace;
+/* Improved Readability for longer text */
+.text-section {
+    padding: 1.5rem 0;
+    border-bottom: 1px dashed rgba(66, 153, 225, 0.15);
+    margin-bottom: 1.5rem;
+}
+.text-section:last-of-type {
+    border-bottom: none;
 }
 
-button {
-  padding: 10px 20px;
-  border: none;
-  background: #333;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
+/* Footer */
+footer {
+    background-color: #2d3748;
+    color: #cbd5e0;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin-top: 3rem;
+    font-size: 0.9em;
+    border-top: 1px solid #4a5568;
+}
+footer a {
+    color: #4299e1;
+}
+footer a:hover {
+    color: #63b3ed;
 }
 
-button:hover {
-  background: #555;
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 1.8em;
+    }
+    .rfof-dropdown {
+        width: 100%;
+        margin-top: 15px;
+    }
+    .rfof-dropdown-button {
+        width: 100%;
+    }
+    .rfof-dropdown-content {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        border-top: 1px solid rgba(51, 51, 51, 0.5);
+        border-radius: 0;
+    }
+    .rfof-dropdown-content a {
+        padding-left: 40px;
+    }
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .global-dropdown {
+        margin-left: 0; /* Reset margin for mobile */
+        width: 100%;
+    }
+    #hero h1 {
+        font-size: 2.5em;
+    }
+    #hero p {
+        font-size: 1.1em;
+    }
+    .content-container {
+        padding: 1.5rem;
+    }
+    h2 { font-size: 2em; }
+    h3 { font-size: 1.5em; }
+    h4 { font-size: 1.2em; }
 }
 
-iframe {
-  width: 100%;
-  height: 300px;
-  border: 1px solid #ddd;
-  margin-top: 10px;
+/* New custom style for citations */
+.citation {
+    font-size: 0.8em;
+    color: #999;
+    vertical-align: super;
 }
