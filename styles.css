@@ -1,8 +1,8 @@
 /* General body and container styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #1a202c; /* Dark charcoal */
-    color: #e2e8f0; /* Light gray text */
+    background-color: #1c2128; /* Dark gray for main background (similar to GitHub dark) */
+    color: #f0f0f0; /* Light gray text */
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -10,6 +10,36 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+/* Header Styling */
+.main-header {
+    background-color: #24292e; /* Even darker header background (GitHub header like) */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Subtle shadow */
+    padding: 10px 20px;
+    z-index: 100;
+    position: relative;
+    border-bottom: 1px solid #333; /* Darker border for GitHub look */
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.site-title {
+    color: #0088cc; /* Telegram/TON Blue */
+    font-family: 'Orbitron', sans-serif; /* Distinct font for title */
+    font-size: 2.5em; /* Larger, more prominent title */
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+    text-shadow: none; /* Removed neon glow */
 }
 
 /* Content Container */
@@ -26,11 +56,11 @@ body {
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-    color: #4299e1; /* Vibrant blue for headings */
+    color: #0088cc; /* Telegram/TON Blue for headings */
     font-family: 'Orbitron', sans-serif;
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(66, 153, 225, 0.3); /* Subtle blue underline */
+    border-bottom: 1px solid rgba(0, 136, 204, 0.3); /* Subtle blue underline */
 }
 h2 { font-size: 2.5em; margin-top: 2.5rem; }
 h3 { font-size: 1.8em; margin-top: 2rem; }
@@ -53,12 +83,12 @@ ul li {
 
 /* Links */
 a {
-    color: #63b3ed; /* Lighter blue for links */
+    color: #0088cc; /* Telegram/TON Blue for links */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 a:hover {
-    color: #90cdf4; /* Even lighter blue on hover */
+    color: #00aaff; /* Slightly lighter blue on hover */
     text-decoration: underline;
 }
 
@@ -74,6 +104,8 @@ pre {
     font-size: 0.95em;
     border: 1px solid #36404e;
     box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+    white-space: pre-wrap; /* Ensure text wraps within pre tags */
+    word-break: break-all; /* Force breaking of long words if necessary */
 }
 code {
     background-color: #36404e; /* Inline code background */
@@ -125,24 +157,7 @@ footer a:hover {
     .site-title {
         font-size: 1.8em;
     }
-    .rfof-dropdown {
-        width: 100%;
-        margin-top: 15px;
-    }
-    .rfof-dropdown-button {
-        width: 100%;
-    }
-    .rfof-dropdown-content {
-        position: static;
-        width: 100%;
-        box-shadow: none;
-        border-top: 1px solid rgba(51, 51, 51, 0.5);
-        border-radius: 0;
-    }
-    .rfof-dropdown-content a {
-        padding-left: 40px;
-    }
-    .header-content {
+    .main-header .header-content {
         flex-direction: column;
         align-items: flex-start;
     }
@@ -155,10 +170,10 @@ footer a:hover {
         margin-left: 0; /* Reset margin for mobile */
         width: 100%;
     }
-    #hero h1 {
+    .hero-section h1 {
         font-size: 2.5em;
     }
-    #hero p {
+    .hero-section p {
         font-size: 1.1em;
     }
     .content-container {
@@ -174,4 +189,55 @@ footer a:hover {
     font-size: 0.8em;
     color: #999;
     vertical-align: super;
+}
+
+/* Specific styling for the hero section background to ensure visibility */
+.hero-section {
+    background-image: linear-gradient(to bottom right, #005f8f, #003366); /* Darker blue gradient */
+    color: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid #0088cc; /* Accent border */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://raw.githubusercontent.com/RFOF-NETWORK/skills-github-pages/main/rfoff_network_hero_background.jpg') no-repeat center center/cover; /* Placeholder, replace with actual RFOF bg */
+    opacity: 0.1; /* Subtle background image */
+    z-index: 1;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.hero-content h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5em;
+    margin-bottom: 0.5em;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+.hero-content p {
+    font-size: 1.3em;
+    line-height: 1.5;
+    max-width: 700px;
+    margin: 0 auto 1.5em;
+    font-weight: 300;
+}
+.hero-content img {
+    width: 180px; /* Adjusted size */
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #4299e1; /* Blue border */
+    box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
+    margin-bottom: 1.5rem;
 }
