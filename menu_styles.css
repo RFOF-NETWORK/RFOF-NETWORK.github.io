@@ -4,9 +4,38 @@
     align-items: center;
     /* Pushes the navbar to the right, creating space for the title */
     margin-left: auto; 
+    position: relative; /* Needed for absolute positioning of dropdown */
 }
 
-/* Styles for the global navigation dropdown (which uses .nav-list) */
+/* Global Dropdown Container */
+.global-dropdown {
+    position: relative;
+    display: inline-block; /* Allows side-by-side with other elements */
+    margin-left: auto; /* Pushes it to the right within the navbar if other elements are present */
+}
+
+/* Hamburger menu icon (for mobile) */
+.hamburger-icon {
+    display: none; /* Hidden by default on desktop */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above other content */
+    margin-left: 20px; /* Space from other elements like a potential second menu button */
+}
+
+.hamburger-icon .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #0088cc; /* Telegram blue bars */
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: none; /* No glow here */
+}
+
+/* Global Nav Links (the actual dropdown content) */
 .nav-list {
     list-style: none;
     margin: 0;
@@ -15,7 +44,7 @@
 }
 
 .nav-list li {
-    position: relative; /* Needed for dropdown positioning */
+    position: relative; /* Needed for potential nested dropdowns (not currently used) */
 }
 
 .nav-list li a {
@@ -32,69 +61,65 @@
     color: #4299e1; /* Vibrant blue on hover */
 }
 
-/* Styles for dropdown content (sub-menus) */
-.nav-list .dropdown-menu {
-    display: none; /* Hidden by default */
-    position: absolute;
-    background-color: #2d3748; /* Darker gray background */
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
-    z-index: 1; /* Ensure it's on top */
-    left: 0; /* Align with parent menu item */
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.nav-list li:hover > .dropdown-menu {
-    display: block; /* Show dropdown on hover */
-}
-
-.nav-list .dropdown-menu li {
-    margin: 0;
-}
-
-.nav-list .dropdown-menu li a {
-    padding: 12px 15px;
-    color: #e2e8f0;
-    text-align: left;
-    white-space: nowrap; /* Prevent wrapping for dropdown items */
-}
-
-.nav-list .dropdown-menu li a:hover {
-    background-color: #4a5568; /* Darker hover for dropdown items */
-    color: #4299e1;
-}
-
-/* Hamburger menu icon (for mobile) */
-.menu-toggle {
-    display: none; /* Hidden by default on desktop */
-    font-size: 2em;
-    color: #e2e8f0;
-    cursor: pointer;
-    line-height: 1;
-    margin-left: 20px; /* Space from other header elements */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
+/* Desktop: Make the nav-list a dropdown from the hamburger icon (which is hidden) */
+/* This is if you want the hamburger to trigger a desktop dropdown too.
+   However, based on previous successful repos, the 8 links are just a horizontal list on desktop */
+@media (min-width: 769px) {
     .nav-list {
-        display: none; /* Hide main nav by default on mobile */
+        /* On desktop, the nav-list is the horizontal menu, not a dropdown by default */
+        display: flex !important; /* Ensure it's always flex on desktop */
+    }
+    .hamburger-icon {
+        display: none; /* Hide hamburger on desktop */
+    }
+    /* Ensure the navbar itself (which contains the nav-list) is aligned to the right */
+    .navbar {
+        justify-content: flex-end;
+    }
+}
+
+
+/* Mobile: Hamburger menu behavior */
+@media (max-width: 768px) {
+    .navbar {
+        width: 100%; /* Navbar takes full width on mobile */
+        justify-content: space-between; /* Space out title and hamburger */
+    }
+    .site-title { /* Make sure title is aligned well on mobile */
+        margin-right: auto; /* Push title to the left */
+        padding-left: 0; /* No extra padding */
+    }
+
+    .hamburger-icon {
+        display: flex; /* Show hamburger on mobile */
+        margin-left: 0; /* Remove margin-left when it's the sole right-aligned item */
+    }
+
+    .nav-list {
+        display: none; /* Hidden by default on mobile */
         flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 100%; /* Position below header */
-        left: 0;
-        background-color: #2d3748;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        width: 280px; /* Fixed width for mobile slide-in menu */
+        position: fixed; /* Fixed to viewport */
+        top: 0; /* Align to top of viewport */
+        right: 0; /* Align to right of viewport */
+        height: 100%; /* Full height */
+        background-color: #2d3748; /* Dark background for mobile menu */
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.4); /* Shadow on the left edge */
+        z-index: 1000;
+        transform: translateX(100%); /* Start off-screen to the right */
+        transition: transform 0.3s ease-in-out;
+        padding-top: 60px; /* Space from top edge, for header content */
+        border-left: 1px solid #4a5568; /* Subtle border */
     }
 
     .nav-list.active {
-        display: flex; /* Show when active */
+        transform: translateX(0); /* Slide in from the right */
+        display: flex; /* Make sure it's flex when active */
     }
 
     .nav-list li {
         margin: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator lines */
     }
 
     .nav-list li:last-child {
@@ -102,23 +127,32 @@
     }
 
     .nav-list li a {
-        padding: 15px 20px;
-        text-align: left; /* Align text left in mobile menu */
+        padding: 15px 25px; /* Larger clickable area */
+        text-align: left; /* Align text to the left */
     }
 
-    .nav-list .dropdown-menu {
-        position: static; /* Stack dropdown items vertically */
-        box-shadow: none;
-        border-top: none;
-        background-color: #3b4554; /* Slightly different background for sub-items */
-        width: 100%;
+    .nav-list li a:hover {
+        background-color: #4a5568; /* Darker hover for mobile */
+        color: #4299e1;
     }
+    
+    /* Ensure the hamburger icon stays fixed and visible when menu is open */
+    .hamburger-icon.active {
+        position: fixed;
+        right: 20px; /* Consistent right margin */
+        z-index: 1001; /* Above the sliding menu */
+    }
+}
 
-    .nav-list .dropdown-menu li a {
-        padding-left: 40px; /* Indent sub-items */
-    }
+/* Hamburger icon animation for 'X' */
+.hamburger-icon.active .bar:nth-child(2) {
+    opacity: 0;
+}
 
-    .menu-toggle {
-        display: block; /* Show hamburger icon on mobile */
-    }
+.hamburger-icon.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-icon.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
