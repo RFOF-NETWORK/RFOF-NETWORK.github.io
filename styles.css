@@ -36,19 +36,17 @@ body {
 .site-title { /* This is the text title in the header */
     color: #0088cc; /* Telegram/TON Blue */
     font-family: 'Orbitron', sans-serif;
-    font-size: 2.5em;
+    font-size: 2.5em; /* Adjusted to be proportional to footer and context below */
     font-weight: bold;
     margin: 0;
     padding: 0;
     flex-shrink: 0;
     text-shadow: none;
-    /* Removed explicit width/overflow/text-overflow from here */
     white-space: nowrap; /* Prevent wrapping */
     overflow: hidden; /* Hide overflow */
     text-overflow: ellipsis; /* Add ellipsis if truncated */
     line-height: 1.2; /* Ensure consistent line height */
-    max-width: calc(100% - 100px); /* Adjust based on logo width and desired spacing, prevents pushing nav */
-    /* This max-width will be dynamically adjusted by JS if needed for better responsiveness */
+    /* Removed max-width here, let flex-grow and container handle it */
 }
 
 
