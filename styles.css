@@ -26,27 +26,36 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     display: flex;
-    justify-content: flex-start; /* Align items to the start for logo and title */
+    justify-content: space-between; /* Space between logo/title and navbar */
     align-items: center;
     padding: 0 20px; /* Horizontal padding for content inside header */
     box-sizing: border-box; /* Include padding in width */
     width: 100%; /* Take full width */
 }
 
+.header-left-section {
+    display: flex;
+    align-items: center;
+    /* Removed justify-content: center to allow title to align left */
+    flex-grow: 1; /* Allow left section to grow */
+    /* Added min-width to prevent squishing on very small screens */
+    min-width: 0; /* Allows content to shrink beyond intrinsic width */
+}
+
 .site-title { /* This is the text title in the header */
     color: #0088cc; /* Telegram/TON Blue */
     font-family: 'Orbitron', sans-serif;
-    font-size: 2.5em; /* Adjusted to be proportional to footer and context below */
+    font-size: 2.5em; /* Default font size */
     font-weight: bold;
     margin: 0;
     padding: 0;
-    flex-shrink: 0;
+    flex-shrink: 1; /* Allow to shrink */
     text-shadow: none;
     white-space: nowrap; /* Prevent wrapping */
     overflow: hidden; /* Hide overflow */
     text-overflow: ellipsis; /* Add ellipsis if truncated */
-    line-height: 1.2; /* Ensure consistent line height */
-    /* Removed max-width here, let flex-grow and container handle it */
+    line-height: 1.2;
+    /* Adjust max-width dynamically via JS if needed for perfect fit */
 }
 
 
