@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ "/styles.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/menu_styles.css" | relative_url }}">
+    <link href="[https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@700&display=swap](https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@700&display=swap)" rel="stylesheet">
+    <style>
+        /* Specific styles for RFOFSpiderWeb.NET that might override or add to global styles */
+        /* Header Specific Styles */
+        .main-header {
+            background-color: #FFFFFF; /* White header background */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Lighter shadow for white background */
+            padding: 10px 0; /* Adjusted padding to remove top/bottom gaps */
+            z-index: 100;
+            position: relative;
+            border-bottom: 1px solid #E0E0E0; /* Light gray border */
+        }
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between; /* Space between logo/title and navbar */
+            align-items: center;
+            padding: 0 20px; /* Horizontal padding for content inside header */
+            box-sizing: border-box; /* Include padding in width */
+            width: 100%; /* Take full width */
+        }
+        .header-left-section {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center logo and title within their section */
+            flex-grow: 1; /* Allow left section to grow */
+        }
+        .header-logo-svg-container {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px; /* Space between logo and title */
+            position: relative;
+            animation: pulse-glow 2s infinite alternate; /* Subtle glow animation */
+            flex-shrink: 0;
+        }
+        @keyframes pulse-glow {
+            from { box-shadow: 0 0 5px rgba(0, 136, 204, 0.5); }
+            to { box-shadow: 0 0 15px rgba(0, 136, 204, 0.9); }
+        }
+        .header-logo-svg-container svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .site-title { /* Text title in the header */
+            color: #0088cc; /* Telegram/TON Blue */
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8em; /* Adjusted font size to look good next to logo and fit */
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            white-space: nowrap; /* Prevent wrapping */
+            overflow: hidden; /* Hide overflow */
+            text-overflow: ellipsis; /* Add ellipsis if truncated */
+            max-width: 300px; /* Max width for the title to prevent it from pushing navbar */
+            text-align: left; /* Align text to left within its own container */
+        }
+        .navbar {
+            margin-left: auto; /* Push navbar to the right */
+            align-items: center; /* Center items vertically in navbar */
+            flex-shrink: 0; /* Prevent navbar from shrinking too much */
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-image: linear-gradient(to right bottom, #4299e1, #2b6cb0);
+            color: #ffffff;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid #0088cc;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('[https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK.github.io/main/assets/rfoff_network_hero_background.jpg](https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK.github.io/main/assets/rfoff_network_hero_background.jpg)') no-repeat center center/cover;
+            opacity: 0.08;
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px; /* Increased max-width for hero content */
+            margin: 0 auto;
+            padding: 0 30px; /* Increased padding to prevent cutoff on smaller screens */
+            box-sizing: border-box;
+        }
+        /* Main Hero Logo (Cyber Brain) */
+        .main-hero-logo-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            position: relative;
+            animation: pulse-glow 2s infinite alternate;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #4299e1;
+            box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
+            background-color: white;
+        }
+        .main-hero-logo-container svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            animation: rotateBrain 20s linear infinite;
+        }
+        @keyframes rotateBrain {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        /* PRAI Search Engine Styling */
+        .praiai-search-container {
+            max-width: 700px;
+            margin: 40px auto;
+            display: flex;
+            border: 2px solid #4299e1;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
+            background-color: #ffffff;
+        }
+        .praiai-search-input {
+            flex-grow: 1;
+            padding: 15px 25px;
+            border: none;
+            outline: none;
+            font-size: 1.1em;
+            background-color: transparent;
+            color: #333;
+        }
+        .praiai-search-input::placeholder {
+            color: #666;
+        }
+        .praiai-search-button {
+            background-color: #4299e1;
+            border: none;
+            padding: 15px 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .praiai-search-button:hover {
+            background-color: #63b3ed;
+        }
+        .praiai-search-button svg {
+            fill: white;
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Content Container */
+        .content-container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            flex-grow: 1;
+        }
+
+        /* Headings */
+        h1, h2, h3, h4, h5, h6 {
+            color: #0088cc;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(0, 136, 204, 0.3);
+        }
+        h2 { font-size: 2.5em; margin-top: 2.5rem; }
+        h3 { font-size: 1.8em; margin-top: 2rem; }
+        h4 { font-size: 1.4em; margin-top: 1.5rem; }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1em;
+            color: #333;
+        }
+        ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        ul li {
+            margin-bottom: 0.5rem;
+            font-size: 1.05em;
+            color: #333;
+        }
+
+        /* Links */
+        a {
+            color: #0088cc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #00aaff;
+            text-decoration: underline;
+        }
+
+        /* Code Blocks - Styled for IT Experts */
+        pre {
+            background-color: #e0e0e0;
+            color: #333;
+            padding: 1.2em;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-bottom: 1.5em;
+            font-family: 'Fira Code', 'Cascadia Code', monospace;
+            font-size: 0.95em;
+            border: 1px solid #ccc;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Fira Code', 'Cascadia Code', monospace;
+            color: #0088cc;
+        }
+        ul code {
+            display: block;
+            white-space: pre-wrap;
+            margin-top: 0.5em;
+            background-color: #e0e0e0;
+            padding: 0.8em;
+            border-left: 3px solid #0088cc;
+            color: #333;
+        }
+
+        /* Improved Readability for longer text */
+        .text-section {
+            padding: 1.5rem 0;
+            border-bottom: 1px dashed rgba(0, 136, 204, 0.15);
+            margin-bottom: 1.5rem;
+        }
+        .text-section:last-of-type {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            margin-top: 3rem;
+            font-size: 0.9em;
+            border-top: 1px solid #e0e0e0;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+        }
+        footer a {
+            color: #0088cc;
+        }
+        footer a:hover {
+            color: #00aaff;
+        }
+
+        /* Styling for the "Improve this page" Container and Link */
+        .improve-page-container {
+            text-align: center;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+            font-size: 1em;
+        }
+
+        .improve-page-container p {
+            margin: 0;
+            color: #333;
+        }
+
+        .improve-page-container a.improve-page-link {
+            color: #0088cc;
+            text-decoration: underline;
+            font-weight: bold;
+            text-shadow: none;
+        }
+
+        .improve-page-link:hover {
+            color: #00aaff;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .site-title {
+                font-size: 1.8em;
+            }
+            .main-header .header-content {
+                flex-direction: column; /* Stack items vertically on mobile */
+                align-items: flex-start;
+                padding: 10px 15px;
+            }
+            .header-left-section {
+                width: 100%; /* Take full width on mobile */
+                justify-content: center; /* Center logo and title */
+                margin-bottom: 10px; /* Space below header title/logo on mobile */
+            }
+            .navbar {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            /* Hero section adjusts for mobile */
+            .hero-section h1 {
+                font-size: 2.5em;
+            }
+            .hero-section p {
+                font-size: 1.1em;
+            }
+            /* Content adjusts for mobile */
+            .content-container {
+                padding: 1.5rem;
+            }
+            h2 { font-size: 2em; }
+            h3 { font-size: 1.5em; }
+            h4 { font-size: 1.2em; }
+            /* Search bar adjustments */
+            .praiai-search-container {
+                margin: 20px 15px;
+                border-radius: 30px;
+            }
+            .praiai-search-input {
+                padding: 12px 20px;
+                font-size: 1em;
+            }
+            .praiai-search-button {
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <div class="header-left-section">
+                <div class="header-logo-svg-container">
+                    <svg viewBox="0 0 100 100" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)">
+                        <defs>
+                            <linearGradient id="brainGradientHeader" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#FFD700" />
+                                <stop offset="50%" stop-color="#FFEFD5" />
+                                <stop offset="100%" stop-color="#DAA520" />
+                            </linearGradient>
+                            <filter id="neuronGlowHeader">
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"></feGaussianBlur>
+                                <feColorMatrix in="blur" type="matrix" values="
+                                    1 0 0 0 0
+                                    0 1 0 0 0
+                                    0 0 1 0 0
+                                    0 0 0 5 0
+                                " result="glow"></feColorMatrix>
+                                <feMerge>
+                                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                                    <feMergeNode in="glow"></feMergeNode>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <path d="M 50 10 C 20 10 10 40 10 50 C 10 60 20 90 50 90 C 80 90 90 60 90 50 C 90 40 80 10 50 10 Z"
+                              fill="url(#brainGradientHeader)" stroke="#DAA520" stroke-width="1.5">
+                            <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="20s" repeatCount="indefinite"/>
+                        </path>
+                        <circle cx="30" cy="40" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 30 40 Q 45 25 60 40 T 30 40" dur="5s" repeatCount="indefinite"/></circle>
+                        <circle cx="70" cy="55" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 70 55 Q 85 70 70 85 T 70 55" dur="7s" repeatCount="indefinite"/></circle>
+                        <circle cx="45" cy="75" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 45 75 Q 30 90 45 75 Z" dur="6s" repeatCount="indefinite"/></circle>
+                        <circle cx="55" cy="25" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 55 25 Q 70 10 55 25 Z" dur="4s" repeatCount="indefinite"/></circle>
+                        <circle cx="20" cy="60" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 20 60 Q 5 45 20 60 Z" dur="8s" repeatCount="indefinite"/></circle>
+                    </svg>
+                </div>
+                <h1 class="site-title">RFOFSpiderWeb.NET</h1>
+            </div>
+            <nav class="navbar">
+                <div class="hamburger-icon" id="hamburger">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <ul class="nav-list" id="navLinks">
+                    <li><a href="[https://rfof-network.github.io/](https://rfof-network.github.io/)" target="_blank">RFOFSpiderWeb.NET (Current)</a></li>
+                    <li><a href="[https://rfof-network-ready-for-our-future.github.io/RFOF-spider-NET-/](https://rfof-network-ready-for-our-future.github.io/RFOF-spider-NET-/)" target="_blank">Ready Four Our Future</a></li>
+                    <li><a href="[https://qch-l-c.github.io/PRAI-KI-/](https://qch-l-c.github.io/PRAI-KI-/)" target="_blank">PRAI-OS</a></li>
+                    <li><a href="[https://rfof-network.github.io/RFOF-NETWORK/](https://rfof-network.github.io/RFOF-NETWORK/)" target="_blank">RFOF-NETWORK</a></li>
+                    <li><a href="[https://rfof-network.github.io/PRAI-/#uebersicht](https://rfof-network.github.io/PRAI-/#uebersicht)" target="_blank">RPFOF</a></li>
+                    <li><a href="[https://rfof-network.github.io/rfof-network.org/](https://rfof-network.github.io/rfof-network.org/)" target="_blank">QCH-L-C</a></li>
+                    <li><a href="[https://rfof-network.github.io/Comprensive-rfof-bitcoin.org-PRAI-BOx-Blockchain-System_Programm-Fusions-Reactor-System/](https://rfof-network.github.io/Comprensive-rfof-bitcoin.org-PRAI-BOx-Blockchain-System_Programm-Fusions-Reactor-System/)" target="_blank">rfof-bitcoin.org</a></li>
+                    <li><a href="[https://rfof-network.github.io/BUBATZ-COIN-official-CSC-DCV-/](https://rfof-network.github.io/BUBATZ-COIN-official-CSC-DCV-/)" target="_blank">Golden Times</a></li>
+                    <li><a href="[https://rfof-network.github.io/RFOF-x-PRAI_DOC_Ready-For-Our-Future/](https://rfof-network.github.io/RFOF-x-PRAI_DOC_Ready-For-Our-Future/)" target="_blank">DOC's & FAQ's</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content-container">
+        {{ content }}
+    </main>
+
+    <footer>
+        <p>&copy; {{ 'now' | date: "%Y" }} RFOF-NETWORK. All rights reserved.</p>
+        <p class="mt-2">
+            <a href="[https://github.com/RFOF-NETWORK](https://github.com/RFOF-NETWORK)" target="_blank">GitHub Profile</a> |
+            <a href="[https://github.com/orgs/skills/discussions/categories/github-pages](https://github.com/orgs/skills/discussions/categories/github-pages)" target="_blank">Contact / Discussions</a> |
+            <a href="[https://docs.github.com](https://docs.github.com)" target="_blank">GitHub Docs</a> |
+            <a href="[https://github.com/explore](https://github.com/explore)" target="_blank">GitHub Explore</a> |
+            <a href="[https://www.githubstatus.com/](https://www.githubstatus.com/)" target="_blank">System Status</a> |
+            <a href="[https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md)" target="_blank">Code of Conduct</a> |
+            <a href="[https://gh.io/mit](https://gh.io/mit)" target="_blank">MIT License</a> |
+            <a href="feed.xml" target="_blank">Subscribe via RSS Feed</a>
+        </p>
+    </footer>
+
+    <script src="{{ "/menu_script.js" | relative_url }}"></script>
+    <script src="[https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js](https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js)"></script>
+    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css](https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css)">
+    <script>hljs.highlightAll();</script>
+</body>
+                                                                                                         </html>
