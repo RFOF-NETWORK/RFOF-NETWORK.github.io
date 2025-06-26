@@ -23,8 +23,8 @@ body {
 }
 
 .header-content {
-    max-width: 960px; /* Adjusted to match content-container width */
-    margin: 0 auto;
+    max-width: 1400px; /* Max-width for the header content */
+    margin: 0 auto; /* Center the header content */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,7 +32,7 @@ body {
     box-sizing: border-box; /* Include padding in width */
 }
 
-/* SVG Logo Styling in Header (top-left) */
+/* SVG Logo Styling in Header (Top-Left) */
 .header-logo-svg-container {
     width: 50px; /* Size of the SVG icon */
     height: 50px;
@@ -41,26 +41,39 @@ body {
     animation: pulse-glow 2s infinite alternate; /* Subtle glow animation */
     flex-shrink: 0; /* Prevent shrinking */
 }
-.header-logo-svg-container img { /* Targeting the img inside the container */
+.header-logo-svg-container img { /* Target the img tag directly */
     width: 100%;
     height: 100%;
     display: block; /* Remove extra space below SVG */
 }
 
-@keyframes pulse-glow {
-    from { box-shadow: 0 0 5px rgba(0, 136, 204, 0.5); }
-    to { box-shadow: 0 0 15px rgba(0, 136, 204, 0.9); }
-}
-
+/* Site Title (RFOFSpiderWeb.NET) */
 .site-title { /* This is the text title in the header */
     color: #0088cc; /* Telegram/TON Blue */
     font-family: 'Orbitron', sans-serif;
-    font-size: 2.5em;
+    /* Adjusted font size to make it larger and span more width */
+    font-size: 3.5em; /* Increased font size */
     font-weight: bold;
     margin: 0;
     padding: 0;
-    flex-shrink: 0;
+    flex-grow: 1; /* Allow title to take available space */
+    text-align: left; /* Align left within its flex container */
     text-shadow: none;
+    white-space: nowrap; /* Prevent wrapping for very long titles */
+    overflow: hidden; /* Hide overflow if it's too long */
+    text-overflow: ellipsis; /* Add ellipsis if hidden */
+}
+
+/* Content Container */
+.content-container {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: #FFFFFF; /* White background for content blocks */
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Lighter shadow */
+    box-sizing: border-box;
+    flex-grow: 1;
 }
 
 /* Hero Section */
@@ -93,7 +106,7 @@ body {
     padding: 0 30px; /* Increased padding to prevent cutoff on smaller screens */
     box-sizing: border-box;
 }
-/* Main Hero Logo (Cyber Brain) - Centered over "Welcome..." */
+/* Main Hero Logo (Cyber Brain) */
 .main-hero-logo-container {
     width: 200px; /* Larger size for prominent display */
     height: 200px;
@@ -106,7 +119,7 @@ body {
     box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
     background-color: white; /* Background behind SVG */
 }
-.main-hero-logo-container img { /* Targeting the img inside the container */
+.main-hero-logo-container img { /* Target the img tag directly */
     width: 100%;
     height: 100%;
     display: block;
@@ -155,18 +168,6 @@ body {
     fill: white; /* Color the SVG icon */
     width: 24px;
     height: 24px;
-}
-
-/* Content Container */
-.content-container {
-    max-width: 960px;
-    margin: 2rem auto;
-    padding: 2.5rem;
-    background-color: #FFFFFF; /* White background for content blocks */
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Lighter shadow */
-    box-sizing: border-box;
-    flex-grow: 1;
 }
 
 /* Headings */
@@ -302,12 +303,17 @@ footer a:hover {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .site-title {
-        font-size: 1.8em;
+        font-size: 2em; /* Slightly smaller on mobile to fit */
+        text-align: center; /* Center on mobile */
     }
     .main-header .header-content {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center; /* Center items when stacked */
         padding: 10px 15px; /* Adjust header padding on mobile */
+    }
+    .header-logo-svg-container {
+        margin-right: 0; /* Remove right margin when stacked */
+        margin-bottom: 10px; /* Add bottom margin for spacing */
     }
     .navbar {
         width: 100%;
@@ -342,61 +348,12 @@ footer a:hover {
     }
 }
 
-/* Specific styling for the hero section background to ensure visibility */
-.hero-section {
-    background-image: linear-gradient(to bottom right, #4299e1, #2b6cb0); /* Lighter blue gradient for white background */
-    color: #ffffff;
-    padding: 80px 20px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 2px solid #0088cc;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+/* Keyframe Animations */
+@keyframes pulse-glow {
+    from { box-shadow: 0 0 5px rgba(0, 136, 204, 0.5); }
+    to { box-shadow: 0 0 15px rgba(0, 136, 204, 0.9); }
 }
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK.github.io/main/rfoff_network_hero_background.jpg') no-repeat center center/cover;
-    opacity: 0.08;
-    z-index: 1;
-}
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    margin: 0 auto;
-}
-.hero-content h1 {
-    font-size: 3.5em;
-    margin-bottom: 0.5em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-.hero-content p {
-    font-size: 1.3em;
-    line-height: 1.5;
-    max-width: 700px;
-    margin: 0 auto 1.5em;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    font-weight: 300;
-}
-/* This refers to the main hero logo image, now the cyber brain */
-.main-hero-logo-container {
-    width: 180px; /* Adjusted size */
-    height: 180px;
-    object-fit: contain; /* Ensure SVG scales correctly */
-    border-radius: 50%;
-    border: 4px solid #4299e1; /* Blue border */
-    box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
-    margin: 0 auto 1.5rem; /* Centered and with bottom margin */
-    display: block; /* Ensure it's a block element */
-}
-
-/* Ensure chart containers have suitable background */
-.chart-container canvas {
-    background-color: #FFFFFF; /* White background for charts within their container */
-    border-radius: 4px; /* Slight rounding for charts */
+@keyframes rotateBrain {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
 }
