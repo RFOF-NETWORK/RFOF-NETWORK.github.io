@@ -16,7 +16,7 @@ body {
 .main-header {
     background-color: #FFFFFF; /* White header background */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Lighter shadow for white background */
-    padding: 10px 20px;
+    padding: 10px 0; /* Adjusted padding to remove top/bottom gaps */
     z-index: 100;
     position: relative;
     border-bottom: 1px solid #E0E0E0; /* Light gray border */
@@ -28,7 +28,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0; /* Removed padding here to reduce potential gaps */
+    padding: 0 20px; /* Horizontal padding for content inside header */
+    box-sizing: border-box; /* Include padding in width */
 }
 
 .site-title { /* This is the text title in the header */
@@ -129,7 +130,7 @@ ul code {
 /* Improved Readability for longer text */
 .text-section {
     padding: 1.5rem 0;
-    border-bottom: 1px dashed rgba(0, 136, 204, 0.15);
+    border-bottom: 1px dashed rgba(0, 136, 204, 0.15); /* Blue dashed border */
     margin-bottom: 1.5rem;
 }
 .text-section:last-of-type {
@@ -192,6 +193,7 @@ footer a:hover {
     .main-header .header-content {
         flex-direction: column;
         align-items: flex-start;
+        padding: 10px 15px; /* Adjust header padding on mobile */
     }
     .navbar {
         width: 100%;
@@ -244,7 +246,7 @@ footer a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('https://raw.githubusercontent.com/RFOF-NETWORK/skills-github-pages/main/rfoff_network_hero_background.jpg') no-repeat center center/cover;
+    background: url('https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK.github.io/main/rfoff_network_hero_background.jpg') no-repeat center center/cover;
     opacity: 0.08;
     z-index: 1;
 }
@@ -280,6 +282,6 @@ footer a:hover {
 
 /* Ensure chart containers have suitable background */
 .chart-container canvas {
-    background-color: #ffffff; /* White background for charts within their container */
+    background-color: #FFFFFF; /* White background for charts within their container */
     border-radius: 4px; /* Slight rounding for charts */
 }
