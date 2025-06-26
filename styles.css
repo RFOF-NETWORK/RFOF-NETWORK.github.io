@@ -94,8 +94,8 @@ a:hover {
 
 /* Code Blocks - Styled for IT Experts */
 pre {
-    background-color: #232d3a; /* Darker background for code */
-    color: #a0aec0; /* Lighter gray for code text */
+    background-color: #232d3a;
+    color: #a0aec0;
     padding: 1.2em;
     border-radius: 6px;
     overflow-x: auto;
@@ -108,7 +108,7 @@ pre {
     word-break: break-all; /* Force breaking of long words if necessary */
 }
 code {
-    background-color: #36404e; /* Inline code background */
+    background-color: #36404e;
     padding: 0.2em 0.4em;
     border-radius: 3px;
     font-family: 'Fira Code', 'Cascadia Code', monospace;
@@ -166,10 +166,7 @@ footer a:hover {
         flex-direction: column;
         align-items: flex-start;
     }
-    .global-dropdown {
-        margin-left: 0; /* Reset margin for mobile */
-        width: 100%;
-    }
+    /* Global dropdown on mobile is handled by menu_styles.css */
     .hero-section h1 {
         font-size: 2.5em;
     }
@@ -182,6 +179,17 @@ footer a:hover {
     h2 { font-size: 2em; }
     h3 { font-size: 1.5em; }
     h4 { font-size: 1.2em; }
+    .praiai-search-container {
+        margin: 20px 15px; /* Adjust margins for mobile */
+        border-radius: 30px; /* Adjust border radius for smaller size */
+    }
+    .praiai-search-input {
+        padding: 12px 20px; /* Smaller padding */
+        font-size: 1em;
+    }
+    .praiai-search-button {
+        padding: 12px 20px; /* Smaller padding */
+    }
 }
 
 /* New custom style for citations */
@@ -220,7 +228,6 @@ footer a:hover {
     margin: 0 auto;
 }
 .hero-content h1 {
-    font-family: 'Orbitron', sans-serif;
     font-size: 3.5em;
     margin-bottom: 0.5em;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
