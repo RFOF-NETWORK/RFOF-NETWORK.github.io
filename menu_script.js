@@ -38,4 +38,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (hamburger) hamburger.classList.remove('active'); // Reset hamburger icon
         }
     });
+
+    // --- Search Bar Functionality ---
+    const searchInput = document.getElementById('praiai-search-input');
+    const searchButton = document.querySelector('.praiai-search-button');
+
+    function performPraiaiSearch() {
+        const query = searchInput.value;
+        if (query.trim() !== '') {
+            // Redirect to Google search results
+            window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+        }
+    }
+
+    if (searchButton) {
+        searchButton.addEventListener('click', performPraiaiSearch);
+    }
+    // Already handled onkeydown in HTML
 });
