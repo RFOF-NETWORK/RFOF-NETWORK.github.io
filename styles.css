@@ -1,8 +1,8 @@
 /* General body and container styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #1c2128; /* Dark gray for main background (similar to GitHub dark) */
-    color: #f0f0f0; /* Light gray text */
+    background-color: #FFFFFF; /* Changed to white */
+    color: #333333; /* Dark text for contrast on white background */
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -14,12 +14,12 @@ body {
 
 /* Header Styling */
 .main-header {
-    background-color: #24292e; /* Even darker header background (GitHub header like) */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Subtle shadow */
+    background-color: #FFFFFF; /* White header background */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Lighter shadow for white background */
     padding: 10px 20px;
     z-index: 100;
     position: relative;
-    border-bottom: 1px solid #333; /* Darker border for GitHub look */
+    border-bottom: 1px solid #E0E0E0; /* Light gray border */
 }
 
 .header-content {
@@ -28,30 +28,30 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 15px;
+    padding: 0; /* Removed padding here to reduce potential gaps */
 }
 
-.site-title {
+.site-title { /* This is the text title in the header */
     color: #0088cc; /* Telegram/TON Blue */
-    font-family: 'Orbitron', sans-serif; /* Distinct font for title */
-    font-size: 2.5em; /* Larger, more prominent title */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5em;
     font-weight: bold;
     margin: 0;
     padding: 0;
     flex-shrink: 0;
-    text-shadow: none; /* Removed neon glow */
+    text-shadow: none;
 }
 
 /* Content Container */
 .content-container {
-    max-width: 960px; /* Slightly wider content area */
-    margin: 2rem auto; /* Top/bottom margin, auto left/right for centering */
-    padding: 2.5rem; /* Increased padding for more inner space */
-    background-color: #1f2937; /* Even darker background for content */
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: #FFFFFF; /* White background for content blocks */
     border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    box-sizing: border-box; /* Include padding in width calculation */
-    flex-grow: 1; /* Allows main content to grow and push footer down */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Lighter shadow */
+    box-sizing: border-box;
+    flex-grow: 1;
 }
 
 /* Headings */
@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Orbitron', sans-serif;
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(0, 136, 204, 0.3); /* Subtle blue underline */
+    border-bottom: 1px solid rgba(0, 136, 204, 0.3);
 }
 h2 { font-size: 2.5em; margin-top: 2.5rem; }
 h3 { font-size: 1.8em; margin-top: 2rem; }
@@ -70,6 +70,7 @@ h4 { font-size: 1.4em; margin-top: 1.5rem; }
 p {
     margin-bottom: 1rem;
     font-size: 1.1em;
+    color: #333333; /* Dark text for paragraphs */
 }
 ul {
     list-style: disc;
@@ -79,6 +80,7 @@ ul {
 ul li {
     margin-bottom: 0.5rem;
     font-size: 1.05em;
+    color: #333333; /* Dark text for list items */
 }
 
 /* Links */
@@ -94,41 +96,40 @@ a:hover {
 
 /* Code Blocks - Styled for IT Experts */
 pre {
-    background-color: #232d3a;
-    color: #a0aec0;
+    background-color: #f8f8f8; /* Light background for code */
+    color: #333333; /* Darker text for code */
     padding: 1.2em;
     border-radius: 6px;
     overflow-x: auto;
     margin-bottom: 1.5em;
-    font-family: 'Fira Code', 'Cascadia Code', monospace; /* Monospace font for code */
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
     font-size: 0.95em;
-    border: 1px solid #36404e;
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
-    white-space: pre-wrap; /* Ensure text wraps within pre tags */
-    word-break: break-all; /* Force breaking of long words if necessary */
+    border: 1px solid #e0e0e0;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+    white-space: pre-wrap;
+    word-break: break-all;
 }
 code {
-    background-color: #36404e;
+    background-color: #e0e0e0; /* Inline code background */
     padding: 0.2em 0.4em;
     border-radius: 3px;
     font-family: 'Fira Code', 'Cascadia Code', monospace;
-    color: #b3d9ff; /* Light blue for inline code */
+    color: #0088cc; /* Blue for inline code */
 }
-/* Specific styling for list items containing code */
 ul code {
-    display: block; /* Make code blocks in lists behave like blocks */
-    white-space: pre-wrap; /* Preserve line breaks */
+    display: block;
+    white-space: pre-wrap;
     margin-top: 0.5em;
-    background-color: #232d3a;
+    background-color: #e0e0e0;
     padding: 0.8em;
-    border-left: 3px solid #4299e1;
-    color: #a0aec0;
+    border-left: 3px solid #0088cc;
+    color: #333333;
 }
 
 /* Improved Readability for longer text */
 .text-section {
     padding: 1.5rem 0;
-    border-bottom: 1px dashed rgba(66, 153, 225, 0.15);
+    border-bottom: 1px dashed rgba(0, 136, 204, 0.15);
     margin-bottom: 1.5rem;
 }
 .text-section:last-of-type {
@@ -137,19 +138,50 @@ ul code {
 
 /* Footer */
 footer {
-    background-color: #2d3748;
-    color: #cbd5e0;
+    background-color: #f0f0f0; /* Lighter footer background */
+    color: #333333; /* Dark text for footer */
     text-align: center;
     padding: 1.5rem 1rem;
     margin-top: 3rem;
     font-size: 0.9em;
-    border-top: 1px solid #4a5568;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05); /* Lighter shadow */
 }
 footer a {
-    color: #4299e1;
+    color: #0088cc;
 }
 footer a:hover {
-    color: #63b3ed;
+    color: #00aaff;
+}
+
+/* Styling for the "Improve this page" Container and Link */
+.improve-page-container {
+    text-align: center;
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #ffffff; /* White background */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333333;
+    font-size: 1em;
+}
+
+.improve-page-container p {
+    margin: 0;
+    color: #333333; /* Ensure dark text */
+}
+
+.improve-page-container a.improve-page-link {
+    color: #0088cc;
+    text-decoration: underline;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.improve-page-link:hover {
+    color: #00aaff;
 }
 
 /* Responsive Adjustments */
@@ -166,49 +198,44 @@ footer a:hover {
         flex-direction: column;
         align-items: flex-start;
     }
-    /* Global dropdown on mobile is handled by menu_styles.css */
+    /* Hero section adjusts for mobile */
     .hero-section h1 {
         font-size: 2.5em;
     }
     .hero-section p {
         font-size: 1.1em;
     }
+    /* Content adjusts for mobile */
     .content-container {
         padding: 1.5rem;
     }
     h2 { font-size: 2em; }
     h3 { font-size: 1.5em; }
     h4 { font-size: 1.2em; }
+    /* Search bar adjustments */
     .praiai-search-container {
-        margin: 20px 15px; /* Adjust margins for mobile */
-        border-radius: 30px; /* Adjust border radius for smaller size */
+        margin: 20px 15px;
+        border-radius: 30px;
     }
     .praiai-search-input {
-        padding: 12px 20px; /* Smaller padding */
+        padding: 12px 20px;
         font-size: 1em;
     }
     .praiai-search-button {
-        padding: 12px 20px; /* Smaller padding */
+        padding: 12px 20px;
     }
-}
-
-/* New custom style for citations */
-.citation {
-    font-size: 0.8em;
-    color: #999;
-    vertical-align: super;
 }
 
 /* Specific styling for the hero section background to ensure visibility */
 .hero-section {
-    background-image: linear-gradient(to bottom right, #005f8f, #003366); /* Darker blue gradient */
+    background-image: linear-gradient(to bottom right, #4299e1, #2b6cb0); /* Lighter blue gradient for white background */
     color: #ffffff;
     padding: 80px 20px;
     text-align: center;
     position: relative;
     overflow: hidden;
-    border-bottom: 2px solid #0088cc; /* Accent border */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border-bottom: 2px solid #0088cc;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 .hero-section::before {
     content: '';
@@ -217,8 +244,8 @@ footer a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('https://raw.githubusercontent.com/RFOF-NETWORK/skills-github-pages/main/rfoff_network_hero_background.jpg') no-repeat center center/cover; /* Placeholder, replace with actual RFOF bg */
-    opacity: 0.1; /* Subtle background image */
+    background: url('https://raw.githubusercontent.com/RFOF-NETWORK/skills-github-pages/main/rfoff_network_hero_background.jpg') no-repeat center center/cover;
+    opacity: 0.08;
     z-index: 1;
 }
 .hero-content {
@@ -230,21 +257,29 @@ footer a:hover {
 .hero-content h1 {
     font-size: 3.5em;
     margin-bottom: 0.5em;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 .hero-content p {
     font-size: 1.3em;
     line-height: 1.5;
     max-width: 700px;
     margin: 0 auto 1.5em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     font-weight: 300;
 }
-.hero-content img {
+.hero-content img { /* This refers to the main hero logo image, now the cyber brain */
     width: 180px; /* Adjusted size */
     height: 180px;
-    object-fit: cover;
+    object-fit: contain; /* Ensure SVG scales correctly */
     border-radius: 50%;
     border: 4px solid #4299e1; /* Blue border */
     box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
-    margin-bottom: 1.5rem;
+    margin: 0 auto 1.5rem; /* Centered and with bottom margin */
+    display: block; /* Ensure it's a block element */
+}
+
+/* Ensure chart containers have suitable background */
+.chart-container canvas {
+    background-color: #ffffff; /* White background for charts within their container */
+    border-radius: 4px; /* Slight rounding for charts */
 }
