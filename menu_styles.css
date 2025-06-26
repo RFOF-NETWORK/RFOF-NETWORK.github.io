@@ -50,7 +50,7 @@
 }
 
 .nav-list li a {
-    color: #e2e8f0; /* Light text color */
+    color: #333333; /* Dark text color for menu items on white header */
     text-decoration: none;
     padding: 10px 15px;
     display: block;
@@ -59,8 +59,8 @@
 }
 
 .nav-list li a:hover {
-    background-color: rgba(66, 153, 225, 0.2); /* Subtle blue hover */
-    color: #4299e1; /* Vibrant blue on hover */
+    background-color: rgba(0, 136, 204, 0.1); /* Subtle blue hover for white background */
+    color: #0088cc; /* Telegram blue on hover */
 }
 
 /* Mobile: Hamburger menu behavior */
@@ -113,6 +113,7 @@
     .nav-list li a {
         padding: 15px 25px; /* Larger clickable area */
         text-align: left; /* Align text to the left */
+        color: #e2e8f0; /* Light text for mobile menu */
     }
 
     .nav-list li a:hover {
