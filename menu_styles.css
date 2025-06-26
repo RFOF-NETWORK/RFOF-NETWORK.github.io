@@ -41,6 +41,8 @@
     margin: 0;
     padding: 0;
     display: flex; /* Display as flex for desktop (horizontal) */
+    /* On desktop, this will be the main horizontal list of links.
+       It becomes a dropdown on mobile, controlled by JavaScript. */
 }
 
 .nav-list li {
@@ -60,24 +62,6 @@
     background-color: rgba(66, 153, 225, 0.2); /* Subtle blue hover */
     color: #4299e1; /* Vibrant blue on hover */
 }
-
-/* Desktop: Make the nav-list a dropdown from the hamburger icon (which is hidden) */
-/* This is if you want the hamburger to trigger a desktop dropdown too.
-   However, based on previous successful repos, the 8 links are just a horizontal list on desktop */
-@media (min-width: 769px) {
-    .nav-list {
-        /* On desktop, the nav-list is the horizontal menu, not a dropdown by default */
-        display: flex !important; /* Ensure it's always flex on desktop */
-    }
-    .hamburger-icon {
-        display: none; /* Hide hamburger on desktop */
-    }
-    /* Ensure the navbar itself (which contains the nav-list) is aligned to the right */
-    .navbar {
-        justify-content: flex-end;
-    }
-}
-
 
 /* Mobile: Hamburger menu behavior */
 @media (max-width: 768px) {
