@@ -2,7 +2,7 @@
 .main-header .navbar {
     display: flex;
     align-items: center;
-    margin-left: auto; /* Pushes the navbar to the right */
+    margin-left: auto; /* Push navbar to the right */
     position: relative;
 }
 
