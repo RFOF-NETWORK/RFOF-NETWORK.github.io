@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="menu_styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <style>
+        /* Specific styles for RFOFSpiderWeb.NET that might override or add to global styles */
         /* Header Specific Styles */
         .main-header {
             background-color: #FFFFFF; /* White header background */
@@ -21,11 +22,17 @@
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
-            justify-content: flex-start; /* Align items to the start for logo and title */
+            justify-content: space-between; /* Space between logo/title and navbar */
             align-items: center;
             padding: 0 20px; /* Horizontal padding for content inside header */
             box-sizing: border-box; /* Include padding in width */
             width: 100%; /* Take full width */
+        }
+        .header-left-section {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center logo and title within their section */
+            flex-grow: 1; /* Allow left section to grow */
         }
         .header-logo-svg-container {
             width: 50px;
@@ -33,7 +40,11 @@
             margin-right: 10px; /* Space between logo and title */
             position: relative;
             animation: pulse-glow 2s infinite alternate; /* Subtle glow animation */
-            flex-shrink: 0; /* Prevent shrinking */
+            flex-shrink: 0;
+        }
+        @keyframes pulse-glow {
+            from { box-shadow: 0 0 5px rgba(0, 136, 204, 0.5); }
+            to { box-shadow: 0 0 15px rgba(0, 136, 204, 0.9); }
         }
         .header-logo-svg-container svg {
             width: 100%;
@@ -43,20 +54,20 @@
         .site-title { /* Text title in the header */
             color: #0088cc; /* Telegram/TON Blue */
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5em; /* Adjusted to fit better beside the logo, will be visually larger due to max-width */
+            font-size: 1.8em; /* Adjusted font size to look good next to logo and fit */
             font-weight: bold;
             margin: 0;
             padding: 0;
-            flex-grow: 1; /* Allow title to grow and push nav to right */
-            max-width: 250px; /* Limit max-width to control its length */
             white-space: nowrap; /* Prevent wrapping */
             overflow: hidden; /* Hide overflow */
             text-overflow: ellipsis; /* Add ellipsis if truncated */
-            line-height: 1.2; /* Ensure consistent line height */
+            max-width: 300px; /* Max width for the title to prevent it from pushing navbar */
+            text-align: left; /* Align text to left within its own container */
         }
         .navbar {
             margin-left: auto; /* Push navbar to the right */
             align-items: center; /* Center items vertically in navbar */
+            flex-shrink: 0; /* Prevent navbar from shrinking too much */
         }
 
         /* Hero Section */
@@ -91,16 +102,16 @@
         }
         /* Main Hero Logo (Cyber Brain) */
         .main-hero-logo-container {
-            width: 200px; /* Larger size for prominent display */
+            width: 200px;
             height: 200px;
-            margin: 0 auto 30px; /* Centered with bottom margin */
+            margin: 0 auto 30px;
             position: relative;
-            animation: pulse-glow 2s infinite alternate; /* Re-use glow animation */
-            border-radius: 50%; /* Make it round */
-            overflow: hidden; /* Ensure content stays within circle */
-            border: 4px solid #4299e1; /* Blue border */
+            animation: pulse-glow 2s infinite alternate;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #4299e1;
             box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
-            background-color: white; /* Background behind SVG */
+            background-color: white;
         }
         .main-hero-logo-container svg {
             width: 100%;
@@ -300,9 +311,14 @@
                 font-size: 1.8em;
             }
             .main-header .header-content {
-                flex-direction: column;
+                flex-direction: column; /* Stack items vertically on mobile */
                 align-items: flex-start;
                 padding: 10px 15px;
+            }
+            .header-left-section {
+                width: 100%; /* Take full width on mobile */
+                justify-content: center; /* Center logo and title */
+                margin-bottom: 10px; /* Space below header title/logo on mobile */
             }
             .navbar {
                 width: 100%;
@@ -341,40 +357,42 @@
 <body>
     <header class="main-header">
         <div class="header-content">
-            <div class="header-logo-svg-container">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="brainGradientHeader" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#FFD700" />
-                            <stop offset="50%" stop-color="#FFEFD5" />
-                            <stop offset="100%" stop-color="#DAA520" />
-                        </linearGradient>
-                        <filter id="neuronGlowHeader">
-                            <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"></feGaussianBlur>
-                            <feColorMatrix in="blur" type="matrix" values="
-                                1 0 0 0 0
-                                0 1 0 0 0
-                                0 0 1 0 0
-                                0 0 0 5 0
-                            " result="glow"></feColorMatrix>
-                            <feMerge>
-                                <feMergeNode in="SourceGraphic"></feMergeNode>
-                                <feMergeNode in="glow"></feMergeNode>
-                            </feMerge>
-                        </filter>
-                    </defs>
-                    <path d="M 50 10 C 20 10 10 40 10 50 C 10 60 20 90 50 90 C 80 90 90 60 90 50 C 90 40 80 10 50 10 Z"
-                          fill="url(#brainGradientHeader)" stroke="#DAA520" stroke-width="1.5">
-                        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="20s" repeatCount="indefinite"/>
-                    </path>
-                    <circle cx="30" cy="40" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 30 40 Q 45 25 60 40 T 30 40" dur="5s" repeatCount="indefinite"/></circle>
-                    <circle cx="70" cy="55" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 70 55 Q 85 70 70 85 T 70 55" dur="7s" repeatCount="indefinite"/></circle>
-                    <circle cx="45" cy="75" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 45 75 Q 30 90 45 75 Z" dur="6s" repeatCount="indefinite"/></circle>
-                    <circle cx="55" cy="25" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 55 25 Q 70 10 55 25 Z" dur="4s" repeatCount="indefinite"/></circle>
-                    <circle cx="20" cy="60" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 20 60 Q 5 45 20 60 Z" dur="8s" repeatCount="indefinite"/></circle>
-                </svg>
+            <div class="header-left-section">
+                <div class="header-logo-svg-container">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="brainGradientHeader" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#FFD700" />
+                                <stop offset="50%" stop-color="#FFEFD5" />
+                                <stop offset="100%" stop-color="#DAA520" />
+                            </linearGradient>
+                            <filter id="neuronGlowHeader">
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"></feGaussianBlur>
+                                <feColorMatrix in="blur" type="matrix" values="
+                                    1 0 0 0 0
+                                    0 1 0 0 0
+                                    0 0 1 0 0
+                                    0 0 0 5 0
+                                " result="glow"></feColorMatrix>
+                                <feMerge>
+                                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                                    <feMergeNode in="glow"></feMergeNode>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <path d="M 50 10 C 20 10 10 40 10 50 C 10 60 20 90 50 90 C 80 90 90 60 90 50 C 90 40 80 10 50 10 Z"
+                              fill="url(#brainGradientHeader)" stroke="#DAA520" stroke-width="1.5">
+                            <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="20s" repeatCount="indefinite"/>
+                        </path>
+                        <circle cx="30" cy="40" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 30 40 Q 45 25 60 40 T 30 40" dur="5s" repeatCount="indefinite"/></circle>
+                        <circle cx="70" cy="55" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 70 55 Q 85 70 70 85 T 70 55" dur="7s" repeatCount="indefinite"/></circle>
+                        <circle cx="45" cy="75" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 45 75 Q 30 90 45 75 Z" dur="6s" repeatCount="indefinite"/></circle>
+                        <circle cx="55" cy="25" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 55 25 Q 70 10 55 25 Z" dur="4s" repeatCount="indefinite"/></circle>
+                        <circle cx="20" cy="60" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 20 60 Q 5 45 20 60 Z" dur="8s" repeatCount="indefinite"/></circle>
+                    </svg>
+                </div>
+                <h1 class="site-title">RFOFSpiderWeb.NET</h1>
             </div>
-            <h1 class="site-title">RFOFSpiderWeb.NET</h1>
             <nav class="navbar">
                 <div class="hamburger-icon" id="hamburger">
                     <div class="bar"></div>
