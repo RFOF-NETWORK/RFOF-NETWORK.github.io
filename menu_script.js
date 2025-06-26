@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
-    const navList = document.getElementById('navLinks'); // Changed to navList to match CSS class
+    const navList = document.getElementById('navLinks'); // Corrected ID to navLinks
 
     // Toggle for the main mobile menu
     if (hamburger && navList) {
@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Close mobile menu when a link is clicked
-    // This assumes all links in the main nav-list are intended to close the menu
     navList.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             if (window.innerWidth <= 768) { // Only close on mobile
@@ -38,6 +37,5 @@ document.addEventListener('DOMContentLoaded', () => {
             navList.classList.remove('active'); // Ensure mobile menu is hidden on desktop
             if (hamburger) hamburger.classList.remove('active'); // Reset hamburger icon
         }
-        // No need to explicitly set display property as CSS media queries handle it now
     });
 });
