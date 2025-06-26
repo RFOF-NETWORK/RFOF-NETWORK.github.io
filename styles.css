@@ -1,140 +1,285 @@
-/* Base styling for the main header and nav components */
-.main-header .navbar {
-    display: flex;
-    align-items: center;
-    margin-left: auto; /* Pushes the navbar to the right */
-    position: relative;
-}
-
-/* Global Dropdown Container */
-.global-dropdown {
-    position: relative;
-    display: inline-block;
-    margin-left: auto;
-}
-
-/* Hamburger menu icon (for mobile) */
-.hamburger-icon {
-    display: none; /* Hidden by default on desktop */
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 25px;
-    cursor: pointer;
-    z-index: 1001;
-    margin-left: 20px;
-}
-
-.hamburger-icon .bar {
-    width: 100%;
-    height: 3px;
-    background-color: #0088cc; /* Telegram blue bars */
-    border-radius: 2px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: none;
-}
-
-/* Global Nav Links (the actual dropdown content) */
-.nav-list {
-    list-style: none;
+/* General body and container styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #FFFFFF; /* Changed to white */
+    color: #333333; /* Dark text for contrast on white background */
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-    display: flex; /* Display as flex for desktop (horizontal) */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.nav-list li {
+/* Header Styling */
+.main-header {
+    background-color: #FFFFFF; /* White header background */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Lighter shadow for white background */
+    padding: 10px 20px;
+    z-index: 100;
     position: relative;
+    border-bottom: 1px solid #E0E0E0; /* Light gray border */
 }
 
-.nav-list li a {
-    color: #333333; /* Dark text color for menu items on white header */
-    text-decoration: none;
-    padding: 10px 15px;
-    display: block;
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0; /* Removed padding here to reduce potential gaps */
+}
+
+.site-title { /* This is the text title in the header */
+    color: #0088cc; /* Telegram/TON Blue */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5em;
     font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+    text-shadow: none;
 }
 
-.nav-list li a:hover {
-    background-color: rgba(0, 136, 204, 0.1); /* Subtle blue hover for white background */
-    color: #0088cc; /* Telegram blue on hover */
+/* Content Container */
+.content-container {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: #FFFFFF; /* White background for content blocks */
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Lighter shadow */
+    box-sizing: border-box;
+    flex-grow: 1;
 }
 
-/* Mobile: Hamburger menu behavior */
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #0088cc; /* Telegram/TON Blue for headings */
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 136, 204, 0.3);
+}
+h2 { font-size: 2.5em; margin-top: 2.5rem; }
+h3 { font-size: 1.8em; margin-top: 2rem; }
+h4 { font-size: 1.4em; margin-top: 1.5rem; }
+
+/* Paragraphs and Lists */
+p {
+    margin-bottom: 1rem;
+    font-size: 1.1em;
+    color: #333333; /* Dark text for paragraphs */
+}
+ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1.05em;
+    color: #333333; /* Dark text for list items */
+}
+
+/* Links */
+a {
+    color: #0088cc; /* Telegram/TON Blue for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: #00aaff; /* Slightly lighter blue on hover */
+    text-decoration: underline;
+}
+
+/* Code Blocks - Styled for IT Experts */
+pre {
+    background-color: #f8f8f8; /* Light background for code */
+    color: #333333; /* Darker text for code */
+    padding: 1.2em;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-bottom: 1.5em;
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.95em;
+    border: 1px solid #e0e0e0;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+code {
+    background-color: #e0e0e0; /* Inline code background */
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    color: #0088cc; /* Blue for inline code */
+}
+ul code {
+    display: block;
+    white-space: pre-wrap;
+    margin-top: 0.5em;
+    background-color: #e0e0e0;
+    padding: 0.8em;
+    border-left: 3px solid #0088cc;
+    color: #333333;
+}
+
+/* Improved Readability for longer text */
+.text-section {
+    padding: 1.5rem 0;
+    border-bottom: 1px dashed rgba(0, 136, 204, 0.15);
+    margin-bottom: 1.5rem;
+}
+.text-section:last-of-type {
+    border-bottom: none;
+}
+
+/* Footer */
+footer {
+    background-color: #f0f0f0; /* Lighter footer background */
+    color: #333333; /* Dark text for footer */
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin-top: 3rem;
+    font-size: 0.9em;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+}
+footer a {
+    color: #0088cc;
+}
+footer a:hover {
+    color: #00aaff;
+}
+
+/* Styling for the "Improve this page" Container and Link */
+.improve-page-container {
+    text-align: center;
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #ffffff; /* White background */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333333;
+    font-size: 1em;
+}
+
+.improve-page-container p {
+    margin: 0;
+    color: #333333; /* Ensure dark text */
+}
+
+.improve-page-container a.improve-page-link {
+    color: #0088cc;
+    text-decoration: underline;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.improve-page-link:hover {
+    color: #00aaff;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
+    .site-title {
+        font-size: 1.8em;
+    }
+    .main-header .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
     .navbar {
         width: 100%;
-        justify-content: space-between;
-    }
-    .site-title { /* Text title, adjust for mobile if next to SVG */
-        font-size: 1.5em; /* Match site-title in mobile media query */
-        margin-right: auto;
-        padding-left: 0;
-    }
-
-    .hamburger-icon {
-        display: flex;
-        margin-left: 0;
-    }
-
-    .nav-list {
-        display: none;
         flex-direction: column;
-        width: 280px;
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100%;
-        background-color: #2d3748; /* Dark background for mobile menu */
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.4);
-        z-index: 1000;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-        padding-top: 60px;
-        border-left: 1px solid #4a5568;
+        align-items: flex-start;
     }
-
-    .nav-list.active {
-        transform: translateX(0);
-        display: flex;
+    /* Hero section adjusts for mobile */
+    .hero-section h1 {
+        font-size: 2.5em;
     }
-
-    .nav-list li {
-        margin: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    .hero-section p {
+        font-size: 1.1em;
     }
-
-    .nav-list li:last-child {
-        border-bottom: none;
+    /* Content adjusts for mobile */
+    .content-container {
+        padding: 1.5rem;
     }
-
-    .nav-list li a {
-        padding: 15px 25px;
-        text-align: left;
-        color: #e2e8f0; /* Light text for mobile menu */
+    h2 { font-size: 2em; }
+    h3 { font-size: 1.5em; }
+    h4 { font-size: 1.2em; }
+    /* Search bar adjustments */
+    .praiai-search-container {
+        margin: 20px 15px;
+        border-radius: 30px;
     }
-
-    .nav-list li a:hover {
-        background-color: #4a5568;
-        color: #4299e1;
+    .praiai-search-input {
+        padding: 12px 20px;
+        font-size: 1em;
     }
-    
-    .hamburger-icon.active {
-        position: fixed;
-        right: 20px;
-        z-index: 1001;
+    .praiai-search-button {
+        padding: 12px 20px;
     }
 }
 
-/* Hamburger icon animation for 'X' */
-.hamburger-icon.active .bar:nth-child(2) {
-    opacity: 0;
+/* Specific styling for the hero section background to ensure visibility */
+.hero-section {
+    background-image: linear-gradient(to bottom right, #4299e1, #2b6cb0); /* Lighter blue gradient for white background */
+    color: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid #0088cc;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://raw.githubusercontent.com/RFOF-NETWORK/skills-github-pages/main/rfoff_network_hero_background.jpg') no-repeat center center/cover;
+    opacity: 0.08;
+    z-index: 1;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 0.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.hero-content p {
+    font-size: 1.3em;
+    line-height: 1.5;
+    max-width: 700px;
+    margin: 0 auto 1.5em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    font-weight: 300;
+}
+.hero-content img { /* This refers to the main hero logo image, now the cyber brain */
+    width: 180px; /* Adjusted size */
+    height: 180px;
+    object-fit: contain; /* Ensure SVG scales correctly */
+    border-radius: 50%;
+    border: 4px solid #4299e1; /* Blue border */
+    box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
+    margin: 0 auto 1.5rem; /* Centered and with bottom margin */
+    display: block; /* Ensure it's a block element */
 }
 
-.hamburger-icon.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.hamburger-icon.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+/* Ensure chart containers have suitable background */
+.chart-container canvas {
+    background-color: #ffffff; /* White background for charts within their container */
+    border-radius: 4px; /* Slight rounding for charts */
 }
