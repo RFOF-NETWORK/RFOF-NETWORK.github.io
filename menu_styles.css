@@ -41,12 +41,10 @@
     margin: 0;
     padding: 0;
     display: flex; /* Display as flex for desktop (horizontal) */
-    /* On desktop, this will be the main horizontal list of links.
-       It becomes a dropdown on mobile, controlled by JavaScript. */
 }
 
 .nav-list li {
-    position: relative; /* Needed for potential nested dropdowns (not currently used) */
+    position: relative;
 }
 
 .nav-list li a {
