@@ -8,8 +8,37 @@
     <link rel="stylesheet" href="menu_styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* Specific styles for RFOFSpiderWeb.NET that might override or add to global styles */
-        .site-title { /* This is the text title in the header, now only for text */
+        /* Header Specific Styles */
+        .header-content {
+            padding: 0 20px; /* Consistent padding for header content */
+            box-sizing: border-box; /* Include padding in width */
+            width: 100%; /* Take full width */
+            max-width: 1400px; /* Match outer container if exists */
+            margin: 0 auto; /* Center content */
+        }
+        .main-header .navbar {
+            margin-left: auto; /* Push navbar to the right */
+            align-items: center; /* Center items vertically in navbar */
+        }
+        /* SVG Logo Styling in Header */
+        .header-logo-svg-container {
+            width: 50px; /* Size of the SVG icon */
+            height: 50px;
+            margin-right: 10px; /* Space between logo and title */
+            position: relative;
+            animation: pulse-glow 2s infinite alternate; /* Subtle glow animation */
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+        @keyframes pulse-glow {
+            from { box-shadow: 0 0 5px rgba(0, 136, 204, 0.5); }
+            to { box-shadow: 0 0 15px rgba(0, 136, 204, 0.9); }
+        }
+        .header-logo-svg-container svg {
+            width: 100%;
+            height: 100%;
+            display: block; /* Remove extra space below SVG */
+        }
+        .site-title {
             color: #0088cc; /* Telegram/TON Blue */
             font-family: 'Orbitron', sans-serif; /* Distinct font for title */
             font-size: 2.5em;
@@ -18,25 +47,6 @@
             padding: 0;
             flex-shrink: 0;
             text-shadow: none;
-            /* No display: none here, as it might be used as a fallback if SVG fails */
-        }
-        /* SVG Logo Container in Header */
-        .header-logo-svg-container {
-            width: 50px; /* Size of the SVG icon */
-            height: 50px;
-            margin-right: 15px;
-            position: relative;
-            animation: pulse-glow 2s infinite alternate; /* Subtle glow animation */
-        }
-        .header-logo-svg-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Ensure SVG scales correctly */
-        }
-
-        @keyframes pulse-glow {
-            from { box-shadow: 0 0 5px rgba(66, 153, 225, 0.5); }
-            to { box-shadow: 0 0 15px rgba(66, 153, 225, 0.9); }
         }
 
         /* Hero Section */
@@ -57,8 +67,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('https://raw.githubusercontent.com/RFOF-NETWORK/skills-github-pages/main/rfoff_network_hero_background.jpg') no-repeat center center/cover;
-            opacity: 0.08; /* Even more subtle background image */
+            background: url('https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK.github.io/main/rfoff_network_hero_background.jpg') no-repeat center center/cover; /* Corrected path for hero background */
+            opacity: 0.08;
             z-index: 1;
         }
         .hero-content {
@@ -69,32 +79,29 @@
             padding: 0 30px; /* Increased padding to prevent cutoff on smaller screens */
             box-sizing: border-box;
         }
-        .hero-content h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5em;
-            margin-bottom: 0.5em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        /* Main Hero Logo (Cyber Brain) */
+        .main-hero-logo-container {
+            width: 200px; /* Larger size for prominent display */
+            height: 200px;
+            margin: 0 auto 30px; /* Centered with bottom margin */
+            position: relative;
+            animation: pulse-glow 2s infinite alternate; /* Re-use glow animation */
+            border-radius: 50%; /* Make it round */
+            overflow: hidden; /* Ensure content stays within circle */
+            border: 4px solid #4299e1; /* Blue border */
+            box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
+            background-color: white; /* Background behind SVG */
         }
-        .hero-content p {
-            font-size: 1.3em;
-            line-height: 1.5;
-            max-width: 700px;
-            margin: 0 auto 1.5em;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-            word-wrap: break-word; /* Ensure words wrap */
+        .main-hero-logo-container svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            /* Animation for subtle 3D feel on the brain SVG */
+            animation: rotateBrain 20s linear infinite;
         }
-        .hero-content .btn-primary {
-            background-color: #0088cc;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        .hero-content .btn-primary:hover {
-            background-color: #00aaff;
-            transform: translateY(-2px);
+        @keyframes rotateBrain {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
         }
 
         /* PRAI Search Engine Styling */
@@ -223,7 +230,7 @@
         /* Improved Readability for longer text */
         .text-section {
             padding: 1.5rem 0;
-            border-bottom: 1px dashed rgba(0, 136, 204, 0.15); /* Blue dashed border */
+            border-bottom: 1px dashed rgba(0, 136, 204, 0.15);
             margin-bottom: 1.5rem;
         }
         .text-section:last-of-type {
@@ -238,7 +245,8 @@
             padding: 1.5rem 1rem;
             margin-top: 3rem;
             font-size: 0.9em;
-            border-top: 1px solid #ccc;
+            border-top: 1px solid #e0e0e0;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05); /* Lighter shadow */
         }
         footer a {
             color: #0088cc;
@@ -254,10 +262,10 @@
             margin: 20px auto;
             max-width: 800px;
             background-color: #ffffff; /* White background */
-            border: 1px solid #ccc;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            color: #333; /* Dark text */
+            color: #333;
             font-size: 1em;
         }
 
@@ -285,6 +293,7 @@
             .main-header .header-content {
                 flex-direction: column;
                 align-items: flex-start;
+                padding: 10px 15px; /* Adjust header padding on mobile */
             }
             .navbar {
                 width: 100%;
@@ -324,9 +333,10 @@
     <header class="main-header">
         <div class="header-content">
             <div class="header-logo-svg-container">
-                <img src="https://github.com/RFOF-NETWORK/RFOF-NETWORK/blob/main/assets/rotating_cyber_brain.svg?raw=true" alt="RFOFSpiderWeb.NET Cyber Brain Logo">
+                <img src="https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK.github.io/main/assets/rotating_cyber_brain.svg" alt="RFOFSpiderWeb.NET Cyber Brain Logo">
             </div>
-            <h1 class="site-title">RFOFSpiderWeb.NET</h1> <nav class="navbar">
+            <h1 class="site-title">RFOFSpiderWeb.NET</h1>
+            <nav class="navbar">
                 <div class="hamburger-icon" id="hamburger">
                     <div class="bar"></div>
                     <div class="bar"></div>
@@ -351,7 +361,7 @@
         <section class="hero-section">
             <div class="hero-content">
                 <div class="main-hero-logo-container">
-                    <img src="https://github.com/RFOF-NETWORK/RFOF-NETWORK/blob/main/assets/rotating_cyber_brain.svg?raw=true" alt="RFOFSpiderWeb.NET Cyber Brain Logo">
+                    <img src="https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK.github.io/main/assets/rotating_cyber_brain.svg" alt="RFOFSpiderWeb.NET Cyber Brain Logo">
                 </div>
                 <h1>Welcome to RFOFSpiderWeb.NET</h1>
                 <p>The new internet that brings security, decentralization, and innovation to every digital interaction, powered by PRAI and PZQQET AXIOMATIKX.</p>
