@@ -2,15 +2,16 @@
 .main-header .navbar {
     display: flex;
     align-items: center;
-    margin-left: auto; /* Pushes the navbar to the right */
-    position: relative;
+    /* Pushes the navbar to the right, creating space for the title */
+    margin-left: auto; 
+    position: relative; /* Needed for absolute positioning of dropdown */
 }
 
 /* Global Dropdown Container */
 .global-dropdown {
     position: relative;
-    display: inline-block;
-    margin-left: auto;
+    display: inline-block; /* Allows side-by-side with other elements */
+    margin-left: auto; /* Pushes it to the right within the navbar if other elements are present */
 }
 
 /* Hamburger menu icon (for mobile) */
@@ -21,8 +22,8 @@
     width: 30px;
     height: 25px;
     cursor: pointer;
-    z-index: 1001;
-    margin-left: 20px;
+    z-index: 1001; /* Ensure it's above other content */
+    margin-left: 20px; /* Space from other elements like a potential second menu button */
 }
 
 .hamburger-icon .bar {
@@ -31,7 +32,7 @@
     background-color: #0088cc; /* Telegram blue bars */
     border-radius: 2px;
     transition: all 0.3s ease-in-out;
-    box-shadow: none;
+    box-shadow: none; /* No glow here */
 }
 
 /* Global Nav Links (the actual dropdown content) */
@@ -40,10 +41,12 @@
     margin: 0;
     padding: 0;
     display: flex; /* Display as flex for desktop (horizontal) */
+    /* On desktop, this will be the main horizontal list of links.
+       It becomes a dropdown on mobile, controlled by JavaScript. */
 }
 
 .nav-list li {
-    position: relative;
+    position: relative; /* Needed for potential nested dropdowns (not currently used) */
 }
 
 .nav-list li a {
@@ -63,45 +66,44 @@
 /* Mobile: Hamburger menu behavior */
 @media (max-width: 768px) {
     .navbar {
-        width: 100%;
-        justify-content: space-between;
+        width: 100%; /* Navbar takes full width on mobile */
+        justify-content: space-between; /* Space out title and hamburger */
     }
-    .site-title { /* Text title, adjust for mobile if next to SVG */
-        font-size: 1.5em; /* Match site-title in mobile media query */
-        margin-right: auto;
-        padding-left: 0;
+    .site-title { /* Make sure title is aligned well on mobile */
+        margin-right: auto; /* Push title to the left */
+        padding-left: 0; /* No extra padding */
     }
 
     .hamburger-icon {
-        display: flex;
-        margin-left: 0;
+        display: flex; /* Show hamburger on mobile */
+        margin-left: 0; /* Remove margin-left when it's the sole right-aligned item */
     }
 
     .nav-list {
-        display: none;
+        display: none; /* Hidden by default on mobile */
         flex-direction: column;
-        width: 280px;
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100%;
+        width: 280px; /* Fixed width for mobile slide-in menu */
+        position: fixed; /* Fixed to viewport */
+        top: 0; /* Align to top of viewport */
+        right: 0; /* Align to right of viewport */
+        height: 100%; /* Full height */
         background-color: #2d3748; /* Dark background for mobile menu */
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.4);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.4); /* Shadow on the left edge */
         z-index: 1000;
-        transform: translateX(100%);
+        transform: translateX(100%); /* Start off-screen to the right */
         transition: transform 0.3s ease-in-out;
-        padding-top: 60px;
-        border-left: 1px solid #4a5568;
+        padding-top: 60px; /* Space from top edge, for header content */
+        border-left: 1px solid #4a5568; /* Subtle border */
     }
 
     .nav-list.active {
-        transform: translateX(0);
-        display: flex;
+        transform: translateX(0); /* Slide in from the right */
+        display: flex; /* Make sure it's flex when active */
     }
 
     .nav-list li {
         margin: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator lines */
     }
 
     .nav-list li:last-child {
@@ -109,20 +111,21 @@
     }
 
     .nav-list li a {
-        padding: 15px 25px;
-        text-align: left;
+        padding: 15px 25px; /* Larger clickable area */
+        text-align: left; /* Align text to the left */
         color: #e2e8f0; /* Light text for mobile menu */
     }
 
     .nav-list li a:hover {
-        background-color: #4a5568;
+        background-color: #4a5568; /* Darker hover for mobile */
         color: #4299e1;
     }
     
+    /* Ensure the hamburger icon stays fixed and visible when menu is open */
     .hamburger-icon.active {
         position: fixed;
-        right: 20px;
-        z-index: 1001;
+        right: 20px; /* Consistent right margin */
+        z-index: 1001; /* Above the sliding menu */
     }
 }
 
