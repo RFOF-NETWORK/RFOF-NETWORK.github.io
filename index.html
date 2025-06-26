@@ -9,49 +9,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <style>
         /* Header Specific Styles */
+        .main-header {
+            background-color: #FFFFFF; /* White header background */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Lighter shadow for white background */
+            padding: 10px 0; /* Adjusted padding to remove top/bottom gaps */
+            z-index: 100;
+            position: relative;
+            border-bottom: 1px solid #E0E0E0; /* Light gray border */
+        }
         .header-content {
-            padding: 0 20px; /* Consistent padding for header content */
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start; /* Align items to the start for logo and title */
+            align-items: center;
+            padding: 0 20px; /* Horizontal padding for content inside header */
             box-sizing: border-box; /* Include padding in width */
             width: 100%; /* Take full width */
-            max-width: 1400px; /* Match outer container if exists */
-            margin: 0 auto; /* Center content */
         }
-        .main-header .navbar {
-            margin-left: auto; /* Push navbar to the right */
-            align-items: center; /* Center items vertically in navbar */
-        }
-        /* SVG Logo Styling in Header */
         .header-logo-svg-container {
-            width: 50px; /* Size of the SVG icon */
+            width: 50px;
             height: 50px;
             margin-right: 10px; /* Space between logo and title */
             position: relative;
             animation: pulse-glow 2s infinite alternate; /* Subtle glow animation */
             flex-shrink: 0; /* Prevent shrinking */
         }
-        @keyframes pulse-glow {
-            from { box-shadow: 0 0 5px rgba(0, 136, 204, 0.5); }
-            to { box-shadow: 0 0 15px rgba(0, 136, 204, 0.9); }
-        }
         .header-logo-svg-container svg {
             width: 100%;
             height: 100%;
-            display: block; /* Remove extra space below SVG */
+            display: block;
         }
-        .site-title {
+        .site-title { /* Text title in the header */
             color: #0088cc; /* Telegram/TON Blue */
-            font-family: 'Orbitron', sans-serif; /* Distinct font for title */
-            font-size: 2.5em;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5em; /* Adjusted to fit better beside the logo, will be visually larger due to max-width */
             font-weight: bold;
             margin: 0;
             padding: 0;
-            flex-shrink: 0;
-            text-shadow: none;
+            flex-grow: 1; /* Allow title to grow and push nav to right */
+            max-width: 250px; /* Limit max-width to control its length */
+            white-space: nowrap; /* Prevent wrapping */
+            overflow: hidden; /* Hide overflow */
+            text-overflow: ellipsis; /* Add ellipsis if truncated */
+            line-height: 1.2; /* Ensure consistent line height */
+        }
+        .navbar {
+            margin-left: auto; /* Push navbar to the right */
+            align-items: center; /* Center items vertically in navbar */
         }
 
         /* Hero Section */
         .hero-section {
-            background-image: linear-gradient(to right bottom, #4299e1, #2b6cb0); /* Lighter blue gradient for white background */
+            background-image: linear-gradient(to right bottom, #4299e1, #2b6cb0);
             color: #ffffff;
             padding: 80px 20px;
             text-align: center;
@@ -67,14 +77,14 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK.github.io/main/rfoff_network_hero_background.jpg') no-repeat center center/cover; /* Corrected path for hero background */
+            background: url('https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK.github.io/main/assets/rfoff_network_hero_background.jpg') no-repeat center center/cover;
             opacity: 0.08;
             z-index: 1;
         }
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 900px;
+            max-width: 900px; /* Increased max-width for hero content */
             margin: 0 auto;
             padding: 0 30px; /* Increased padding to prevent cutoff on smaller screens */
             box-sizing: border-box;
@@ -96,7 +106,6 @@
             width: 100%;
             height: 100%;
             display: block;
-            /* Animation for subtle 3D feel on the brain SVG */
             animation: rotateBrain 20s linear infinite;
         }
         @keyframes rotateBrain {
@@ -110,10 +119,10 @@
             margin: 40px auto;
             display: flex;
             border: 2px solid #4299e1;
-            border-radius: 50px; /* Pill shape */
+            border-radius: 50px;
             overflow: hidden;
             box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
-            background-color: #ffffff; /* White background for search bar */
+            background-color: #ffffff;
         }
         .praiai-search-input {
             flex-grow: 1;
@@ -122,10 +131,10 @@
             outline: none;
             font-size: 1.1em;
             background-color: transparent;
-            color: #333; /* Dark text for input */
+            color: #333;
         }
         .praiai-search-input::placeholder {
-            color: #666; /* Darker placeholder text */
+            color: #666;
         }
         .praiai-search-button {
             background-color: #4299e1;
@@ -138,7 +147,7 @@
             background-color: #63b3ed;
         }
         .praiai-search-button svg {
-            fill: white; /* Color the SVG icon */
+            fill: white;
             width: 24px;
             height: 24px;
         }
@@ -148,7 +157,7 @@
             max-width: 960px;
             margin: 2rem auto;
             padding: 2.5rem;
-            background-color: #ffffff; /* White background for content blocks */
+            background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
@@ -157,7 +166,7 @@
 
         /* Headings */
         h1, h2, h3, h4, h5, h6 {
-            color: #0088cc; /* Telegram/TON Blue for headings */
+            color: #0088cc;
             font-family: 'Orbitron', sans-serif;
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
@@ -171,7 +180,7 @@
         p {
             margin-bottom: 1rem;
             font-size: 1.1em;
-            color: #333; /* Dark text for paragraphs */
+            color: #333;
         }
         ul {
             list-style: disc;
@@ -181,24 +190,24 @@
         ul li {
             margin-bottom: 0.5rem;
             font-size: 1.05em;
-            color: #333; /* Dark text for list items */
+            color: #333;
         }
 
         /* Links */
         a {
-            color: #0088cc; /* Telegram/TON Blue for links */
+            color: #0088cc;
             text-decoration: none;
             transition: color 0.3s ease;
         }
         a:hover {
-            color: #00aaff; /* Slightly lighter blue on hover */
+            color: #00aaff;
             text-decoration: underline;
         }
 
         /* Code Blocks - Styled for IT Experts */
         pre {
-            background-color: #e0e0e0; /* Lighter background for code */
-            color: #333; /* Darker text for code */
+            background-color: #e0e0e0;
+            color: #333;
             padding: 1.2em;
             border-radius: 6px;
             overflow-x: auto;
@@ -211,11 +220,11 @@
             word-break: break-all;
         }
         code {
-            background-color: #f0f0f0; /* Inline code background */
+            background-color: #f0f0f0;
             padding: 0.2em 0.4em;
             border-radius: 3px;
             font-family: 'Fira Code', 'Cascadia Code', monospace;
-            color: #0088cc; /* Blue for inline code */
+            color: #0088cc;
         }
         ul code {
             display: block;
@@ -239,14 +248,14 @@
 
         /* Footer */
         footer {
-            background-color: #f0f0f0; /* Lighter footer background */
-            color: #333; /* Dark text for footer */
+            background-color: #f0f0f0;
+            color: #333;
             text-align: center;
             padding: 1.5rem 1rem;
             margin-top: 3rem;
             font-size: 0.9em;
             border-top: 1px solid #e0e0e0;
-            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
         }
         footer a {
             color: #0088cc;
@@ -261,7 +270,7 @@
             padding: 15px;
             margin: 20px auto;
             max-width: 800px;
-            background-color: #ffffff; /* White background */
+            background-color: #ffffff;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -271,7 +280,7 @@
 
         .improve-page-container p {
             margin: 0;
-            color: #333; /* Ensure dark text */
+            color: #333;
         }
 
         .improve-page-container a.improve-page-link {
@@ -293,7 +302,7 @@
             .main-header .header-content {
                 flex-direction: column;
                 align-items: flex-start;
-                padding: 10px 15px; /* Adjust header padding on mobile */
+                padding: 10px 15px;
             }
             .navbar {
                 width: 100%;
@@ -329,11 +338,41 @@
         }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100">
+<body>
     <header class="main-header">
         <div class="header-content">
             <div class="header-logo-svg-container">
-                <img src="https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK.github.io/main/assets/rotating_cyber_brain.svg" alt="RFOFSpiderWeb.NET Cyber Brain Logo">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="brainGradientHeader" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FFD700" />
+                            <stop offset="50%" stop-color="#FFEFD5" />
+                            <stop offset="100%" stop-color="#DAA520" />
+                        </linearGradient>
+                        <filter id="neuronGlowHeader">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"></feGaussianBlur>
+                            <feColorMatrix in="blur" type="matrix" values="
+                                1 0 0 0 0
+                                0 1 0 0 0
+                                0 0 1 0 0
+                                0 0 0 5 0
+                            " result="glow"></feColorMatrix>
+                            <feMerge>
+                                <feMergeNode in="SourceGraphic"></feMergeNode>
+                                <feMergeNode in="glow"></feMergeNode>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <path d="M 50 10 C 20 10 10 40 10 50 C 10 60 20 90 50 90 C 80 90 90 60 90 50 C 90 40 80 10 50 10 Z"
+                          fill="url(#brainGradientHeader)" stroke="#DAA520" stroke-width="1.5">
+                        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="20s" repeatCount="indefinite"/>
+                    </path>
+                    <circle cx="30" cy="40" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 30 40 Q 45 25 60 40 T 30 40" dur="5s" repeatCount="indefinite"/></circle>
+                    <circle cx="70" cy="55" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 70 55 Q 85 70 70 85 T 70 55" dur="7s" repeatCount="indefinite"/></circle>
+                    <circle cx="45" cy="75" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 45 75 Q 30 90 45 75 Z" dur="6s" repeatCount="indefinite"/></circle>
+                    <circle cx="55" cy="25" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 55 25 Q 70 10 55 25 Z" dur="4s" repeatCount="indefinite"/></circle>
+                    <circle cx="20" cy="60" r="1.5" fill="#00FF00" filter="url(#neuronGlowHeader)"><animateMotion path="M 20 60 Q 5 45 20 60 Z" dur="8s" repeatCount="indefinite"/></circle>
+                </svg>
             </div>
             <h1 class="site-title">RFOFSpiderWeb.NET</h1>
             <nav class="navbar">
@@ -361,7 +400,37 @@
         <section class="hero-section">
             <div class="hero-content">
                 <div class="main-hero-logo-container">
-                    <img src="https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK.github.io/main/assets/rotating_cyber_brain.svg" alt="RFOFSpiderWeb.NET Cyber Brain Logo">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="brainGradientHero" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#FFD700" />
+                                <stop offset="50%" stop-color="#FFEFD5" />
+                                <stop offset="100%" stop-color="#DAA520" />
+                            </linearGradient>
+                            <filter id="neuronGlowHero">
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"></feGaussianBlur>
+                                <feColorMatrix in="blur" type="matrix" values="
+                                    1 0 0 0 0
+                                    0 1 0 0 0
+                                    0 0 1 0 0
+                                    0 0 0 10 0
+                                " result="glow"></feColorMatrix>
+                                <feMerge>
+                                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                                    <feMergeNode in="glow"></feMergeNode>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <path d="M 50 10 C 20 10 10 40 10 50 C 10 60 20 90 50 90 C 80 90 90 60 90 50 C 90 40 80 10 50 10 Z"
+                              fill="url(#brainGradientHero)" stroke="#DAA520" stroke-width="2">
+                            <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="20s" repeatCount="indefinite"/>
+                        </path>
+                        <circle cx="30" cy="40" r="2" fill="#00FF00" filter="url(#neuronGlowHero)"><animateMotion path="M 30 40 Q 45 25 60 40 T 30 40" dur="5s" repeatCount="indefinite"/></circle>
+                        <circle cx="70" cy="55" r="2" fill="#00FF00" filter="url(#neuronGlowHero)"><animateMotion path="M 70 55 Q 85 70 70 85 T 70 55" dur="7s" repeatCount="indefinite"/></circle>
+                        <circle cx="45" cy="75" r="2" fill="#00FF00" filter="url(#neuronGlowHero)"><animateMotion path="M 45 75 Q 30 90 45 75 Z" dur="6s" repeatCount="indefinite"/></circle>
+                        <circle cx="55" cy="25" r="2" fill="#00FF00" filter="url(#neuronGlowHero)"><animateMotion path="M 55 25 Q 70 10 55 25 Z" dur="4s" repeatCount="indefinite"/></circle>
+                        <circle cx="20" cy="60" r="2" fill="#00FF00" filter="url(#neuronGlowHero)"><animateMotion path="M 20 60 Q 5 45 20 60 Z" dur="8s" repeatCount="indefinite"/></circle>
+                    </svg>
                 </div>
                 <h1>Welcome to RFOFSpiderWeb.NET</h1>
                 <p>The new internet that brings security, decentralization, and innovation to every digital interaction, powered by PRAI and PZQQET AXIOMATIKX.</p>
@@ -387,7 +456,7 @@
             </p>
         </section>
 
-        <section id="vision-mission" class="text-content">
+        <section id="vision-mission" class="text-section">
             <h2 class="section-title">Vision & Mission: The AXF Token & Perpetual Data Incineration</h2>
             <p>
                 Our core vision is to enable true <strong>telekinetic interaction</strong> via <strong>PRAI PZQQET AXIOMATIKX</strong>. This involves intercepting and encrypting all data remnants, then securely incinerating them to mint resilient, genuine tokens: the <strong>AXF Token (ABillity XP Fps Token)</strong>. This process transforms data residue into tangible matter or recycled NDT mass, compiled through the Qubit Majorana (Majorana Tokenization System) and PZQQET Graffitation NexusLeap. This entire process operates autonomously and perpetually through PRAI-OS.
@@ -705,4 +774,4 @@ print_matrix(matrix)
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
         <script>hljs.highlightAll();</script>
     </body>
-</html>
+    </html>
