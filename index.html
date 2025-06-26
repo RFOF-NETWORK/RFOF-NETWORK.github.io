@@ -8,54 +8,18 @@
     <link rel="stylesheet" href="menu_styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* General styles for consistent look (copied from styles.css for readability here) */
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #1a202c; /* Dark charcoal */
-            color: #e2e8f0; /* Light gray text */
-            line-height: 1.6;
+        /* Specific styles for RFOFSpiderWeb.NET that might override or add to global styles */
+        .site-title-text { /* Renamed for clarity, actual title is now in SVG */
+            color: #0088cc; /* Telegram/TON Blue */
+            font-family: 'Orbitron', sans-serif; /* Distinct font for title */
+            font-size: 2.5em;
+            font-weight: bold;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Header and Navbar */
-        .main-header {
-            background-color: #2d3748; /* Darker gray for header */
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .site-title {
-            color: #4299e1; /* Vibrant blue for title */
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.2em;
-            font-weight: 700;
-            margin: 0;
             flex-shrink: 0;
+            text-shadow: none;
+            display: none; /* Hide the text title if SVG is used as main logo */
         }
-
-        .navbar {
-            display: flex;
-            align-items: center;
-            gap: 15px; /* Space between global and local dropdowns */
-        }
-
         /* SVG Logo Styling (3D Cyber Brain) */
         .logo-svg-container {
             width: 50px; /* Size of the SVG icon */
@@ -72,14 +36,14 @@
 
         /* Hero Section */
         .hero-section {
-            background-image: linear-gradient(to right bottom, #2b6cb0, #003366); /* Deep blue gradient */
+            background-image: linear-gradient(to right bottom, #4299e1, #2b6cb0); /* Lighter blue gradient for white background */
             color: #ffffff;
             padding: 80px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
             border-bottom: 2px solid #0088cc;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
         .hero-section::before {
             content: '';
@@ -89,7 +53,7 @@
             right: 0;
             bottom: 0;
             background: url('https://raw.githubusercontent.com/RFOF-NETWORK/skills-github-pages/main/rfoff_network_hero_background.jpg') no-repeat center center/cover;
-            opacity: 0.1;
+            opacity: 0.08; /* Even more subtle background image */
             z-index: 1;
         }
         .hero-content {
@@ -104,17 +68,17 @@
             font-family: 'Orbitron', sans-serif;
             font-size: 3.5em;
             margin-bottom: 0.5em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         .hero-content p {
             font-size: 1.3em;
             line-height: 1.5;
             max-width: 700px;
             margin: 0 auto 1.5em;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
             word-wrap: break-word; /* Ensure words wrap */
         }
-        .hero-content .btn {
+        .hero-content .btn-primary {
             background-color: #0088cc;
             color: white;
             padding: 12px 25px;
@@ -123,7 +87,7 @@
             font-weight: bold;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
-        .hero-content .btn:hover {
+        .hero-content .btn-primary:hover {
             background-color: #00aaff;
             transform: translateY(-2px);
         }
@@ -137,7 +101,7 @@
             border-radius: 50px; /* Pill shape */
             overflow: hidden;
             box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
-            background-color: #1f2937;
+            background-color: #ffffff; /* White background for search bar */
         }
         .praiai-search-input {
             flex-grow: 1;
@@ -146,10 +110,10 @@
             outline: none;
             font-size: 1.1em;
             background-color: transparent;
-            color: #e2e8f0;
+            color: #333; /* Dark text for input */
         }
         .praiai-search-input::placeholder {
-            color: #a0aec0;
+            color: #666; /* Darker placeholder text */
         }
         .praiai-search-button {
             background-color: #4299e1;
@@ -172,20 +136,20 @@
             max-width: 960px;
             margin: 2rem auto;
             padding: 2.5rem;
-            background-color: #1f2937;
+            background-color: #ffffff; /* White background for content blocks */
             border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
             flex-grow: 1;
         }
 
         /* Headings */
         h1, h2, h3, h4, h5, h6 {
-            color: #4299e1;
+            color: #0088cc; /* Telegram/TON Blue for headings */
             font-family: 'Orbitron', sans-serif;
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(66, 153, 225, 0.3);
+            border-bottom: 1px solid rgba(0, 136, 204, 0.3);
         }
         h2 { font-size: 2.5em; margin-top: 2.5rem; }
         h3 { font-size: 1.8em; margin-top: 2rem; }
@@ -195,6 +159,7 @@
         p {
             margin-bottom: 1rem;
             font-size: 1.1em;
+            color: #333; /* Dark text for paragraphs */
         }
         ul {
             list-style: disc;
@@ -204,55 +169,56 @@
         ul li {
             margin-bottom: 0.5rem;
             font-size: 1.05em;
+            color: #333; /* Dark text for list items */
         }
 
         /* Links */
         a {
-            color: #63b3ed;
+            color: #0088cc; /* Telegram/TON Blue for links */
             text-decoration: none;
             transition: color 0.3s ease;
         }
         a:hover {
-            color: #90cdf4;
+            color: #00aaff; /* Slightly lighter blue on hover */
             text-decoration: underline;
         }
 
         /* Code Blocks - Styled for IT Experts */
         pre {
-            background-color: #232d3a;
-            color: #a0aec0;
+            background-color: #e0e0e0; /* Lighter background for code */
+            color: #333; /* Darker text for code */
             padding: 1.2em;
             border-radius: 6px;
             overflow-x: auto;
             margin-bottom: 1.5em;
             font-family: 'Fira Code', 'Cascadia Code', monospace;
             font-size: 0.95em;
-            border: 1px solid #36404e;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+            border: 1px solid #ccc;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
             white-space: pre-wrap;
             word-break: break-all;
         }
         code {
-            background-color: #36404e;
+            background-color: #f0f0f0; /* Inline code background */
             padding: 0.2em 0.4em;
             border-radius: 3px;
             font-family: 'Fira Code', 'Cascadia Code', monospace;
-            color: #b3d9ff;
+            color: #0088cc; /* Blue for inline code */
         }
         ul code {
             display: block;
             white-space: pre-wrap;
             margin-top: 0.5em;
-            background-color: #232d3a;
+            background-color: #e0e0e0;
             padding: 0.8em;
-            border-left: 3px solid #4299e1;
-            color: #a0aec0;
+            border-left: 3px solid #0088cc;
+            color: #333;
         }
 
         /* Improved Readability for longer text */
         .text-section {
             padding: 1.5rem 0;
-            border-bottom: 1px dashed rgba(66, 153, 225, 0.15);
+            border-bottom: 1px dashed rgba(0, 136, 204, 0.15); /* Blue dashed border */
             margin-bottom: 1.5rem;
         }
         .text-section:last-of-type {
@@ -261,19 +227,49 @@
 
         /* Footer */
         footer {
-            background-color: #2d3748;
-            color: #cbd5e0;
+            background-color: #f0f0f0; /* Lighter footer background */
+            color: #333; /* Dark text for footer */
             text-align: center;
             padding: 1.5rem 1rem;
             margin-top: 3rem;
             font-size: 0.9em;
-            border-top: 1px solid #4a5568;
+            border-top: 1px solid #ccc;
         }
         footer a {
-            color: #4299e1;
+            color: #0088cc;
         }
         footer a:hover {
-            color: #63b3ed;
+            color: #00aaff;
+        }
+
+        /* Styling for the "Improve this page" Container and Link */
+        .improve-page-container {
+            text-align: center;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #ffffff; /* White background */
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333; /* Dark text */
+            font-size: 1em;
+        }
+
+        .improve-page-container p {
+            margin: 0;
+            color: #333; /* Ensure dark text */
+        }
+
+        .improve-page-container a.improve-page-link {
+            color: #0088cc;
+            text-decoration: underline;
+            font-weight: bold;
+            text-shadow: none;
+        }
+
+        .improve-page-link:hover {
+            color: #00aaff;
         }
 
         /* Responsive Adjustments */
@@ -290,29 +286,31 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-            /* Global dropdown on mobile is handled by menu_styles.css */
+            /* Hero section adjusts for mobile */
             .hero-section h1 {
                 font-size: 2.5em;
             }
             .hero-section p {
                 font-size: 1.1em;
             }
+            /* Content adjusts for mobile */
             .content-container {
                 padding: 1.5rem;
             }
             h2 { font-size: 2em; }
             h3 { font-size: 1.5em; }
             h4 { font-size: 1.2em; }
+            /* Search bar adjustments */
             .praiai-search-container {
-                margin: 20px 15px; /* Adjust margins for mobile */
-                border-radius: 30px; /* Adjust border radius for smaller size */
+                margin: 20px 15px;
+                border-radius: 30px;
             }
             .praiai-search-input {
-                padding: 12px 20px; /* Smaller padding */
+                padding: 12px 20px;
                 font-size: 1em;
             }
             .praiai-search-button {
-                padding: 12px 20px; /* Smaller padding */
+                padding: 12px 20px;
             }
         }
     </style>
@@ -324,7 +322,10 @@
                 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#FFD700" /> <stop offset="50%" stop-color="#FFEFD5" /> <stop offset="100%" stop-color="#DAA520" /> </linearGradient>
+                            <stop offset="0%" stop-color="#FFD700" />
+                            <stop offset="50%" stop-color="#FFEFD5" />
+                            <stop offset="100%" stop-color="#DAA520" />
+                        </linearGradient>
                         <filter id="neuronGlow">
                             <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"></feGaussianBlur>
                             <feColorMatrix in="blur" type="matrix" values="
@@ -350,8 +351,7 @@
                     <circle cx="20" cy="60" r="2" fill="#00FF00" filter="url(#neuronGlow)"><animateMotion path="M 20 60 Q 5 45 20 60 Z" dur="8s" repeatCount="indefinite"/></circle>
                     </svg>
             </div>
-            <h1 class="site-title">RFOFSpiderWeb.NET</h1>
-            <nav class="navbar">
+            <h1 class="site-title-text">RFOFSpiderWeb.NET</h1> <nav class="navbar">
                 <div class="hamburger-icon" id="hamburger">
                     <div class="bar"></div>
                     <div class="bar"></div>
@@ -378,7 +378,7 @@
                 <h1>Welcome to RFOFSpiderWeb.NET</h1>
                 <p>The new internet that brings security, decentralization, and innovation to every digital interaction, powered by PRAI and PZQQET AXIOMATIKX.</p>
                 <div class="praiai-search-container">
-                    <input type="text" id="praiai-search-input" class="praiai-search-input" placeholder="Search the new internet with PRAI..." onkeydown="if(event.key === 'Enter') performPraiaiSearch();">
+                    <input type="text" id="praiai-search-input" class="praiai-search-input" placeholder="Search in the new internet with PRAI..." onkeydown="if(event.key === 'Enter') performPraiaiSearch();">
                     <button class="praiai-search-button" onclick="performPraiaiSearch()">
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                             <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
@@ -418,7 +418,8 @@
                 This structure integrates various components such as Smart Contracts, API, Frontend, Utility Functions, and Configurations.
             </p>
             <h3>Project Root (Visualized)</h3>
-            <pre><code class="language-plaintext">project-root/
+            <div id="hidden-code-block" style="display: none;">
+                <pre><code class="language-plaintext">project-root/
 ├── .git/
 ├── docs/                     # GitHub Pages files for the website
 │   ├── index.html
@@ -458,10 +459,10 @@
 ├── LICENSE                   # Project license information
 </code></pre>
 
-            <h3>2. API</h3>
-            <p>Here's the code for the main API and handlers:</p>
-            <h4>Main API (main.py)</h4>
-            <pre><code class="language-python">from flask import Flask
+                <h3>2. API</h3>
+                <p>Here's the code for the main API and handlers:</p>
+                <h4>Main API (main.py)</h4>
+                <pre><code class="language-python">from flask import Flask
 from handlers.transaction_handler import transaction_blueprint
 from handlers.token_handler import token_blueprint
 from handlers.user_handler import user_blueprint
@@ -475,8 +476,8 @@ app.register_blueprint(user_blueprint)
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)</code></pre>
 
-            <h4>Transaction Handler (transaction_handler.py)</h4>
-            <pre><code class="language-python">from flask import Blueprint, jsonify, request
+                <h4>Transaction Handler (transaction_handler.py)</h4>
+                <pre><code class="language-python">from flask import Blueprint, jsonify, request
 
 transaction_blueprint = Blueprint('transaction', __name__)
 
@@ -491,8 +492,8 @@ def new_transaction():
     response = {'message': 'Transaction being added'}
     return jsonify(response), 201</code></pre>
 
-            <h4>Token Handler (token_handler.py)</h4>
-            <pre><code class="language-python">from flask import Blueprint, jsonify
+                <h4>Token Handler (token_handler.py)</h4>
+                <pre><code class="language-python">from flask import Blueprint, jsonify
 
 token_blueprint = Blueprint('token', __name__)
 
@@ -502,8 +503,8 @@ def get_tokens():
     response = {'message': 'Token information here'}
     return jsonify(response), 200</code></pre>
 
-            <h4>User Handler (user_handler.py)</h4>
-            <pre><code class="language-python">from flask import Blueprint, jsonify
+                <h4>User Handler (user_handler.py)</h4>
+                <pre><code class="language-python">from flask import Blueprint, jsonify
 
 user_blueprint = Blueprint('user', __name__)
 
@@ -513,10 +514,10 @@ def get_users():
     response = {'message': 'User information here'}
     return jsonify(response), 200</code></pre>
 
-            <h3>3. Frontend</h3>
-            <p>Here are the basic files for the frontend:</p>
-            <h4>Index HTML (frontend/index.html)</h4>
-            <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+                <h3>3. Frontend</h3>
+                <p>Here are the basic files for the frontend:</p>
+                <h4>Index HTML (frontend/index.html)</h4>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -530,9 +531,9 @@ def get_users():
     &lt;script src="app.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-            
-            <h4>App JS (frontend/app.js)</h4>
-            <pre><code class="language-javascript">async function fetchTransactions() {
+                
+                <h4>App JS (frontend/app.js)</h4>
+                <pre><code class="language-javascript">async function fetchTransactions() {
     const response = await fetch('/api/transactions');
     const data = await response.json();
     // Logic to display transactions here
@@ -541,8 +542,8 @@ def get_users():
 
 document.addEventListener('DOMContentLoaded', fetchTransactions);</code></pre>
 
-            <h4>Style CSS (frontend/style.css)</h4>
-            <pre><code class="language-css">body {
+                <h4>Style CSS (frontend/style.css)</h4>
+                <pre><code class="language-css">body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
@@ -556,10 +557,10 @@ p {
     margin-bottom: 10px;
 }</code></pre>
 
-            <h3>4. Utilities</h3>
-            <p>Helper modules for efficiency and security:</p>
-            <h4>Blockchain Utils (blockchain_utils.py)</h4>
-            <pre><code class="language-python">import hashlib
+                <h3>4. Utilities</h3>
+                <p>Helper modules for efficiency and security:</p>
+                <h4>Blockchain Utils (blockchain_utils.py)</h4>
+                <pre><code class="language-python">import hashlib
 import json
 
 def hash_block(block):
@@ -567,8 +568,8 @@ def hash_block(block):
     block_string = json.dumps(block, sort_keys=True).encode()
     return hashlib.sha256(block_string).hexdigest()</code></pre>
 
-            <h4>Encryption (encryption.py)</h4>
-            <pre><code class="language-python">from cryptography.fernet import Fernet
+                <h4>Encryption (encryption.py)</h4>
+                <pre><code class="language-python">from cryptography.fernet import Fernet
 
 def generate_key():
     """Generates a new Fernet key."""
@@ -586,16 +587,16 @@ def decrypt_message(encrypted_message, key):
     decrypted = fernet.decrypt(encrypted_message).decode()
     return decrypted</code></pre>
 
-            <h4>Validation (validation.py)</h4>
-            <pre><code class="language-python">def validate_transaction_data(data):
+                <h4>Validation (validation.py)</h4>
+                <pre><code class="language-python">def validate_transaction_data(data):
     """Validates if the required keys are present in the transaction data."""
     required_keys = ['sender', 'recipient', 'amount']
     return all(key in data for key in required_keys)</code></pre>
 
-            <h3>5. Configuration</h3>
-            <p>Example for `config.yaml`:</p>
-            <h4>config.yaml</h4>
-            <pre><code class="language-yaml">api:
+                <h3>5. Configuration</h3>
+                <p>Example for `config.yaml`:</p>
+                <h4>config.yaml</h4>
+                <pre><code class="language-yaml">api:
   host: "0.0.0.0"
   port: 5000
 
@@ -603,10 +604,10 @@ blockchain:
   network: "Mainnet"
   contract_address: "0xYourContractAddress"</code></pre>
 
-            <h3>6. Devcontainer</h3>
-            <p>Example for `devcontainer.json` for a multi-chain development environment:</p>
-            <h4>devcontainer.json</h4>
-            <pre><code class="language-json">{
+                <h3>6. Devcontainer</h3>
+                <p>Example for `devcontainer.json` for a multi-chain development environment:</p>
+                <h4>devcontainer.json</h4>
+                <pre><code class="language-json">{
   "name": "RFOF Blockchain Dev",
   "dockerFile": "Dockerfile",
   "context": "..",
@@ -620,9 +621,9 @@ blockchain:
   "postCreateCommand": "pip install -r requirements.txt"
 }</code></pre>
 
-            <h3>Additional Scripts and Concepts</h3>
-            <p>Some additional Python scripts and concepts from the README for clarification:</p>
-            <pre><code class="language-python">print("Hello, @RFOF-NETWORK &lt;my name is @PRAI&gt;!")
+                <h3>Additional Scripts and Concepts</h3>
+                <p>Some additional Python scripts and concepts from the README for clarification:</p>
+                <pre><code class="language-python">print("Hello, @RFOF-NETWORK &lt;my name is @PRAI&gt;!")
 
 answer = 41
 if answer == 42:
@@ -696,7 +697,7 @@ print_matrix(matrix)
     </div>
 
     <div class="improve-page-container">
-        <p>Suggestions for improvement? <a href="https://github.com/RFOF-NETWORK/rfof-network.org/edit/main/index.html" class="improve-page-link" target="_blank">Improve this page on GitHub!</a></p>
+        <p>Suggestions for improvement? <a href="https://github.com/RFOF-NETWORK/RFOF-NETWORK.github.io/edit/main/index.html" class="improve-page-link" target="_blank">Improve this page on GitHub!</a></p>
     </div>
 
     <footer>
@@ -718,4 +719,4 @@ print_matrix(matrix)
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <script>hljs.highlightAll();</script>
 </body>
-                                             </html>
+</html>
