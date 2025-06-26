@@ -54,5 +54,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchButton) {
         searchButton.addEventListener('click', performPraiaiSearch);
     }
-    // Already handled onkeydown in HTML
+    // Already handled onkeydown in HTML for Enter key
 });
