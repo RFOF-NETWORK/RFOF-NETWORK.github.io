@@ -23,13 +23,33 @@ body {
 }
 
 .header-content {
-    max-width: 1400px;
+    max-width: 960px; /* Adjusted to match content-container width */
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px; /* Horizontal padding for content inside header */
     box-sizing: border-box; /* Include padding in width */
+}
+
+/* SVG Logo Styling in Header (top-left) */
+.header-logo-svg-container {
+    width: 50px; /* Size of the SVG icon */
+    height: 50px;
+    margin-right: 10px; /* Space between logo and title */
+    position: relative;
+    animation: pulse-glow 2s infinite alternate; /* Subtle glow animation */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+.header-logo-svg-container img { /* Targeting the img inside the container */
+    width: 100%;
+    height: 100%;
+    display: block; /* Remove extra space below SVG */
+}
+
+@keyframes pulse-glow {
+    from { box-shadow: 0 0 5px rgba(0, 136, 204, 0.5); }
+    to { box-shadow: 0 0 15px rgba(0, 136, 204, 0.9); }
 }
 
 .site-title { /* This is the text title in the header */
@@ -41,6 +61,100 @@ body {
     padding: 0;
     flex-shrink: 0;
     text-shadow: none;
+}
+
+/* Hero Section */
+.hero-section {
+    background-image: linear-gradient(to bottom right, #4299e1, #2b6cb0); /* Lighter blue gradient for white background */
+    color: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid #0088cc;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK.github.io/main/rfoff_network_hero_background.jpg') no-repeat center center/cover;
+    opacity: 0.08;
+    z-index: 1;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 30px; /* Increased padding to prevent cutoff on smaller screens */
+    box-sizing: border-box;
+}
+/* Main Hero Logo (Cyber Brain) - Centered over "Welcome..." */
+.main-hero-logo-container {
+    width: 200px; /* Larger size for prominent display */
+    height: 200px;
+    margin: 0 auto 30px; /* Centered with bottom margin */
+    position: relative;
+    animation: pulse-glow 2s infinite alternate; /* Re-use glow animation */
+    border-radius: 50%; /* Make it round */
+    overflow: hidden; /* Ensure content stays within circle */
+    border: 4px solid #4299e1; /* Blue border */
+    box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
+    background-color: white; /* Background behind SVG */
+}
+.main-hero-logo-container img { /* Targeting the img inside the container */
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* Animation for subtle 3D feel on the brain SVG */
+    animation: rotateBrain 20s linear infinite;
+}
+@keyframes rotateBrain {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+/* PRAI Search Engine Styling */
+.praiai-search-container {
+    max-width: 700px;
+    margin: 40px auto;
+    display: flex;
+    border: 2px solid #4299e1;
+    border-radius: 50px; /* Pill shape */
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
+    background-color: #ffffff; /* White background for search bar */
+}
+.praiai-search-input {
+    flex-grow: 1;
+    padding: 15px 25px;
+    border: none;
+    outline: none;
+    font-size: 1.1em;
+    background-color: transparent;
+    color: #333; /* Dark text for input */
+}
+.praiai-search-input::placeholder {
+    color: #666; /* Darker placeholder text */
+}
+.praiai-search-button {
+    background-color: #4299e1;
+    border: none;
+    padding: 15px 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.praiai-search-button:hover {
+    background-color: #63b3ed;
+}
+.praiai-search-button svg {
+    fill: white; /* Color the SVG icon */
+    width: 24px;
+    height: 24px;
 }
 
 /* Content Container */
@@ -269,7 +383,8 @@ footer a:hover {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     font-weight: 300;
 }
-.hero-content img { /* This refers to the main hero logo image, now the cyber brain */
+/* This refers to the main hero logo image, now the cyber brain */
+.main-hero-logo-container {
     width: 180px; /* Adjusted size */
     height: 180px;
     object-fit: contain; /* Ensure SVG scales correctly */
