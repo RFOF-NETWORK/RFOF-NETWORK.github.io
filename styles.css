@@ -200,27 +200,19 @@ footer a:hover {
         font-size: 1.8em;
     }
     .main-header .header-content {
-        flex-direction: row; /* Keep elements in a row for better control */
-        flex-wrap: wrap; /* Allow wrapping if not enough space */
-        justify-content: space-between; /* Space out items */
-        align-items: center; /* Vertically center */
+        flex-direction: column; /* Stack items vertically on mobile */
+        align-items: flex-start;
         padding: 10px 15px;
     }
-    .header-logo-svg-container {
-        margin-right: 10px; /* Space between logo and title */
-    }
-    .site-title {
-        font-size: 1.5em; /* Adjust font size for mobile */
-        flex-grow: 1; /* Allow title to grow */
-        max-width: calc(100% - 80px); /* Adjust max-width based on logo and hamburger space */
-        white-space: nowrap; /* Prevent wrapping */
-        overflow: hidden; /* Hide overflow */
-        text-overflow: ellipsis; /* Add ellipsis */
+    .header-left-section {
+        width: 100%; /* Take full width on mobile */
+        justify-content: center; /* Center logo and title */
+        margin-bottom: 10px; /* Space below header title/logo on mobile */
     }
     .navbar {
-        width: auto; /* Let navbar content define width */
-        flex-direction: row; /* Keep elements in a row */
-        margin-left: auto; /* Push navbar to the right */
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
     }
     /* Hero section adjusts for mobile */
     .hero-section h1 {
@@ -248,62 +240,4 @@ footer a:hover {
     .praiai-search-button {
         padding: 12px 20px;
     }
-}
-
-/* Specific styling for the hero section background to ensure visibility */
-.hero-section {
-    background-image: linear-gradient(to bottom right, #4299e1, #2b6cb0); /* Lighter blue gradient for white background */
-    color: #ffffff;
-    padding: 80px 20px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 2px solid #0088cc;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK.github.io/main/assets/rfoff_network_hero_background.jpg') no-repeat center center/cover;
-    opacity: 0.08;
-    z-index: 1;
-}
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    margin: 0 auto;
-}
-.hero-content h1 {
-    font-size: 3.5em;
-    margin-bottom: 0.5em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-.hero-content p {
-    font-size: 1.3em;
-    line-height: 1.5;
-    max-width: 700px;
-    margin: 0 auto 1.5em;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    font-weight: 300;
-}
-.hero-content img { /* This refers to the main hero logo image, now the cyber brain */
-    width: 180px; /* Adjusted size */
-    height: 180px;
-    object-fit: contain; /* Ensure SVG scales correctly */
-    border-radius: 50%;
-    border: 4px solid #4299e1; /* Blue border */
-    box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
-    margin: 0 auto 1.5rem; /* Centered and with bottom margin */
-    display: block; /* Ensure it's a block element */
-}
-
-/* Ensure chart containers have suitable background */
-.chart-container canvas {
-    background-color: #FFFFFF; /* White background for charts within their container */
-    border-radius: 4px; /* Slight rounding for charts */
 }
