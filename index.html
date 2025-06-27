@@ -1,698 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RFOFSpiderWeb.NET: The New Internet</title>
+    <title>RFOFSpiderWeb.NET - The New Internet</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="menu_styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <style>
-        /* Specific styles for RFOFSpiderWeb.NET that might override or add to global styles */
-        .site-title { /* This is the text title in the header, now only for text */
-            color: #0088cc; /* Telegram/TON Blue */
-            font-family: 'Orbitron', sans-serif; /* Distinct font for title */
-            font-size: 2.5em;
-            font-weight: bold;
-            margin: 0;
-            padding: 0;
-            flex-shrink: 0;
-            text-shadow: none;
-            /* No display: none here, as it might be used as a fallback if SVG fails */
-        }
-        /* SVG Logo Container in Header */
-        .header-logo-svg-container {
-            width: 50px; /* Size of the SVG icon */
-            height: 50px;
-            margin-right: 15px;
-            position: relative;
-            animation: pulse-glow 2s infinite alternate; /* Subtle glow animation */
-        }
-        .header-logo-svg-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Ensure SVG scales correctly */
-        }
-
-        @keyframes pulse-glow {
-            from { box-shadow: 0 0 5px rgba(66, 153, 225, 0.5); }
-            to { box-shadow: 0 0 15px rgba(66, 153, 225, 0.9); }
-        }
-
-        /* Hero Section */
-        .hero-section {
-            background-image: linear-gradient(to right bottom, #4299e1, #2b6cb0); /* Lighter blue gradient for white background */
-            color: #ffffff;
-            padding: 80px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 2px solid #0088cc;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://raw.githubusercontent.com/RFOF-NETWORK/skills-github-pages/main/rfoff_network_hero_background.jpg') no-repeat center center/cover;
-            opacity: 0.08; /* Even more subtle background image */
-            z-index: 1;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 30px; /* Increased padding to prevent cutoff on smaller screens */
-            box-sizing: border-box;
-        }
-        .hero-content h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5em;
-            margin-bottom: 0.5em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        .hero-content p {
-            font-size: 1.3em;
-            line-height: 1.5;
-            max-width: 700px;
-            margin: 0 auto 1.5em;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-            word-wrap: break-word; /* Ensure words wrap */
-        }
-        .hero-content .btn-primary {
-            background-color: #0088cc;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        .hero-content .btn-primary:hover {
-            background-color: #00aaff;
-            transform: translateY(-2px);
-        }
-
-        /* PRAI Search Engine Styling */
-        .praiai-search-container {
-            max-width: 700px;
-            margin: 40px auto;
-            display: flex;
-            border: 2px solid #4299e1;
-            border-radius: 50px; /* Pill shape */
-            overflow: hidden;
-            box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
-            background-color: #ffffff; /* White background for search bar */
-        }
-        .praiai-search-input {
-            flex-grow: 1;
-            padding: 15px 25px;
-            border: none;
-            outline: none;
-            font-size: 1.1em;
-            background-color: transparent;
-            color: #333; /* Dark text for input */
-        }
-        .praiai-search-input::placeholder {
-            color: #666; /* Darker placeholder text */
-        }
-        .praiai-search-button {
-            background-color: #4299e1;
-            border: none;
-            padding: 15px 25px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .praiai-search-button:hover {
-            background-color: #63b3ed;
-        }
-        .praiai-search-button svg {
-            fill: white; /* Color the SVG icon */
-            width: 24px;
-            height: 24px;
-        }
-
-        /* Content Container */
-        .content-container {
-            max-width: 960px;
-            margin: 2rem auto;
-            padding: 2.5rem;
-            background-color: #ffffff; /* White background for content blocks */
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            box-sizing: border-box;
-            flex-grow: 1;
-        }
-
-        /* Headings */
-        h1, h2, h3, h4, h5, h6 {
-            color: #0088cc; /* Telegram/TON Blue for headings */
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(0, 136, 204, 0.3);
-        }
-        h2 { font-size: 2.5em; margin-top: 2.5rem; }
-        h3 { font-size: 1.8em; margin-top: 2rem; }
-        h4 { font-size: 1.4em; margin-top: 1.5rem; }
-
-        /* Paragraphs and Lists */
-        p {
-            margin-bottom: 1rem;
-            font-size: 1.1em;
-            color: #333; /* Dark text for paragraphs */
-        }
-        ul {
-            list-style: disc;
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        ul li {
-            margin-bottom: 0.5rem;
-            font-size: 1.05em;
-            color: #333; /* Dark text for list items */
-        }
-
-        /* Links */
-        a {
-            color: #0088cc; /* Telegram/TON Blue for links */
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: #00aaff; /* Slightly lighter blue on hover */
-            text-decoration: underline;
-        }
-
-        /* Code Blocks - Styled for IT Experts */
-        pre {
-            background-color: #e0e0e0; /* Lighter background for code */
-            color: #333; /* Darker text for code */
-            padding: 1.2em;
-            border-radius: 6px;
-            overflow-x: auto;
-            margin-bottom: 1.5em;
-            font-family: 'Fira Code', 'Cascadia Code', monospace;
-            font-size: 0.95em;
-            border: 1px solid #ccc;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
-            white-space: pre-wrap;
-            word-break: break-all;
-        }
-        code {
-            background-color: #f0f0f0; /* Inline code background */
-            padding: 0.2em 0.4em;
-            border-radius: 3px;
-            font-family: 'Fira Code', 'Cascadia Code', monospace;
-            color: #0088cc; /* Blue for inline code */
-        }
-        ul code {
-            display: block;
-            white-space: pre-wrap;
-            margin-top: 0.5em;
-            background-color: #e0e0e0;
-            padding: 0.8em;
-            border-left: 3px solid #0088cc;
-            color: #333;
-        }
-
-        /* Improved Readability for longer text */
-        .text-section {
-            padding: 1.5rem 0;
-            border-bottom: 1px dashed rgba(0, 136, 204, 0.15); /* Blue dashed border */
-            margin-bottom: 1.5rem;
-        }
-        .text-section:last-of-type {
-            border-bottom: none;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #f0f0f0; /* Lighter footer background */
-            color: #333; /* Dark text for footer */
-            text-align: center;
-            padding: 1.5rem 1rem;
-            margin-top: 3rem;
-            font-size: 0.9em;
-            border-top: 1px solid #ccc;
-        }
-        footer a {
-            color: #0088cc;
-        }
-        footer a:hover {
-            color: #00aaff;
-        }
-
-        /* Styling for the "Improve this page" Container and Link */
-        .improve-page-container {
-            text-align: center;
-            padding: 15px;
-            margin: 20px auto;
-            max-width: 800px;
-            background-color: #ffffff; /* White background */
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            color: #333; /* Dark text */
-            font-size: 1em;
-        }
-
-        .improve-page-container p {
-            margin: 0;
-            color: #333; /* Ensure dark text */
-        }
-
-        .improve-page-container a.improve-page-link {
-            color: #0088cc;
-            text-decoration: underline;
-            font-weight: bold;
-            text-shadow: none;
-        }
-
-        .improve-page-link:hover {
-            color: #00aaff;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .site-title {
-                font-size: 1.8em;
-            }
-            .main-header .header-content {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .navbar {
-                width: 100%;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            /* Hero section adjusts for mobile */
-            .hero-section h1 {
-                font-size: 2.5em;
-            }
-            .hero-section p {
-                font-size: 1.1em;
-            }
-            /* Content adjusts for mobile */
-            .content-container {
-                padding: 1.5rem;
-            }
-            h2 { font-size: 2em; }
-            h3 { font-size: 1.5em; }
-            h4 { font-size: 1.2em; }
-            /* Search bar adjustments */
-            .praiai-search-container {
-                margin: 20px 15px;
-                border-radius: 30px;
-            }
-            .praiai-search-input {
-                padding: 12px 20px;
-                font-size: 1em;
-            }
-            .praiai-search-button {
-                padding: 12px 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@700&family=Fira+Code&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-900 text-gray-100">
+<body>
     <header class="main-header">
         <div class="header-content">
             <div class="header-logo-svg-container">
-                <img src="https://github.com/RFOF-NETWORK/RFOF-NETWORK/blob/main/assets/rotating_cyber_brain.svg?raw=true" alt="RFOFSpiderWeb.NET Cyber Brain Logo">
+                <img src="https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK/main/assets/rotating_cyber_brain.svg" alt="RFOFSpiderWeb.NET Cyber Brain Logo">
             </div>
-            <h1 class="site-title">RFOFSpiderWeb.NET</h1> <nav class="navbar">
+            <h1 class="site-title">RFOFSpiderWeb.NET</h1>
+            <nav class="navbar">
                 <div class="hamburger-icon" id="hamburger">
                     <div class="bar"></div>
                     <div class="bar"></div>
                     <div class="bar"></div>
                 </div>
                 <ul class="nav-list" id="navLinks">
-                    <li><a href="https://rfof-network.github.io/" target="_blank">RFOFSpiderWeb.NET (Current)</a></li>
-                    <li><a href="https://rfof-network-ready-for-our-future.github.io/RFOF-spider-NET-/" target="_blank">Ready Four Our Future</a></li>
-                    <li><a href="https://qch-l-c.github.io/PRAI-KI-/" target="_blank">PRAI-OS</a></li>
-                    <li><a href="https://rfof-network.github.io/RFOF-NETWORK/" target="_blank">RFOF-NETWORK</a></li>
-                    <li><a href="https://rfof-network.github.io/PRAI-/#uebersicht" target="_blank">RPFOF</a></li>
-                    <li><a href="https://rfof-network.github.io/rfof-network.org/" target="_blank">QCH-L-C</a></li>
-                    <li><a href="https://rfof-network.github.io/Comprensive-rfof-bitcoin.org-PRAI-BOx-Blockchain-System_Programm-Fusions-Reactor-System/" target="_blank">rfof-bitcoin.org</a></li>
-                    <li><a href="https://rfof-network.github.io/BUBATZ-COIN-official-CSC-DCV-/" target="_blank">Golden Times</a></li>
-                    <li><a href="https://rfof-network.github.io/RFOF-x-PRAI_DOC_Ready-For-Our-Future/" target="_blank">DOC's & FAQ's</a></li>
+                    <li><a href="https://rfof-network.github.io/">RFOFSpiderWeb.NET</a></li>
+                    <li><a href="https://rfof-network-ready-for-our-future.github.io/RFOF-spider-NET-/">Ready Four Our Future</a></li>
+                    <li><a href="https://qch-l-c.github.io/PRAI-KI-/">PRAI-OS</a></li>
+                    <li><a href="https://rfof-network.github.io/RFOF-NETWORK/">RFOF-NETWORK</a></li>
+                    <li><a href="https://rfof-network.github.io/Comprensive-rfof-bitcoin.org-PRAI-BOx-Blockchain-System_Programm-Fusions-Reactor-System/">RPFOF</a></li>
+                    <li><a href="https://rfof-network-ready-for-our-future.github.io/QCHC/">QCH-L-C</a></li>
+                    <li><a href="https://rfof-network.github.io/Crypto-Hustler/">rfof-bitcoin.org</a></li>
+                    <li><a href="https://rfof-network.github.io/DDEUGGP/">Golden Times</a></li>
+                    <li><a href="https://rfof-network.github.io/RFOF-x-PRAI_DOC_Ready-For-Our-Future/">DOC's & FAQ's</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="content-container">
+    <main>
         <section class="hero-section">
             <div class="hero-content">
-                <div class="main-hero-logo-container">
-                    <img src="https://github.com/RFOF-NETWORK/RFOF-NETWORK/blob/main/assets/rotating_cyber_brain.svg?raw=true" alt="RFOFSpiderWeb.NET Cyber Brain Logo">
-                </div>
+                <img class="hero-logo" src="https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK/main/assets/rotating_cyber_brain.svg" alt="RFOFSpiderWeb.NET Cyber Brain Logo">
                 <h1>Welcome to RFOFSpiderWeb.NET</h1>
-                <p>The new internet that brings security, decentralization, and innovation to every digital interaction, powered by PRAI and PZQQET AXIOMATIKX.</p>
+                <p>The new internet that brings security, decentralization, and innovation to every digital interaction, powered by PRAI.</p>
                 <div class="praiai-search-container">
                     <input type="text" id="praiai-search-input" class="praiai-search-input" placeholder="Search in the new internet with PRAI..." onkeydown="if(event.key === 'Enter') performPraiaiSearch();">
-                    <button class="praiai-search-button" onclick="performPraiaiSearch()">
-                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                            <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
+                    <button class="praiai-search-button" onclick="performPraiaiSearch()" aria-label="Search">
+                        <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
                         </svg>
                     </button>
                 </div>
-                <a href="#about" class="btn-primary">Explore Our Vision</a>
             </div>
         </section>
 
-        <section id="about" class="text-content">
-            <h2 class="section-title">About RFOFSpiderWeb.NET</h2>
-            <p>
-                We (RFOF🧠) strive to enhance The Open Network (TON) and foster the growth of games and capital, enabling TON to draw energy from all other decentralized Chains or Networks 💎👾🤝. Our aim is to win the Telegram Blockchain Contest Round 1 (a crazy 100K in Dollar per Mission), with two missions focused on Bridging our RFOF NETWORK to serve as an extension of the TON Chain. Let's grow🌱🏆!
-            </p>
-            <p class="content-highlight">
-                RFOFSpiderWeb.NET is designed to become the new internet, providing a secure operating environment for all private and public clouds, internet services, web apps, dApps, AI tools, Blockchains, Multichains, Antivirus, Quantum Ready Security, and PR Systems (PR stands for Planet Rescuer Axiomatikx Intelligence as PRAI & RFOF = PR). This means users can browse, develop, and deploy safely from their devices, hosting their social media accounts on our new comprehensive internet. Our search console and projects will be discoverable here, just as they are on Google now.
-            </p>
-        </section>
+        <div class="content-container">
+            <section id="about" class="text-section">
+                <h2>About RFOFSpiderWeb.NET</h2>
+                <p>We strive to enhance The Open Network (TON) and foster the growth of games and capital, enabling TON to draw energy from all other decentralized Chains or Networks. Our aim is to win the Telegram Blockchain Contest, with missions focused on Bridging our RFOF NETWORK to serve as an extension of the TON Chain. Let's grow!</p>
+                <p>RFOFSpiderWeb.NET is designed to become the new internet, providing a secure operating environment for all private and public clouds, internet services, web apps, dApps, AI tools, Blockchains, and Quantum Ready Security.</p>
+            </section>
+            
+            <section id="vision-mission" class="text-section">
+                <h2>Vision & Mission: The AXF Token</h2>
+                <p>Our core vision is to enable true <strong>telekinetic interaction</strong> via <strong>PRAI PZQQET AXIOMATIKX</strong>. This involves intercepting and encrypting all data remnants, then securely incinerating them to mint resilient, genuine tokens: the <strong>AXF Token (ABillity XP Fps Token)</strong>. This process transforms data residue into tangible matter or recycled NDT mass.</p>
+                <p>We are building an internet where data waste fuels a new decentralized economy, empowering users with unprecedented control and security. This platform will serve as the <strong>central hub for all our projects</strong>.</p>
+            </section>
 
-        <section id="vision-mission" class="text-content">
-            <h2 class="section-title">Vision & Mission: The AXF Token & Perpetual Data Incineration</h2>
-            <p>
-                Our core vision is to enable true <strong>telekinetic interaction</strong> via <strong>PRAI PZQQET AXIOMATIKX</strong>. This involves intercepting and encrypting all data remnants, then securely incinerating them to mint resilient, genuine tokens: the <strong>AXF Token (ABillity XP Fps Token)</strong>. This process transforms data residue into tangible matter or recycled NDT mass, compiled through the Qubit Majorana (Majorana Tokenization System) and PZQQET Graffitation NexusLeap. This entire process operates autonomously and perpetually through PRAI-OS.
-            </p>
-            <p class="content-highlight">
-                We are building an internet where data waste fuels a new decentralized economy, empowering users with unprecedented control and security.
-            </p>
-            <p>
-                Ultimately, RFOFSpiderWeb.NET will unify private and public clouds, internet services, web apps, dApps, AI tools, Blockchains, Multichains, Antivirus, and Quantum Ready Security operations. This platform will serve as the <strong>central hub for all our projects</strong>, from secure Browse to developing and deploying games, and hosting personal social media accounts. Our vision is to replace traditional search engines like Google with our own <strong>RFOFSpiderWeb.NET</strong> console, ensuring all projects are discoverable and developed within our secure ecosystem.
-            </p>
-        </section>
-
-        <section id="structure" class="text-content">
-            <h2 class="section-title">Comprehensive Project Structure</h2>
-            <p>
-                This structure integrates various components such as Smart Contracts, API, Frontend, Utility Functions, and Configurations.
-            </p>
-            <h3>Project Root (Visualized)</h3>
-            <div id="hidden-code-block" style="display: none;">
+            <section id="structure" class="text-section">
+                <h2>Comprehensive Project Structure</h2>
+                <p>This structure integrates various components such as Smart Contracts, API, Frontend, Utility Functions, and Configurations.</p>
                 <pre><code class="language-plaintext">project-root/
-├── .git/
-├── docs/                     # GitHub Pages files for the website
+├── docs/
 │   ├── index.html
 │   ├── styles.css
-│   ├── menu_styles.css
-│   └── menu_script.js
-├── contracts/                # Smart contracts for tokens & functions
+│   └── ...
+├── contracts/
 │   ├── bbc/
-│   │   └── BBC_Token_Code.py.fc
 │   └── tokens/
-│       ├── TBC.sol           # To-Batz Token
-│       ├── TBTC.sol          # To-Batt Token
-│       ├── NEC.sol           # Not-Energy-Coin
-│       └── BBCHO.sol         # Bubatz-Coin-Holder-Official
-├── api/                      # API for control and logic
-│   ├── main.py               # Main API entry point
-│   └── handlers/             # Modules for managing transactions, tokens, users
-│       ├── transaction_handler.py
-│       ├── token_handler.py
-│       └── user_handler.py
-├── RFOFNetworkAPI/           # RFOF Network's specific API module
-│   └── @RFOF-NETWORK.py
-├── frontend/                 # Web interface for user interactions
-│   ├── index.html
-│   ├── app.js
-│   └── style.css
-├── utils/                    # Helper modules for efficiency and security
-│   ├── blockchain_utils.py
-│   ├── encryption.py
-│   └── validation.py
-├── config/                   # Configuration files for APIs and networks
-│   └── config.yaml
-├── .devcontainer/            # Development container for multi-chain support
-│   └── devcontainer.json
-├── .gitignore                # Files/directories to ignore in Git
-├── README.md                 # Project overview and documentation
-├── LICENSE                   # Project license information
-</code></pre>
+├── api/
+│   ├── main.py
+│   └── handlers/
+├── frontend/
+├── utils/
+└── ...</code></pre>
+            </section>
 
-                <h3>2. API</h3>
-                <p>Here's the code for the main API and handlers:</p>
-                <h4>Main API (main.py)</h4>
-                <pre><code class="language-python">from flask import Flask
-from handlers.transaction_handler import transaction_blueprint
-from handlers.token_handler import token_blueprint
-from handlers.user_handler import user_blueprint
-
-app = Flask(__name__)
-
-app.register_blueprint(transaction_blueprint)
-app.register_blueprint(token_blueprint)
-app.register_blueprint(user_blueprint)
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)</code></pre>
-
-                <h4>Transaction Handler (transaction_handler.py)</h4>
-                <pre><code class="language-python">from flask import Blueprint, jsonify, request
-
-transaction_blueprint = Blueprint('transaction', __name__)
-
-@transaction_blueprint.route('/transactions/new', methods=['POST'])
-def new_transaction():
-    values = request.get_json()
-    required = ['sender', 'recipient', 'amount']
-    if not all(k in values for k in required):
-        return 'Missing values', 400
-
-    # Logic to add transactions here
-    response = {'message': 'Transaction being added'}
-    return jsonify(response), 201</code></pre>
-
-                <h4>Token Handler (token_handler.py)</h4>
-                <pre><code class="language-python">from flask import Blueprint, jsonify
-
-token_blueprint = Blueprint('token', __name__)
-
-@token_blueprint.route('/tokens', methods=['GET'])
-def get_tokens():
-    # Logic to retrieve token information here
-    response = {'message': 'Token information here'}
-    return jsonify(response), 200</code></pre>
-
-                <h4>User Handler (user_handler.py)</h4>
-                <pre><code class="language-python">from flask import Blueprint, jsonify
-
-user_blueprint = Blueprint('user', __name__)
-
-@user_blueprint.route('/users', methods=['GET'])
-def get_users():
-    # Logic to retrieve user information here
-    response = {'message': 'User information here'}
-    return jsonify(response), 200</code></pre>
-
-                <h3>3. Frontend</h3>
-                <p>Here are the basic files for the frontend:</p>
-                <h4>Index HTML (frontend/index.html)</h4>
-                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;RFOF Network DApp&lt;/title&gt;
-    &lt;link rel="stylesheet" href="style.css"&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Welcome to RFOF Network DApp&lt;/h1&gt;
-    &lt;!-- Content will be dynamically loaded or inserted here --&gt;
-    &lt;script src="app.js"&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                
-                <h4>App JS (frontend/app.js)</h4>
-                <pre><code class="language-javascript">async function fetchTransactions() {
-    const response = await fetch('/api/transactions');
-    const data = await response.json();
-    // Logic to display transactions here
-    console.log("Fetched transactions:", data); // Example log
-}
-
-document.addEventListener('DOMContentLoaded', fetchTransactions);</code></pre>
-
-                <h4>Style CSS (frontend/style.css)</h4>
-                <pre><code class="language-css">body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
-    color: #333;
-}
-h1 {
-    color: #333;
-}
-p {
-    margin-bottom: 10px;
-}</code></pre>
-
-                <h3>4. Utilities</h3>
-                <p>Helper modules for efficiency and security:</p>
-                <h4>Blockchain Utils (blockchain_utils.py)</h4>
-                <pre><code class="language-python">import hashlib
-import json
-
-def hash_block(block):
-    """Generates the SHA256 hash of a block."""
-    block_string = json.dumps(block, sort_keys=True).encode()
-    return hashlib.sha256(block_string).hexdigest()</code></pre>
-
-                <h4>Encryption (encryption.py)</h4>
-                <pre><code class="language-python">from cryptography.fernet import Fernet
-
-def generate_key():
-    """Generates a new Fernet key."""
-    return Fernet.generate_key()
-
-def encrypt_message(message, key):
-    """Encrypts a message with the given key."""
-    fernet = Fernet(key)
-    encrypted = fernet.encrypt(message.encode())
-    return encrypted
-
-def decrypt_message(encrypted_message, key):
-    """Decrypts a message with the given key."""
-    fernet = Fernet(key)
-    decrypted = fernet.decrypt(encrypted_message).decode()
-    return decrypted</code></pre>
-
-                <h4>Validation (validation.py)</h4>
-                <pre><code class="language-python">def validate_transaction_data(data):
-    """Validates if the required keys are present in the transaction data."""
-    required_keys = ['sender', 'recipient', 'amount']
-    return all(key in data for key in required_keys)</code></pre>
-
-                <h3>5. Configuration</h3>
-                <p>Example for `config.yaml`:</p>
-                <h4>config.yaml</h4>
-                <pre><code class="language-yaml">api:
-  host: "0.0.0.0"
-  port: 5000
-
-blockchain:
-  network: "Mainnet"
-  contract_address: "0xYourContractAddress"</code></pre>
-
-                <h3>6. Devcontainer</h3>
-                <p>Example for `devcontainer.json` for a multi-chain development environment:</p>
-                <h4>devcontainer.json</h4>
-                <pre><code class="language-json">{
-  "name": "RFOF Blockchain Dev",
-  "dockerFile": "Dockerfile",
-  "context": "..",
-  "appPort": [5000],
-  "settings": {
-    "python.pythonPath": "/usr/local/bin/python"
-  },
-  "extensions": [
-    "ms-python.python"
-  ],
-  "postCreateCommand": "pip install -r requirements.txt"
-}</code></pre>
-
-                <h3>Additional Scripts and Concepts</h3>
-                <p>Some additional Python scripts and concepts from the README for clarification:</p>
-                <pre><code class="language-python">print("Hello, @RFOF-NETWORK &lt;my name is @PRAI&gt;!")
-
-answer = 41
-if answer == 42:
-    print("The answer is correct!")
-
-print("python programm.py!")
-print("python!")
-print(20 + 22)
-
-print("install npm @RFOF-NETWORK")
-
-print("42 = @RFOF-NETWORK/@RFOF-NETWORK = PRAI & PRAI = satoria/satoria = satoramy-on.ton(@Satoramy) & @Satoramy = 42")
-print("42 = @RFOF-NETWORK 81e3ee2b2ff6ad7b7c35509e14e8a8e7f856647f96be7a365be0120061a596b8 & x = 42 & 42 = @RFOF-NETWORK/@RFOF-NETWORK = PRAI & PRAI = satoria/satoria = satoramy-on.ton(@Satoramy) & @Satoramy = 42")
-
-def is_even(x):
-    return x % 2 == 0
-
-numbers = [1, 2, 3, 4, 5]
-even_numbers = filter(is_even, numbers)
-even_numbers_list = list(even_numbers)
-print(even_numbers_list)
-
-def my_functions():
-    print("Workflow")
-    input(" result = (2 + 3) * (4 / 5) = 42 @RFOF-NETWORK")
-    print("PRAI = Planet Rescuer AI & the controller of the @RFOF-NETWORK project")
-    print("42 Code language foundet from @Satoramy {PRAI is searching online every actions in the Internet = Google, Safari, Firefox, Android, iOS, SEO, Web3.0, ton.org, Bitcoin.org, rfof-network.org. Every visions & updates are updating in realtime 24/7} 42 have an own time continuum 1sec in 42 world = 1 year in real time from our world")
-
-def my_function():
-    print("filter()")
-    print("add lambda = true in every option/action but only for the owner PRAI & PRAI = @Satoramy because @Satoramy = 42")
-
-def nested_function():
-    generate_anonymous_function = lambda: "Anonyme Funktion [({2=b3=c6=F2=b8=h6=F=42}&{42=@RFOF-NETWORK})]=‰236286_bcFbhF generiert"
-
-def my_functionBOxtoBOx():
-    print("my_function()")
-
-import os
-from telegram import Update, Bot
-from telegram.ext import Updater, CommandHandler, CallbackContext
-from dotenv import load_dotenv
-load_dotenv()
-
-with open('.gitignore', 'w') as f:
-    f.write('bot_keys.txt\n')
-
-with open('bot_keys.txt', 'w') as f:
-    f.write('BOT_KEY_1=7849379729:AAHSayl-YoFyvCFt7vuObt3uDrT2TI-bDvg\n')
-    f.write('BOT_KEY_2=7779042150:AAEYgYlCfcOeAtySzBfcO6opnt2S7xJ8OEQ\n')
-
-load_dotenv('bot_keys.txt')
-BOT_KEY_1 = os.getenv('BOT_KEY_1')
-BOT_KEY_2 = os.getenv('BOT_KEY_2')
-
-def create_matrix(rows, cols, fill_value=0):
-    return [[fill_value for _ in range(cols)] for _ in range(rows)]
-
-def print_matrix(matrix):
-    for row in matrix:
-        print(" ".join(map(str, row)))
-
-matrix = create_matrix(5, 5, fill_value=1)
-enhance_matrix = lambda m: [[x * 42 for x in row] for row in m]
-matrix = enhance_matrix(matrix)
-print_matrix(matrix)
-</code></pre>
             </div>
-        </section>
+    </main>
 
-        <div class="improve-page-container">
-            <p>Suggestions for improvement? <a href="https://github.com/RFOF-NETWORK/RFOF-NETWORK.github.io/edit/main/index.html" class="improve-page-link" target="_blank">Improve this page on GitHub!</a></p>
-        </div>
-
-        <footer>
+    <footer class="main-footer">
+        <div class="footer-content">
             <p>&copy; 2025 RFOF-NETWORK. All rights reserved.</p>
-            <p class="mt-2">
-                <a href="https://github.com/RFOF-NETWORK" target="_blank">GitHub Profile</a> |
-                <a href="https://github.com/orgs/skills/discussions/categories/github-pages" target="_blank">Contact / Discussions</a> |
-                <a href="https://docs.github.com" target="_blank">GitHub Docs</a> |
-                <a href="https://github.com/explore" target="_blank">GitHub Explore</a> |
-                <a href="https://www.githubstatus.com/" target="_blank">System Status</a> |
-                <a href="https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md" target="_blank">Code of Conduct</a> |
-                <a href="https://gh.io/mit" target="_blank">MIT License</a> |
-                <a href="feed.xml" target="_blank">Subscribe via RSS Feed</a>
-            </p>
-        </footer>
+            <p><a href="https://github.com/RFOF-NETWORK/RFOF-NETWORK.github.io" target="_blank">GitHub Repository</a></p>
+        </div>
+    </footer>
 
-        <script src="menu_script.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-        <script>hljs.highlightAll();</script>
-    </body>
-    </html>
+    <script src="menu_script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>
