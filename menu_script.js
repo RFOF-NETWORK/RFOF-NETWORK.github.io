@@ -1,58 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
-    const navList = document.getElementById('navLinks'); // Corrected ID to navLinks
+    const navList = document.getElementById('navLinks');
+    const body = document.body;
 
-    // Toggle for the main mobile menu
+    // Toggle für das mobile Menü
     if (hamburger && navList) {
-        hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation(); // Verhindert, dass der Klick sofort das Menü wieder schließt
             navList.classList.toggle('active');
-            hamburger.classList.toggle('active'); // Add active class to hamburger for icon animation
+            hamburger.classList.toggle('active');
         });
     }
 
-    // Close mobile menu when a link is clicked
-    navList.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) { // Only close on mobile
-                navList.classList.remove('active');
-                if (hamburger) hamburger.classList.remove('active'); // Reset hamburger icon
-            }
-        });
-    });
-
-    // Close mobile menu if clicked outside
+    // Schließe das Menü bei Klick auf einen Link oder außerhalb
     document.addEventListener('click', (event) => {
-        // Check if the click is outside the hamburger icon AND outside the nav list itself
-        if (!hamburger.contains(event.target) && !navList.contains(event.target)) {
-            if (navList.classList.contains('active')) {
+        if (navList.classList.contains('active')) {
+            // Prüft, ob der Klick außerhalb der Navigation und des Hamburgers war
+            if (!navList.contains(event.target) && !hamburger.contains(event.target)) {
                 navList.classList.remove('active');
-                if (hamburger) hamburger.classList.remove('active');
+                hamburger.classList.remove('active');
             }
         }
     });
 
-    // Handle resize to reset menu state
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-            navList.classList.remove('active'); // Ensure mobile menu is hidden on desktop
-            if (hamburger) hamburger.classList.remove('active'); // Reset hamburger icon
-        }
-    });
-
-    // --- Search Bar Functionality ---
+    // --- MANIFEST: PRAI Suchmaschinen-Funktionalität ---
     const searchInput = document.getElementById('praiai-search-input');
     const searchButton = document.querySelector('.praiai-search-button');
 
-    function performPraiaiSearch() {
+    // Funktion wird global deklariert, um via onclick im HTML erreichbar zu sein
+    window.performPraiaiSearch = function() {
         const query = searchInput.value;
         if (query.trim() !== '') {
-            // Redirect to Google search results
-            window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+            // TODO: Implement PRAI-driven internal search results directly on this page.
+            // Aktuelle Fallback-Lösung: Leitet zur Google-Suche weiter.
+            window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
         }
     }
-
-    if (searchButton) {
-        searchButton.addEventListener('click', performPraiaiSearch);
-    }
-    // Already handled onkeydown in HTML
 });
