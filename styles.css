@@ -1,285 +1,230 @@
-/* General body and container styles */
+/* MANIFEST: Globale Stil- und Layout-Prinzipien */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #FFFFFF; /* Changed to white */
-    color: #333333; /* Dark text for contrast on white background */
+    background-color: #FFFFFF;
+    color: #333333;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* Header Styling */
-.main-header {
-    background-color: #FFFFFF; /* White header background */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Lighter shadow for white background */
-    padding: 10px 20px;
-    z-index: 100;
-    position: relative;
-    border-bottom: 1px solid #E0E0E0; /* Light gray border */
-}
-
-.header-content {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0; /* Removed padding here to reduce potential gaps */
-}
-
-.site-title { /* This is the text title in the header */
-    color: #0088cc; /* Telegram/TON Blue */
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2.5em;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-    flex-shrink: 0;
-    text-shadow: none;
-}
-
-/* Content Container */
-.content-container {
-    max-width: 960px;
-    margin: 2rem auto;
-    padding: 2.5rem;
-    background-color: #FFFFFF; /* White background for content blocks */
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Lighter shadow */
-    box-sizing: border-box;
+main {
     flex-grow: 1;
 }
 
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-    color: #0088cc; /* Telegram/TON Blue for headings */
+/* MANIFEST: "Rahmen" der Inhalte (konsistente max-width: 960px) */
+.header-content,
+.content-container,
+.footer-content {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+/* MANIFEST: Header Layout und Design */
+.main-header {
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E0E0E0;
+    z-index: 100;
+    position: sticky;
+    top: 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo-svg-container {
+    width: 45px;
+    height: 45px;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.header-logo-svg-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.site-title {
+    color: #0088cc;
     font-family: 'Orbitron', sans-serif;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(0, 136, 204, 0.3);
-}
-h2 { font-size: 2.5em; margin-top: 2.5rem; }
-h3 { font-size: 1.8em; margin-top: 2rem; }
-h4 { font-size: 1.4em; margin-top: 1.5rem; }
-
-/* Paragraphs and Lists */
-p {
-    margin-bottom: 1rem;
-    font-size: 1.1em;
-    color: #333333; /* Dark text for paragraphs */
-}
-ul {
-    list-style: disc;
-    margin-left: 1.5rem;
-    margin-bottom: 1rem;
-}
-ul li {
-    margin-bottom: 0.5rem;
-    font-size: 1.05em;
-    color: #333333; /* Dark text for list items */
-}
-
-/* Links */
-a {
-    color: #0088cc; /* Telegram/TON Blue for links */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-a:hover {
-    color: #00aaff; /* Slightly lighter blue on hover */
-    text-decoration: underline;
-}
-
-/* Code Blocks - Styled for IT Experts */
-pre {
-    background-color: #f8f8f8; /* Light background for code */
-    color: #333333; /* Darker text for code */
-    padding: 1.2em;
-    border-radius: 6px;
-    overflow-x: auto;
-    margin-bottom: 1.5em;
-    font-family: 'Fira Code', 'Cascadia Code', monospace;
-    font-size: 0.95em;
-    border: 1px solid #e0e0e0;
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
-    white-space: pre-wrap;
-    word-break: break-all;
-}
-code {
-    background-color: #e0e0e0; /* Inline code background */
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    font-family: 'Fira Code', 'Cascadia Code', monospace;
-    color: #0088cc; /* Blue for inline code */
-}
-ul code {
-    display: block;
-    white-space: pre-wrap;
-    margin-top: 0.5em;
-    background-color: #e0e0e0;
-    padding: 0.8em;
-    border-left: 3px solid #0088cc;
-    color: #333333;
-}
-
-/* Improved Readability for longer text */
-.text-section {
-    padding: 1.5rem 0;
-    border-bottom: 1px dashed rgba(0, 136, 204, 0.15);
-    margin-bottom: 1.5rem;
-}
-.text-section:last-of-type {
-    border-bottom: none;
-}
-
-/* Footer */
-footer {
-    background-color: #f0f0f0; /* Lighter footer background */
-    color: #333333; /* Dark text for footer */
-    text-align: center;
-    padding: 1.5rem 1rem;
-    margin-top: 3rem;
-    font-size: 0.9em;
-    border-top: 1px solid #e0e0e0;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05); /* Lighter shadow */
-}
-footer a {
-    color: #0088cc;
-}
-footer a:hover {
-    color: #00aaff;
-}
-
-/* Styling for the "Improve this page" Container and Link */
-.improve-page-container {
-    text-align: center;
-    padding: 15px;
-    margin: 20px auto;
-    max-width: 800px;
-    background-color: #ffffff; /* White background */
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: #333333;
-    font-size: 1em;
-}
-
-.improve-page-container p {
-    margin: 0;
-    color: #333333; /* Ensure dark text */
-}
-
-.improve-page-container a.improve-page-link {
-    color: #0088cc;
-    text-decoration: underline;
+    font-size: 2em; /* Angepasst für den Rahmen */
     font-weight: bold;
-    text-shadow: none;
+    margin: 0;
+    flex-grow: 1;
+    text-align: left;
 }
 
-.improve-page-link:hover {
-    color: #00aaff;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .site-title {
-        font-size: 1.8em;
-    }
-    .main-header .header-content {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .navbar {
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    /* Hero section adjusts for mobile */
-    .hero-section h1 {
-        font-size: 2.5em;
-    }
-    .hero-section p {
-        font-size: 1.1em;
-    }
-    /* Content adjusts for mobile */
-    .content-container {
-        padding: 1.5rem;
-    }
-    h2 { font-size: 2em; }
-    h3 { font-size: 1.5em; }
-    h4 { font-size: 1.2em; }
-    /* Search bar adjustments */
-    .praiai-search-container {
-        margin: 20px 15px;
-        border-radius: 30px;
-    }
-    .praiai-search-input {
-        padding: 12px 20px;
-        font-size: 1em;
-    }
-    .praiai-search-button {
-        padding: 12px 20px;
-    }
-}
-
-/* Specific styling for the hero section background to ensure visibility */
+/* MANIFEST: Homepage-spezifische Features (Hero & Suche) */
 .hero-section {
-    background-image: linear-gradient(to bottom right, #4299e1, #2b6cb0); /* Lighter blue gradient for white background */
+    background-image: linear-gradient(to right bottom, #4299e1, #2b6cb0);
     color: #ffffff;
-    padding: 80px 20px;
+    padding: 60px 20px;
     text-align: center;
     position: relative;
     overflow: hidden;
-    border-bottom: 2px solid #0088cc;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
+
 .hero-section::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background: url('https://raw.githubusercontent.com/RFOF-NETWORK/skills-github-pages/main/rfoff_network_hero_background.jpg') no-repeat center center/cover;
     opacity: 0.08;
     z-index: 1;
 }
+
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto;
 }
-.hero-content h1 {
-    font-size: 3.5em;
-    margin-bottom: 0.5em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-.hero-content p {
-    font-size: 1.3em;
-    line-height: 1.5;
-    max-width: 700px;
-    margin: 0 auto 1.5em;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    font-weight: 300;
-}
-.hero-content img { /* This refers to the main hero logo image, now the cyber brain */
-    width: 180px; /* Adjusted size */
-    height: 180px;
-    object-fit: contain; /* Ensure SVG scales correctly */
-    border-radius: 50%;
-    border: 4px solid #4299e1; /* Blue border */
-    box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
-    margin: 0 auto 1.5rem; /* Centered and with bottom margin */
-    display: block; /* Ensure it's a block element */
+
+.hero-logo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
 }
 
-/* Ensure chart containers have suitable background */
-.chart-container canvas {
-    background-color: #ffffff; /* White background for charts within their container */
-    border-radius: 4px; /* Slight rounding for charts */
+.hero-content h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3em;
+    margin-bottom: 0.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: #FFFFFF;
+    border-bottom: none;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 0 auto 1.5em;
+    color: #f0f0f0;
+}
+
+.praiai-search-container {
+    max-width: 600px;
+    margin: 30px auto;
+    display: flex;
+    border: 2px solid #4299e1;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
+    background-color: #ffffff;
+}
+
+.praiai-search-input {
+    flex-grow: 1;
+    padding: 15px 25px;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    background-color: transparent;
+    color: #333333;
+}
+
+.praiai-search-button {
+    background-color: #4299e1;
+    border: none;
+    padding: 0 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+.praiai-search-button svg { width: 20px; height: 20px; }
+.praiai-search-button:hover { background-color: #63b3ed; }
+
+
+/* Allgemeine Inhaltsstile */
+.content-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.text-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+.text-section:last-child { border-bottom: none; }
+
+h2, h3, h4 {
+    color: #0088cc;
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 136, 204, 0.3);
+}
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.6em; }
+h4 { font-size: 1.3em; }
+
+p { margin-bottom: 1rem; }
+a { color: #0088cc; text-decoration: none; }
+a:hover { color: #00aaff; text-decoration: underline; }
+
+/* MANIFEST: Syntax Highlighting mit Fira Code */
+pre {
+    background-color: #2d3748; /* Dunkler Hintergrund für Codeblöcke */
+    color: #e2e8f0;
+    padding: 1.2em;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-bottom: 1.5em;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9em;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+code {
+    font-family: 'Fira Code', monospace;
+    background-color: #e0e0e0;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    color: #0088cc;
+}
+pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+
+/* Footer */
+.main-footer {
+    background-color: #2d3748;
+    color: #e2e8f0;
+    text-align: center;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-top: 3rem;
+    font-size: 0.9em;
+}
+.main-footer a { color: #63b3ed; }
+.main-footer a:hover { color: #90cdf4; }
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .site-title { font-size: 1.5em; }
+    .hero-content h1 { font-size: 2.2em; }
+    .hero-content p { font-size: 1.1em; }
+    .praiai-search-input { padding: 12px 20px; font-size: 0.9em; }
+    h2 { font-size: 1.8em; }
+    h3 { font-size: 1.4em; }
 }
