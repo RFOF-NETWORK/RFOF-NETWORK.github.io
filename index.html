@@ -8,6 +8,33 @@
     <link rel="stylesheet" href="menu_styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@700&family=Fira+Code&display=swap" rel="stylesheet">
+    
+    <style>
+        #boxchain-explorer-target { margin-top: 1rem; padding: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fdfdfd; }
+        .explorer-controls { margin-bottom: 1rem; border-bottom: 2px solid #0088cc; padding-bottom: 1rem; text-align: center; }
+        .explorer-controls button {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border: 2px solid #ccc;
+            background-color: #f1f1f1;
+            color: #333;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+        .explorer-controls button.active {
+            background-color: #0088cc;
+            color: white;
+            border-color: #00aaff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .explorer-results table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        .explorer-results th, .explorer-results td { border: 1px solid #ddd; padding: 12px; text-align: left; font-size: 0.95em; word-break: break-all; }
+        .explorer-results th { background-color: #2d3748; color: #e2e8f0; font-family: 'Orbitron', sans-serif;}
+        .explorer-results tr:nth-child(even) { background-color: #f9f9f9; }
+    </style>
 </head>
 <body>
     <header class="main-header">
@@ -67,26 +94,14 @@
                 <p>We are building an internet where data waste fuels a new decentralized economy, empowering users with unprecedented control and security. This platform will serve as the <strong>central hub for all our projects</strong>.</p>
             </section>
 
-            <section id="structure" class="text-section">
-                <h2>Comprehensive Project Structure</h2>
-                <p>This structure integrates various components such as Smart Contracts, API, Frontend, Utility Functions, and Configurations.</p>
-                <pre><code class="language-plaintext">project-root/
-├── docs/
-│   ├── index.html
-│   ├── styles.css
-│   └── ...
-├── contracts/
-│   ├── bbc/
-│   └── tokens/
-├── api/
-│   ├── main.py
-│   └── handlers/
-├── frontend/
-├── utils/
-└── ...</code></pre>
+            <section id="boxchain-explorer-section" class="text-section">
+                <h2>RFOF BOxchain Explorer</h2>
+                <p>Erkunden Sie die Wahrheit unserer dezentralen Datenbank in Echtzeit. Sehen Sie Blöcke, Hashes (CTC & AXF) und die Integrität des Netzwerks live.</p>
+                <div id="boxchain-explorer-target" class="module-container">
+                    </div>
             </section>
-
-            </div>
+            
+        </div>
     </main>
 
     <footer class="main-footer">
@@ -98,6 +113,114 @@
 
     <script src="menu_script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
+    <script>
+        //======================================================================
+        // BEGINN DER NEUEN, ADDITIVEN LOGIK
+        //======================================================================
+
+        // Bestehende, von Ihnen definierte Funktionen
+        function performPraiaiSearch() {
+            const query = document.getElementById('praiai-search-input').value;
+            if (!query) return;
+
+            // ERWEITERUNG: Prüfen, ob der Explorer die Anfrage verarbeiten kann
+            if (window.RFOF_Explorer && window.RFOF_Explorer.isExplorerQuery(query)) {
+                 window.RFOF_Explorer.search(query);
+            } else {
+                // Fallback zur Websuche bleibt erhalten
+                const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                window.open(googleSearchUrl, '_blank');
+            }
+        }
+        hljs.highlightAll();
+
+        // NEUER CODE: Die gesamte Explorer-Logik wird hier eingebunden
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            class BOxchainExplorer {
+                constructor(targetElement) {
+                    this.container = targetElement;
+                    this.view = 'CTC'; // Standardansicht
+                }
+
+                init() {
+                    this.render();
+                }
+                
+                isExplorerQuery(query) {
+                    // Simpel: erkennt '0x' oder reine Zahlen als Explorer-Suche
+                    return query.trim().startsWith('0x') || /^\d+$/.test(query.trim());
+                }
+
+                async search(query) {
+                    this.container.innerHTML = `<p style="text-align:center;">Suche auf der BOxchain nach: <strong>${query}</strong>...</p>`;
+                    const data = await this.fetchData(query);
+                    this.renderUI(data);
+                }
+
+                async fetchData(query) {
+                    // Simuliert den API-Aufruf an das Hallo @RFOF-NETWORK Programm
+                    console.log(`Sende Anfrage an die API mit Query: ${query}`);
+                    const dummyData = {
+                        'CTC': [
+                            { txHash: '0xabc...123', from: '0xSatoria...', to: '0xUser...', value: '420 CTC', majoranaStatus: '✅ Geschützt' },
+                            { txHash: '0xdef...456', from: '0xUser...', to: '0xDAO...', value: '88 Bubatz-Coin', majoranaStatus: '✅ Geschützt' }
+                        ],
+                        'AXF': [
+                            { dataHash: '0x123...abc', type: '.cw', axiometixSize: '4.2 Giga-QuEkta (GQe)', vector: 'A:0.8|X:0.9|F:0.5' },
+                            { dataHash: '0x456...def', type: '.cw', axiometixSize: '1.3 Tera-QuEkta (TQe)', vector: 'A:0.3|X:0.5|F:0.9' }
+                        ]
+                    };
+                    return new Promise(resolve => setTimeout(() => resolve(dummyData[this.view]), 800));
+                }
+                
+                renderUI(data) {
+                    let html = `
+                        <div class="explorer-controls">
+                            <button id="btn-ctc-view">CTC Explorer (Werte)</button>
+                            <button id="btn-axf-view">AXF Explorer (Daten)</button>
+                        </div>
+                        <div class="explorer-results">`;
+
+                    if (this.view === 'CTC') {
+                        html += `<table><thead><tr><th>Tx Hash</th><th>Von</th><th>Nach</th><th>Wert</th><th>Integrität (Majorana)</th></tr></thead><tbody>`;
+                        data.forEach(tx => { html += `<tr><td>${tx.txHash}</td><td>${tx.from}</td><td>${tx.to}</td><td>${tx.value}</td><td>${tx.majoranaStatus}</td></tr>`; });
+                        html += `</tbody></table>`;
+                    } else {
+                        html += `<table><thead><tr><th>Daten-Hash</th><th>Typ</th><th>Axiometix Größe</th><th>Zustands-Vektor (A/X/F)</th></tr></thead><tbody>`;
+                        data.forEach(d => { html += `<tr><td>${d.dataHash}</td><td>${d.type}</td><td>${d.axiometixSize}</td><td>${d.vector}</td></tr>`; });
+                        html += `</tbody></table>`;
+                    }
+                    
+                    html += `</div>`;
+                    this.container.innerHTML = html;
+                    this.addEventListeners();
+                    // Markiere den aktiven Button
+                    document.getElementById(this.view === 'CTC' ? 'btn-ctc-view' : 'btn-axf-view').classList.add('active');
+                }
+
+                addEventListeners() {
+                    document.getElementById('btn-ctc-view').addEventListener('click', () => { this.view = 'CTC'; this.render(); });
+                    document.getElementById('btn-axf-view').addEventListener('click', () => { this.view = 'AXF'; this.render(); });
+                }
+                
+                async render() {
+                    this.container.innerHTML = '<p style="text-align:center;">Lade Live-Daten von der BOxchain...</p>';
+                    const data = await this.fetchData('');
+                    this.renderUI(data);
+                }
+            }
+            
+            const target = document.getElementById('boxchain-explorer-target');
+            if (target) {
+                // Erstelle eine globale Instanz, damit die Suchfunktion darauf zugreifen kann
+                window.RFOF_Explorer = new BOxchainExplorer(target);
+                window.RFOF_Explorer.init();
+            }
+        });
+        //======================================================================
+        // ENDE DER NEUEN, ADDITIVEN LOGIK
+        //======================================================================
+    </script>
 </body>
 </html>
