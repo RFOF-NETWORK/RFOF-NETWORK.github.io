@@ -1,4 +1,5 @@
 /* MANIFEST: Dropdown-Menü (Globale Navigation) */
+.navbar { /* ... Ihr gesamter Menü-CSS-Code hier ... *//* MANIFEST: Dropdown-Menü (Globale Navigation) */
 
 .navbar {
     display: flex;
@@ -106,3 +107,8 @@
     .hamburger-icon.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 }
 
+}
+
+@media (max-width: 900px) {
+    /* ... Ihre gesamten responsiven Menü-Regeln hier ... */
+}
