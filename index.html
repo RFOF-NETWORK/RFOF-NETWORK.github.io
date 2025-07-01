@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@700&family=Fira+Code&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <header class="main-header">
         <div class="header-content">
             <div class="header-logo-svg-container">
@@ -68,14 +67,26 @@
                 <p>We are building an internet where data waste fuels a new decentralized economy, empowering users with unprecedented control and security. This platform will serve as the <strong>central hub for all our projects</strong>.</p>
             </section>
 
-            <section id="boxchain-explorer-section" class="text-section">
-                <h2>RFOF BOxchain Explorer</h2>
-                <div id="boxchain-explorer-target">
-                    </div>
-                <div id="account-section">
-                    </div>
+            <section id="structure" class="text-section">
+                <h2>Comprehensive Project Structure</h2>
+                <p>This structure integrates various components such as Smart Contracts, API, Frontend, Utility Functions, and Configurations.</p>
+                <pre><code class="language-plaintext">project-root/
+
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </code></pre>
             </section>
-        </div>
+
+            </div>
     </main>
 
     <footer class="main-footer">
@@ -87,18 +98,6 @@
 
     <script src="menu_script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="explorer_init.js"></script> <script>
-        // Diese Funktion wird vom `onclick` im HTML aufgerufen
-        function performPraiaiSearch() {
-            // Die Logik wird nun vom Explorer-Modul gehandhabt
-            if (window.RFOF_APP && window.RFOF_APP.explorer) {
-                const query = document.getElementById('praiai-search-input').value;
-                window.RFOF_APP.explorer.search(query, true); 
-            } else {
-                console.log("Explorer-Modul noch nicht initialisiert.");
-            }
-        }
-        hljs.highlightAll();
-    </script>
+    <script>hljs.highlightAll();</script>
 </body>
 </html>
