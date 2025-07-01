@@ -11,6 +11,20 @@ body {
 }
 
 /* ... (Ihr kompletter Original-CSS-Code hier) ... */
+
+/* ========================================================== */
+/* Ihr gesamter ursprünglicher CSS-Code für Header, Hero, etc. */
+/* ========================================================== */
+body {
+    font-family: 'Roboto', sans-serif;
+    /* ... etc. ... */
+}
+.hero-section {
+    background-image: linear-gradient(to right bottom, #4299e1, #2b6cb0);
+    /* ... etc. ... */
+}
+
+/* ... (Ihr kompletter Original-CSS-Code hier) ... */
 /* MANIFEST: Globale Stil- und Layout-Prinzipien */
 body {
     font-family: 'Roboto', sans-serif;
@@ -240,6 +254,23 @@ pre code {
     .praiai-search-input { padding: 12px 20px; font-size: 0.9em; }
     h2 { font-size: 1.8em; }
     h3 { font-size: 1.4em; }
+}
+
+
+/* ========================================================== */
+/* ADDITIVE ERWEITERUNG: Stile für die neuen Module           */
+/* ========================================================== */
+
+#boxchain-explorer-section .explorer-header {
+    display: flex;
+    justify-content: space-between;
+    /* ... etc. alle Explorer-Stile ... */
+}
+
+#account-section {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    /* ... etc. alle Account-Stile ... */
 }
 
 
