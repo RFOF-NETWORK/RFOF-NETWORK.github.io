@@ -1,41 +1,230 @@
-/* ============================================================================== */
-/* BEGINN DES BESTEHENDEN, VON IHNEN KODIFIZIERTEN CODES (100% ERHALTEN)     */
-/* ============================================================================== */
-
 /* MANIFEST: Globale Stil- und Layout-Prinzipien */
-body { /* ... Ihr gesamter Body-Code hier ... */ }
-main { /* ... Ihr gesamter Main-Code hier ... */ }
-.header-content, .content-container, .footer-content { /* ... Ihr gesamter Layout-Rahmen-Code hier ... */ }
-.main-header { /* ... Ihr gesamter Header-Code hier ... */ }
-/* ... Alle Ihre weiteren bestehenden Stile für .site-title, .text-section, .btn-primary etc. bleiben hier exakt erhalten ... */
-/* (Der vollständige Code aus Ihrem vorherigen Prompt wird hier eingefügt) */
-
-/* ============================================================================== */
-/* CHIRURGISCHE ERGÄNZUNG: Neue, abgegrenzte Stile für die Module          */
-/* ============================================================================== */
-
-/* === EXPLORER STYLES (Gekapselt in #boxchain-explorer-section) === */
-#boxchain-explorer-section {
-    background-color: #f8f8f8;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #FFFFFF;
+    color: #333333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
-#boxchain-explorer-section .explorer-header {
-    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
-    border-bottom: 2px solid #0088cc; padding-bottom: 1rem; margin-bottom: 1rem; gap: 15px;
-}
-#boxchain-explorer-section .explorer-search { display: flex; max-width: 400px; flex-grow: 1; }
-#boxchain-explorer-section .explorer-search input { width: 100%; border: 1px solid #ccc; padding: 0.5rem; border-radius: 4px 0 0 4px; }
-#boxchain-explorer-section .explorer-search button { border: none; background-color: #0088cc; color: white; padding: 0.5rem 1rem; cursor: pointer; border-radius: 0 4px 4px 0; }
-#boxchain-explorer-section .explorer-controls button { padding: 0.7rem 1.2rem; border: 2px solid #ccc; background-color: #f1f1f1; cursor: pointer; }
-#boxchain-explorer-section .explorer-controls button.active { background-color: #0088cc; color: white; border-color: #00aaff; }
-#boxchain-explorer-section table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-#boxchain-explorer-section th, #boxchain-explorer-section td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-#boxchain-explorer-section th { background-color: #2d3748; color: #e2e8f0; }
 
-/* === ACCOUNT SYSTEM STYLES (Gekapselt in #account-section) === */
-#account-section { margin-top: 1.5rem; padding: 1rem; background-color: #e9ecef; border-radius: 8px; text-align: center; }
-#account-section #logged-in-view { display: none; align-items: center; justify-content: center; gap: 15px; }
-#account-section #logged-in-view img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #0088cc; }
+main {
+    flex-grow: 1;
+}
+
+/* MANIFEST: "Rahmen" der Inhalte (konsistente max-width: 960px) */
+.header-content,
+.content-container,
+.footer-content {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+/* MANIFEST: Header Layout und Design */
+.main-header {
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E0E0E0;
+    z-index: 100;
+    position: sticky;
+    top: 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo-svg-container {
+    width: 45px;
+    height: 45px;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.header-logo-svg-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.site-title {
+    color: #0088cc;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2em; /* Angepasst für den Rahmen */
+    font-weight: bold;
+    margin: 0;
+    flex-grow: 1;
+    text-align: left;
+}
+
+/* MANIFEST: Homepage-spezifische Features (Hero & Suche) */
+.hero-section {
+    background-image: linear-gradient(to right bottom, #4299e1, #2b6cb0);
+    color: #ffffff;
+    padding: 60px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('https://raw.githubusercontent.com/RFOF-NETWORK/skills-github-pages/main/rfoff_network_hero_background.jpg') no-repeat center center/cover;
+    opacity: 0.08;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-logo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+}
+
+.hero-content h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3em;
+    margin-bottom: 0.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: #FFFFFF;
+    border-bottom: none;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 0 auto 1.5em;
+    color: #f0f0f0;
+}
+
+.praiai-search-container {
+    max-width: 600px;
+    margin: 30px auto;
+    display: flex;
+    border: 2px solid #4299e1;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
+    background-color: #ffffff;
+}
+
+.praiai-search-input {
+    flex-grow: 1;
+    padding: 15px 25px;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    background-color: transparent;
+    color: #333333;
+}
+
+.praiai-search-button {
+    background-color: #4299e1;
+    border: none;
+    padding: 0 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+.praiai-search-button svg { width: 20px; height: 20px; }
+.praiai-search-button:hover { background-color: #63b3ed; }
+
+
+/* Allgemeine Inhaltsstile */
+.content-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.text-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+.text-section:last-child { border-bottom: none; }
+
+h2, h3, h4 {
+    color: #0088cc;
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 136, 204, 0.3);
+}
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.6em; }
+h4 { font-size: 1.3em; }
+
+p { margin-bottom: 1rem; }
+a { color: #0088cc; text-decoration: none; }
+a:hover { color: #00aaff; text-decoration: underline; }
+
+/* MANIFEST: Syntax Highlighting mit Fira Code */
+pre {
+    background-color: #2d3748; /* Dunkler Hintergrund für Codeblöcke */
+    color: #e2e8f0;
+    padding: 1.2em;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-bottom: 1.5em;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9em;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+code {
+    font-family: 'Fira Code', monospace;
+    background-color: #e0e0e0;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    color: #0088cc;
+}
+pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+
+/* Footer */
+.main-footer {
+    background-color: #2d3748;
+    color: #e2e8f0;
+    text-align: center;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-top: 3rem;
+    font-size: 0.9em;
+}
+.main-footer a { color: #63b3ed; }
+.main-footer a:hover { color: #90cdf4; }
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .site-title { font-size: 1.5em; }
+    .hero-content h1 { font-size: 2.2em; }
+    .hero-content p { font-size: 1.1em; }
+    .praiai-search-input { padding: 12px 20px; font-size: 0.9em; }
+    h2 { font-size: 1.8em; }
+    h3 { font-size: 1.4em; }
+}
