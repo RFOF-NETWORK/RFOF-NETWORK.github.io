@@ -11,29 +11,25 @@
     
     <style>
         #boxchain-explorer-target { margin-top: 1rem; padding: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fdfdfd; }
-        .explorer-controls { margin-bottom: 1rem; border-bottom: 2px solid #0088cc; padding-bottom: 1rem; text-align: center; }
-        .explorer-controls button {
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-            font-weight: bold;
-            border: 2px solid #ccc;
-            background-color: #f1f1f1;
-            color: #333;
-            cursor: pointer;
-            margin: 0 5px;
-            transition: all 0.3s ease;
-        }
-        .explorer-controls button.active {
-            background-color: #0088cc;
-            color: white;
-            border-color: #00aaff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
+        .explorer-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0088cc; padding-bottom: 1rem; }
+        .explorer-controls { margin: 0; }
+        .explorer-search { display: flex; gap: 5px; }
+        .explorer-search input { border: 1px solid #ccc; padding: 0.5rem; }
+        .explorer-search button { border: none; background-color: #0088cc; color: white; padding: 0.5rem 1rem; cursor: pointer; }
+        .explorer-controls button { padding: 0.8rem 1.5rem; border: 2px solid #ccc; background-color: #f1f1f1; cursor: pointer; }
+        .explorer-controls button.active { background-color: #0088cc; color: white; border-color: #00aaff; }
         .explorer-results table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-        .explorer-results th, .explorer-results td { border: 1px solid #ddd; padding: 12px; text-align: left; font-size: 0.95em; word-break: break-all; }
-        .explorer-results th { background-color: #2d3748; color: #e2e8f0; font-family: 'Orbitron', sans-serif;}
-        .explorer-results tr:nth-child(even) { background-color: #f9f9f9; }
+        .explorer-results th, .explorer-results td { border: 1px solid #ddd; padding: 12px; text-align: left; word-break: break-all; }
+        .explorer-results th { background-color: #2d3748; color: #e2e8f0; }
+        .hash-link { color: #0088cc; text-decoration: underline; cursor: pointer; }
+        .hash-link.protected { color: #333; text-decoration: none; cursor: default; }
+        
+        #account-section { margin-top: 1.5rem; padding: 1rem; background-color: #f7f7f7; border-radius: 8px; text-align: center; }
+        #logged-out-view button { margin: 0 10px; }
+        #logged-in-view { display: none; align-items: center; justify-content: center; gap: 15px; }
+        #logged-in-view img { width: 40px; height: 40px; border-radius: 50%; }
+        #profile-display { position: relative; }
+        #profile-console { display: none; position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); background: white; border: 1px solid #ccc; padding: 1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2); width: 300px; text-align: left;}
     </style>
 </head>
 <body>
@@ -45,59 +41,30 @@
             <h1 class="site-title">RFOFSpiderWeb.NET</h1>
             <nav class="navbar">
                 <div class="hamburger-icon" id="hamburger">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div>
                 </div>
                 <ul class="nav-list" id="navLinks">
-                    <li><a href="https://rfof-network.github.io/">RFOFSpiderWeb.NET</a></li>
-                    <li><a href="https://rfof-network-ready-for-our-future.github.io/RFOF-spider-NET-/">Ready Four Our Future</a></li>
-                    <li><a href="https://qch-l-c.github.io/PRAI-KI-/">PRAI-OS</a></li>
-                    <li><a href="https://rfof-network.github.io/RFOF-NETWORK/">RFOF-NETWORK</a></li>
-                    <li><a href="https://rfof-network.github.io/Comprensive-rfof-bitcoin.org-PRAI-BOx-Blockchain-System_Programm-Fusions-Reactor-System/">RPFOF</a></li>
-                    <li><a href="https://rfof-network-ready-for-our-future.github.io/QCHC/">QCH-L-C</a></li>
-                    <li><a href="https://rfof-network.github.io/Crypto-Hustler/">rfof-bitcoin.org</a></li>
-                    <li><a href="https://rfof-network.github.io/DDEUGGP/">Golden Times</a></li>
-                    <li><a href="https://rfof-network.github.io/RFOF-x-PRAI_DOC_Ready-For-Our-Future/">DOC's & FAQ's</a></li>
-                </ul>
+                    </ul>
             </nav>
         </div>
     </header>
 
     <main>
         <section class="hero-section">
-            <div class="hero-content">
-                <img class="hero-logo" src="https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK/main/assets/rotating_cyber_brain.svg" alt="RFOFSpiderWeb.NET Cyber Brain Logo">
-                <h1>Welcome to RFOFSpiderWeb.NET</h1>
-                <p>The new internet that brings security, decentralization, and innovation to every digital interaction, powered by PRAI.</p>
-                <div class="praiai-search-container">
-                    <input type="text" id="praiai-search-input" class="praiai-search-input" placeholder="Search in the new internet with PRAI..." onkeydown="if(event.key === 'Enter') performPraiaiSearch();">
-                    <button class="praiai-search-button" onclick="performPraiaiSearch()" aria-label="Search">
-                        <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                            <path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </section>
+            </section>
 
         <div class="content-container">
             <section id="about" class="text-section">
-                <h2>About RFOFSpiderWeb.NET</h2>
-                <p>We strive to enhance The Open Network (TON) and foster the growth of games and capital, enabling TON to draw energy from all other decentralized Chains or Networks. Our aim is to win the Telegram Blockchain Contest, with missions focused on Bridging our RFOF NETWORK to serve as an extension of the TON Chain. Let's grow!</p>
-                <p>RFOFSpiderWeb.NET is designed to become the new internet, providing a secure operating environment for all private and public clouds, internet services, web apps, dApps, AI tools, Blockchains, and Quantum Ready Security.</p>
-            </section>
+                </section>
             
             <section id="vision-mission" class="text-section">
-                <h2>Vision & Mission: The AXF Token</h2>
-                <p>Our core vision is to enable true <strong>telekinetic interaction</strong> via <strong>PRAI PZQQET AXIOMATIKX</strong>. This involves intercepting and encrypting all data remnants, then securely incinerating them to mint resilient, genuine tokens: the <strong>AXF Token (ABillity XP Fps Token)</strong>. This process transforms data residue into tangible matter or recycled NDT mass.</p>
-                <p>We are building an internet where data waste fuels a new decentralized economy, empowering users with unprecedented control and security. This platform will serve as the <strong>central hub for all our projects</strong>.</p>
-            </section>
+                </section>
 
             <section id="boxchain-explorer-section" class="text-section">
                 <h2>RFOF BOxchain Explorer</h2>
-                <p>Erkunden Sie die Wahrheit unserer dezentralen Datenbank in Echtzeit. Sehen Sie Blöcke, Hashes (CTC & AXF) und die Integrität des Netzwerks live.</p>
-                <div id="boxchain-explorer-target" class="module-container">
+                <div id="boxchain-explorer-target">
+                    </div>
+                <div id="account-section">
                     </div>
             </section>
             
@@ -105,117 +72,203 @@
     </main>
 
     <footer class="main-footer">
-        <div class="footer-content">
-            <p>&copy; 2025 RFOF-NETWORK. All rights reserved.</p>
-            <p><a href="https://github.com/RFOF-NETWORK/RFOF-NETWORK.github.io" target="_blank">GitHub Repository</a></p>
-        </div>
-    </footer>
+        </footer>
 
     <script src="menu_script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>
         //======================================================================
-        // BEGINN DER NEUEN, ADDITIVEN LOGIK
+        // BEGINN DER NEUEN, ADDITIVEN LOGIK (VERSION ZENITH 7.0)
         //======================================================================
-
-        // Bestehende, von Ihnen definierte Funktionen
+        
+        // Bestehende Logik wird in das neue System integriert
         function performPraiaiSearch() {
-            const query = document.getElementById('praiai-search-input').value;
-            if (!query) return;
-
-            // ERWEITERUNG: Prüfen, ob der Explorer die Anfrage verarbeiten kann
-            if (window.RFOF_Explorer && window.RFOF_Explorer.isExplorerQuery(query)) {
-                 window.RFOF_Explorer.search(query);
-            } else {
-                // Fallback zur Websuche bleibt erhalten
-                const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-                window.open(googleSearchUrl, '_blank');
+            // Diese Funktion wird vom Explorer-Objekt übernommen
+            if (window.RFOF_Explorer) {
+                const query = document.getElementById('praiai-search-input').value;
+                window.RFOF_Explorer.search(query);
             }
         }
         hljs.highlightAll();
 
-        // NEUER CODE: Die gesamte Explorer-Logik wird hier eingebunden
+        // Der gesamte App-Code wird hier gekapselt, um globale Konflikte zu vermeiden
         document.addEventListener('DOMContentLoaded', () => {
             
-            class BOxchainExplorer {
-                constructor(targetElement) {
-                    this.container = targetElement;
-                    this.view = 'CTC'; // Standardansicht
+            // ################### ACCOUNT SYSTEM LOGIC ###################
+            class AccountSystem {
+                constructor(target) {
+                    this.container = target;
+                    this.user = null; // z.B. { name: 'Satoramy', email: 'rfof236286@gmail.com', role: 'SATORAMY_PRIME' }
+                    this.init();
                 }
 
-                init() {
+                init() { this.render(); }
+
+                login(type) {
+                    // Simuliert einen Login-Prozess
+                    alert(`Login mit ${type} wird eingeleitet...`);
+                    // Annahme: Login erfolgreich
+                    // Im echten Fall würde hier der OAuth-Flow oder Magic-Link-Flow stattfinden
+                    this.user = { 
+                        name: 'Satoramy (Owner)', 
+                        email: 'rfof236286@gmail.com', 
+                        role: 'SATORAMY_PRIME',
+                        pfp: 'https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK/main/assets/rotating_cyber_brain.svg' 
+                    };
                     this.render();
+                    if(window.RFOF_Explorer) window.RFOF_Explorer.render(); // Explorer neu rendern, um Owner-Rechte zu zeigen
                 }
                 
-                isExplorerQuery(query) {
-                    // Simpel: erkennt '0x' oder reine Zahlen als Explorer-Suche
-                    return query.trim().startsWith('0x') || /^\d+$/.test(query.trim());
+                logout() {
+                    this.user = null;
+                    this.render();
+                     if(window.RFOF_Explorer) window.RFOF_Explorer.render();
                 }
 
-                async search(query) {
-                    this.container.innerHTML = `<p style="text-align:center;">Suche auf der BOxchain nach: <strong>${query}</strong>...</p>`;
-                    const data = await this.fetchData(query);
-                    this.renderUI(data);
+                render() {
+                    let html = '';
+                    if (this.user) {
+                        // Ansicht für eingeloggte User
+                        html = `
+                            <div id="logged-in-view">
+                                <p>Willkommen, <strong>${this.user.name}</strong></p>
+                                <div id="profile-display">
+                                    <img src="${this.user.pfp}" alt="Profilbild">
+                                    <button id="profile-btn" class="btn-secondary">Profil/Console</button>
+                                    <div id="profile-console">
+                                        <h4>RFOF-Console</h4>
+                                        <p><strong>Account:</strong> ${this.user.email}</p>
+                                        <p><strong>Status:</strong> ${this.user.role}</p>
+                                        <button id="logout-btn">Logout</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        // Ansicht für ausgeloggte User
+                        html = `
+                            <div id="logged-out-view">
+                                <p>Registrieren oder einloggen, um alle Features zu nutzen.</p>
+                                <button onclick="window.RFOF_Account.login('GitHub')" class="btn-primary">Mit GitHub verbinden</button>
+                                <button onclick="window.RFOF_Account.login('Google')" class="btn-secondary">Mit Google verbinden</button>
+                            </div>
+                        `;
+                    }
+                    this.container.innerHTML = html;
+                    this.addEventListeners();
+                }
+
+                addEventListeners() {
+                    if (this.user) {
+                        const profileBtn = document.getElementById('profile-btn');
+                        const profileConsole = document.getElementById('profile-console');
+                        profileBtn.addEventListener('click', () => {
+                           profileConsole.style.display = profileConsole.style.display === 'block' ? 'none' : 'block';
+                        });
+                        document.getElementById('logout-btn').addEventListener('click', () => this.logout());
+                    }
+                }
+            }
+
+            // ################### BOxCHAIN EXPLORER LOGIC ###################
+            class BOxchainExplorer {
+                constructor(target) {
+                    this.container = target;
+                    this.view = 'CTC'; 
+                }
+
+                init() { this.render(); }
+                
+                isExplorerQuery(query) { return query.trim().startsWith('0x') || /^\d+$/.test(query.trim()); }
+
+                search(query) {
+                    this.container.innerHTML = `<p>Suche auf der BOxchain nach: <strong>${query}</strong>...</p>`;
+                    this.render(query);
                 }
 
                 async fetchData(query) {
-                    // Simuliert den API-Aufruf an das Hallo @RFOF-NETWORK Programm
-                    console.log(`Sende Anfrage an die API mit Query: ${query}`);
                     const dummyData = {
                         'CTC': [
-                            { txHash: '0xabc...123', from: '0xSatoria...', to: '0xUser...', value: '420 CTC', majoranaStatus: '✅ Geschützt' },
-                            { txHash: '0xdef...456', from: '0xUser...', to: '0xDAO...', value: '88 Bubatz-Coin', majoranaStatus: '✅ Geschützt' }
+                            { txHash: '0x42abc...', from: '0xSatoramy...', to: '0xDAO...', value: '1,000,000 Bubatz-Coin', majoranaStatus: '✅ Geschützt' },
+                            { txHash: '0x00def...', from: '0xBridge...', to: '0xUserWallet...', value: '1.2 rBTC', majoranaStatus: '✅ Geschützt' }
                         ],
                         'AXF': [
-                            { dataHash: '0x123...abc', type: '.cw', axiometixSize: '4.2 Giga-QuEkta (GQe)', vector: 'A:0.8|X:0.9|F:0.5' },
-                            { dataHash: '0x456...def', type: '.cw', axiometixSize: '1.3 Tera-QuEkta (TQe)', vector: 'A:0.3|X:0.5|F:0.9' }
+                            { dataHash: '0xabc123...', type: '.cw (Log-Datei)', axiometixSize: '4.2 Giga-QuEkta (GQe)', vector: 'A:0.2|X:0.9|F:0.8', isProtected: true },
+                            { dataHash: '0xdef456...', type: '.cw (User-Profil)', axiometixSize: '1.3 Kilo-QuEkta (kQe)', vector: 'A:0.5|X:0.5|F:0.9', isProtected: false }
                         ]
                     };
-                    return new Promise(resolve => setTimeout(() => resolve(dummyData[this.view]), 800));
+                    return new Promise(resolve => setTimeout(() => resolve(dummyData[this.view]), 500));
                 }
                 
                 renderUI(data) {
+                    const isOwner = window.RFOF_Account && window.RFOF_Account.user && window.RFOF_Account.user.role === 'SATORAMY_PRIME';
+                    
                     let html = `
-                        <div class="explorer-controls">
-                            <button id="btn-ctc-view">CTC Explorer (Werte)</button>
-                            <button id="btn-axf-view">AXF Explorer (Daten)</button>
+                        <div class="explorer-header">
+                            <div class="explorer-controls">
+                                <button id="btn-ctc-view">CTC Explorer (Werte)</button>
+                                <button id="btn-axf-view">AXF Explorer (Daten)</button>
+                            </div>
+                            <div class="explorer-search">
+                               <input type="text" id="explorer-search-input" placeholder="Block, Hash, Adresse...">
+                               <button id="explorer-search-btn">Suchen</button>
+                            </div>
                         </div>
                         <div class="explorer-results">`;
 
                     if (this.view === 'CTC') {
-                        html += `<table><thead><tr><th>Tx Hash</th><th>Von</th><th>Nach</th><th>Wert</th><th>Integrität (Majorana)</th></tr></thead><tbody>`;
-                        data.forEach(tx => { html += `<tr><td>${tx.txHash}</td><td>${tx.from}</td><td>${tx.to}</td><td>${tx.value}</td><td>${tx.majoranaStatus}</td></tr>`; });
+                        html += `<table><thead><tr><th>Tx Hash</th><th>Von</th><th>Nach</th><th>Wert</th><th>Integrität</th></tr></thead><tbody>`;
+                        data.forEach(tx => {
+                            const fromLink = `<span class="hash-link" onclick="alert('Zeige Profil von ${tx.from}')">${tx.from}</span>`;
+                            const toLink = `<span class="hash-link" onclick="alert('Zeige Profil von ${tx.to}')">${tx.to}</span>`;
+                            html += `<tr><td>${tx.txHash}</td><td>${fromLink}</td><td>${toLink}</td><td>${tx.value}</td><td>${tx.majoranaStatus}</td></tr>`;
+                        });
                         html += `</tbody></table>`;
-                    } else {
-                        html += `<table><thead><tr><th>Daten-Hash</th><th>Typ</th><th>Axiometix Größe</th><th>Zustands-Vektor (A/X/F)</th></tr></thead><tbody>`;
-                        data.forEach(d => { html += `<tr><td>${d.dataHash}</td><td>${d.type}</td><td>${d.axiometixSize}</td><td>${d.vector}</td></tr>`; });
+                    } else { // AXF View
+                        html += `<table><thead><tr><th>Daten-Hash</th><th>Typ</th><th>Axiometix Größe</th><th>Zustands-Vektor</th></tr></thead><tbody>`;
+                        data.forEach(d => {
+                            let hashDisplay = d.dataHash;
+                            if(d.isProtected) {
+                                hashDisplay = isOwner 
+                                    ? `<span class="hash-link" onclick="alert('Zeige geschützte Daten von Hash ${d.dataHash}')">${d.dataHash} (Owner-Ansicht)</span>`
+                                    : `<span class="hash-link protected">${d.dataHash} (Geschützt)</span>`;
+                            }
+                            html += `<tr><td>${hashDisplay}</td><td>${d.type}</td><td>${d.axiometixSize}</td><td>${d.vector}</td></tr>`;
+                        });
                         html += `</tbody></table>`;
                     }
                     
                     html += `</div>`;
                     this.container.innerHTML = html;
                     this.addEventListeners();
-                    // Markiere den aktiven Button
-                    document.getElementById(this.view === 'CTC' ? 'btn-ctc-view' : 'btn-axf-view').classList.add('active');
                 }
 
                 addEventListeners() {
                     document.getElementById('btn-ctc-view').addEventListener('click', () => { this.view = 'CTC'; this.render(); });
                     document.getElementById('btn-axf-view').addEventListener('click', () => { this.view = 'AXF'; this.render(); });
+                    document.getElementById('explorer-search-btn').addEventListener('click', () => {
+                        const query = document.getElementById('explorer-search-input').value;
+                        this.search(query);
+                    });
                 }
                 
-                async render() {
+                async render(query = '') {
                     this.container.innerHTML = '<p style="text-align:center;">Lade Live-Daten von der BOxchain...</p>';
-                    const data = await this.fetchData('');
+                    const data = await this.fetchData(query);
                     this.renderUI(data);
                 }
             }
             
-            const target = document.getElementById('boxchain-explorer-target');
-            if (target) {
-                // Erstelle eine globale Instanz, damit die Suchfunktion darauf zugreifen kann
-                window.RFOF_Explorer = new BOxchainExplorer(target);
+            // Globale Instanzen erstellen und initialisieren
+            const explorerTarget = document.getElementById('boxchain-explorer-target');
+            if (explorerTarget) {
+                window.RFOF_Explorer = new BOxchainExplorer(explorerTarget);
                 window.RFOF_Explorer.init();
+            }
+
+            const accountTarget = document.getElementById('account-section');
+            if(accountTarget) {
+                window.RFOF_Account = new AccountSystem(accountTarget);
             }
         });
         //======================================================================
