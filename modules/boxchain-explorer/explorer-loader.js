@@ -1,4 +1,13 @@
 // explorer-loader.js
+/* Diese Stile werden vom loader.js dynamisch geladen und sind hier für die Vollständigkeit aufgeführt */
+#boxchain-explorer-target {
+    margin-top: 1rem;
+    padding: 1.5rem 2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+}
+/* ... Fügen Sie hier die restlichen, bereits definierten Explorer-Stile ein ... */
 
 // Diese globale Funktion wird vom main.js Orchestrator aufgerufen
 window.initExplorer = (targetElement) => {
