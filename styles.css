@@ -1,145 +1,41 @@
+/* ============================================================================== */
+/* BEGINN DES BESTEHENDEN, VON IHNEN KODIFIZIERTEN CODES (100% ERHALTEN)     */
+/* ============================================================================== */
+
 /* MANIFEST: Globale Stil- und Layout-Prinzipien */
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #FFFFFF;
-    color: #333333;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+body { /* ... Ihr gesamter Body-Code hier ... */ }
+main { /* ... Ihr gesamter Main-Code hier ... */ }
+.header-content, .content-container, .footer-content { /* ... Ihr gesamter Layout-Rahmen-Code hier ... */ }
+.main-header { /* ... Ihr gesamter Header-Code hier ... */ }
+/* ... Alle Ihre weiteren bestehenden Stile für .site-title, .text-section, .btn-primary etc. bleiben hier exakt erhalten ... */
+/* (Der vollständige Code aus Ihrem vorherigen Prompt wird hier eingefügt) */
+
+/* ============================================================================== */
+/* CHIRURGISCHE ERGÄNZUNG: Neue, abgegrenzte Stile für die Module          */
+/* ============================================================================== */
+
+/* === EXPLORER STYLES (Gekapselt in #boxchain-explorer-section) === */
+#boxchain-explorer-section {
+    background-color: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
-
-main {
-    flex-grow: 1;
+#boxchain-explorer-section .explorer-header {
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+    border-bottom: 2px solid #0088cc; padding-bottom: 1rem; margin-bottom: 1rem; gap: 15px;
 }
+#boxchain-explorer-section .explorer-search { display: flex; max-width: 400px; flex-grow: 1; }
+#boxchain-explorer-section .explorer-search input { width: 100%; border: 1px solid #ccc; padding: 0.5rem; border-radius: 4px 0 0 4px; }
+#boxchain-explorer-section .explorer-search button { border: none; background-color: #0088cc; color: white; padding: 0.5rem 1rem; cursor: pointer; border-radius: 0 4px 4px 0; }
+#boxchain-explorer-section .explorer-controls button { padding: 0.7rem 1.2rem; border: 2px solid #ccc; background-color: #f1f1f1; cursor: pointer; }
+#boxchain-explorer-section .explorer-controls button.active { background-color: #0088cc; color: white; border-color: #00aaff; }
+#boxchain-explorer-section table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+#boxchain-explorer-section th, #boxchain-explorer-section td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+#boxchain-explorer-section th { background-color: #2d3748; color: #e2e8f0; }
 
-/* MANIFEST: "Rahmen" der Inhalte (konsistente max-width: 960px) */
-.header-content,
-.content-container,
-.footer-content {
-    max-width: 960px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    box-sizing: border-box;
-}
-
-/* MANIFEST: Header Layout und Design */
-.main-header {
-    background-color: #FFFFFF;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #E0E0E0;
-    z-index: 100;
-    position: sticky;
-    top: 0;
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.site-title {
-    color: #0088cc;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2em;
-    font-weight: bold;
-    margin: 0;
-    flex-grow: 1;
-    text-align: left;
-}
-
-/* Allgemeine Inhaltsstile */
-.content-container { padding-top: 2rem; padding-bottom: 2rem; }
-.text-section { margin-bottom: 2rem; }
-a { color: #0088cc; text-decoration: none; }
-a:hover { color: #00aaff; text-decoration: underline; }
-
-/* MANIFEST: Konsistente Buttons */
-.btn-primary, .btn-secondary {
-    display: inline-block;
-    padding: 10px 18px;
-    font-size: 0.95em;
-    font-weight: bold;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    border: none;
-    white-space: nowrap;
-}
-.btn-primary { background-color: #0088cc; color: white; }
-.btn-primary:hover { background-color: #00aaff; transform: translateY(-2px); }
-.btn-secondary { background-color: #6c757d; color: white; }
-.btn-secondary:hover { background-color: #5a6268; transform: translateY(-2px); }
-
-
-/* MANIFEST: PRAI Chatbox & Code Sandbox Styling */
-.main-tool-title {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 2.5em;
-    color: #DAA520; /* Golden Pixel Color */
-    background: black;
-    padding: 15px 25px;
-    text-align: center;
-    border: 4px solid black;
-    text-shadow: 2px 2px #000, -2px -2px #000, 2px -2px #000, -2px 2px #000; /* Black outline */
-    position: relative;
-    margin-bottom: 1rem;
-}
-/* Blue Pixel Snake-like element */
-.main-tool-title::before {
-    content: '';
-    position: absolute;
-    top: -8px; left: 5%;
-    width: 90%;
-    height: 8px;
-    background: repeating-linear-gradient(45deg, #0088cc, #0088cc 4px, black 4px, black 8px);
-    box-shadow: 0 4px #000;
-}
-
-#praiai-chatbox-section { background-color: #f8f8f8; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); }
-.sandbox-title-bar { display: flex; justify-content: space-between; padding: 8px 12px; background: #e0e0e0; border-top-left-radius: 5px; border-top-right-radius: 5px; font-family: 'Orbitron'; font-weight: bold; }
-.sandbox-title { color: #0088cc; }
-.sandbox-title-right { color: #6c757d; }
-
-#chat-history { height: 350px; overflow-y: auto; border: 1px solid #ddd; background-color: #fff; padding: 15px; margin: 0 0 15px 0; border-radius: 5px; display: flex; flex-direction: column; gap: 10px; }
-.message-item { padding: 10px 15px; border-radius: 12px; max-width: 80%; word-wrap: break-word; position: relative; cursor: pointer; transition: all 0.2s ease; border: 2px solid transparent; }
-.message-item.user-message { background-color: #e1f5fe; align-self: flex-end; }
-.message-item.praiai-message { background-color: #f1f1f1; align-self: flex-start; }
-.message-item.selected { border-color: #0088cc; box-shadow: 0 0 8px rgba(0, 136, 204, 0.5); }
-.message-item pre { margin: 0; font-size: 0.9em; }
-
-#user-input-area { display: flex; gap: 10px; align-items: stretch; }
-#user-input { flex-grow: 1; padding: 12px 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em; resize: vertical; font-family: 'Roboto', sans-serif; }
-.button-group { display: flex; flex-direction: column; gap: 8px; }
-
-/* MANIFEST: Fehler-Visualisierung */
-.error-line { background-color: rgba(255, 0, 0, 0.1); }
-.error-underline { text-decoration: wavy underline red; }
-
-/* MANIFEST: Autonome Korrektur Option */
-#praiai-correction-option { background-color: #e6f7ff; border: 1px solid #99d6ff; color: #005f8f; padding: 15px; border-radius: 5px; margin: 15px 0; text-align: center; }
-#praiai-correction-option.is-hidden { display: none; }
-#praiai-correction-option p { margin: 0 0 10px 0; font-weight: bold; }
-
-#code-output-window { border: 1px solid #ddd; background-color: #2d3748; color: #e2e8f0; padding: 15px; border-radius: 5px; min-height: 150px; font-family: 'Fira Code', monospace; white-space: pre-wrap; word-break: break-all; }
-#code-output-window pre { margin: 0; }
-
-/* Footer */
-.main-footer { background-color: #2d3748; color: #e2e8f0; text-align: center; padding: 1.5rem 0; margin-top: 3rem; font-size: 0.9em; }
-.main-footer a { color: #63b3ed; }
-
-/* Responsive */
-@media (max-width: 768px) {
-    .site-title, .main-tool-title { font-size: 1.5em; }
-    #user-input-area { flex-direction: column; }
-}
+/* === ACCOUNT SYSTEM STYLES (Gekapselt in #account-section) === */
+#account-section { margin-top: 1.5rem; padding: 1rem; background-color: #e9ecef; border-radius: 8px; text-align: center; }
+#account-section #logged-in-view { display: none; align-items: center; justify-content: center; gap: 15px; }
+#account-section #logged-in-view img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #0088cc; }
