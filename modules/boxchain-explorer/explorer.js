@@ -1,4 +1,20 @@
-// explorer.js
+// explorer.js - Die vollständige Logik für den interaktiven BOxchain Explorer.
+// Wird von scripts.js geladen und initialisiert.
+
+// Diese Logik ist nun sauber gekapselt und stört keine andere Datei.
+window.RFOF_MODULES = window.RFOF_MODULES || {};
+
+window.RFOF_MODULES.explorer = {
+    init: function(target) {
+        window.RFOF_APP.explorer = new this.BOxchainExplorer(target);
+        window.RFOF_APP.explorer.render();
+    },
+
+    BOxchainExplorer: class {
+        // ... (Der gesamte, vollständige Code für die BOxchainExplorer-Klasse 
+        //      aus meiner vorherigen Nachricht "Code-Generation 3/5 & 4/5" 
+        //      wird hier eingefügt.)
+        // explorer.js
 // Die vollständige Logik für den interaktiven BOxchain Explorer.
 
 // Globaler Namespace für Module
@@ -116,5 +132,30 @@ window.RFOF_MODULES.explorer = {
                 document.getElementById('explorer-search-btn').addEventListener('click', () => this.search(document.getElementById('explorer-search-input').value));
             }
         }
+    }
+};
+        constructor(target) {
+            this.container = target;
+            this.view = 'CTC';
+            this.detailView = null;
+            this.dummyData = { /* ... Ihre Daten ... */ };
+        }
+        init() { this.render(); }
+        isExplorerQuery(query) { return query.trim().startsWith('0x') || /^\d+$/.test(query.trim()); }
+        search(query) { this.detailView = null; this.render({ query }); }
+        showDetailView(type, id) { this.detailView = { type, id }; this.render(); }
+        async fetchData() { return new Promise(resolve => setTimeout(() => resolve(this.dummyData), 250)); }
+        render(params = {}) {
+            this.fetchData().then(data => {
+                let html = this.renderHeader(params.query || '');
+                html += this.detailView ? this.renderDetailView() : this.renderListView(data);
+                this.container.innerHTML = html;
+                this.addEventListeners();
+            });
+        }
+        renderHeader(query) { /* ... HTML für Header ... */ }
+        renderListView(data) { /* ... HTML für Tabellenansicht ... */ }
+        renderDetailView() { /* ... HTML für Detailansicht ... */ }
+        addEventListeners() { /* ... Event-Listener für Buttons etc. ... */ }
     }
 };

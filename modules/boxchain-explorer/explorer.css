@@ -1,3 +1,9 @@
+/* Stile, die nur und ausschließlich für den Explorer gelten. */
+#boxchain-explorer-section .explorer-header {
+    display: flex;
+    justify-content: space-between;
+    /* ... alle weiteren, abgegrenzten Explorer-Stile ... */
+}
 /* Stile spezifisch für den BOxchain Explorer */
 .explorer-controls {
     margin-bottom: 1rem;
@@ -32,3 +38,14 @@
 .explorer-results th {
     background-color: #f2f2f2;
 }
+
+
+
+
+
+
+
+
+
+
+
