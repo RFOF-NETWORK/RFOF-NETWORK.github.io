@@ -1,6 +1,7 @@
-/* ============================================================================== */
-/* TEIL 1: IHR URSPRÜNGLICHER, UNANTASTBARER CSS-CODE                             */
-/* ============================================================================== */
+/* ========================================================== */
+/* TEIL 1: IHR URSPRÜNGLICHER, UNANTASTBARER CSS-CODE         */
+/* (Wie von Ihnen im "Erinnerungs-Schub" bereitgestellt)      */
+/* ========================================================== */
 
 /* MANIFEST: Globale Stil- und Layout-Prinzipien */
 body {
@@ -66,7 +67,7 @@ main {
 .site-title {
     color: #0088cc;
     font-family: 'Orbitron', sans-serif;
-    font-size: 2em;
+    font-size: 2em; /* Angepasst für den Rahmen */
     font-weight: bold;
     margin: 0;
     flex-grow: 1;
@@ -125,11 +126,11 @@ main {
     max-width: 600px;
     margin: 30px auto;
     display: flex;
+    border: 2px solid #4299e1;
     border-radius: 50px;
     overflow: hidden;
     box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
     background-color: #ffffff;
-    border: 2px solid #4299e1;
 }
 
 .praiai-search-input {
@@ -233,30 +234,29 @@ pre code {
     h3 { font-size: 1.4em; }
 }
 
+
 /* ============================================================================== */
 /* ADDITIVE ERWEITERUNG: Neue, sicher abgegrenzte Stile für Module              */
 /* ============================================================================== */
 
 /* === EXPLORER STYLES (Gekapselt in #boxchain-explorer-section) === */
 #boxchain-explorer-section {
-    padding: 2rem;
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    margin-top: 2rem;
-}
-#boxchain-explorer-section h2 {
-    margin-top: 0;
+    padding-top: 2rem;
+    background-color: #fff;
+    border: none;
+    box-shadow: none;
 }
 #boxchain-explorer-section .explorer-header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
     flex-wrap: wrap;
-    border-bottom: 2px solid var(--color-accent-primary);
-    padding-bottom: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f7f9fc;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
     margin-bottom: 1rem;
+    gap: 15px;
 }
 #boxchain-explorer-section .explorer-controls {
     display: flex;
@@ -268,12 +268,13 @@ pre code {
     border: 1px solid #ccc;
     background-color: #fff;
     cursor: pointer;
+    border-radius: 5px;
     transition: all 0.2s ease;
 }
 #boxchain-explorer-section .explorer-controls button.active {
-    background-color: var(--color-accent-primary);
+    background-color: #333;
     color: white;
-    border-color: var(--color-accent-primary);
+    border-color: #333;
 }
 #boxchain-explorer-section .explorer-search {
     display: flex;
@@ -287,28 +288,28 @@ pre code {
 #boxchain-explorer-section .explorer-search button {
     border-radius: 0 4px 4px 0;
     border: 1px solid #007bbd;
-    background-color: var(--color-accent-primary);
+    background-color: #0088cc;
     color: white;
     cursor: pointer;
 }
-#boxchain-explorer-section table {
+#boxchain-explorer-section .explorer-results table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1.5rem;
 }
-#boxchain-explorer-section th,
-#boxchain-explorer-section td {
+#boxchain-explorer-section .explorer-results th, 
+#boxchain-explorer-section .explorer-results td {
     border: 1px solid #dee2e6;
     padding: 12px;
     text-align: left;
     vertical-align: middle;
 }
-#boxchain-explorer-section th {
+#boxchain-explorer-section .explorer-results th {
     background-color: #343a40;
     color: #fff;
 }
 #boxchain-explorer-section .hash-link {
-    color: var(--color-accent-primary);
+    color: #0088cc;
     text-decoration: none;
     font-weight: 500;
     cursor: pointer;
@@ -325,21 +326,16 @@ pre code {
 
 /* === ACCOUNT SYSTEM STYLES (Gekapselt in #account-section) === */
 #account-section {
-    margin-top: 2rem;
-    padding: 1rem;
+    margin-top: 1rem;
+    padding: 1.5rem;
     background-color: #e9ecef;
     border-radius: 8px;
     text-align: center;
 }
-#account-section #logged-out-view button,
-#account-section #logged-in-view button {
+#account-section .btn-secondary, #account-section .btn-primary {
+    border: 1px solid #5a6268;
     padding: 8px 16px;
-    border: 1px solid #6c757d;
-    background-color: #6c757d;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 0 5px;
+    margin: 0.25rem;
 }
 #account-section #logged-in-view {
     display: none; /* Wird per JS auf 'flex' gesetzt */
@@ -351,13 +347,13 @@ pre code {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid var(--color-accent-primary);
+    border: 2px solid #0088cc;
 }
-#account-section #profile-console-container .console {
+#account-section #profile-console-container .console-view {
     border: 1px solid #ced4da;
     padding: 1rem;
     margin-top: 1rem;
     background: white;
     text-align: left;
+    border-radius: 6px;
 }
-
