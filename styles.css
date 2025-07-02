@@ -357,3 +357,56 @@ pre code {
     text-align: left;
     border-radius: 6px;
 }
+/* ============================================================================== */
+/* ADDITIVE ERWEITERUNG: Finale Layout- & Schönheits-Korrekturen (Version Zenith 10.0) */
+/* ============================================================================== */
+
+/* --- Korrektur für Header ("Anstoßen" beheben) --- */
+.header-content {
+    gap: 15px; /* Fügt einen Mindestabstand zwischen Logo, Titel und Menü ein */
+}
+
+/* --- Korrektur für den Explorer (Layout & Abstände) --- */
+#boxchain-explorer-section .explorer-header {
+    flex-wrap: wrap; /* Erlaubt sauberen Umbruch auf kleineren Bildschirmen */
+    gap: 1rem;       /* Abstand zwischen Control-Buttons und Suchleiste */
+}
+
+#boxchain-explorer-section .explorer-search {
+    flex-grow: 1;    /* Lässt die Suchleiste den verfügbaren Platz füllen */
+    min-width: 280px;/* Stellt sicher, dass die Suchleiste nicht zu klein wird */
+}
+
+#boxchain-explorer-section .explorer-results table {
+    margin-top: 1.5rem;
+    table-layout: fixed; /* Verbessert die Darstellung von Tabellen mit langen Inhalten */
+}
+
+#boxchain-explorer-section .explorer-results td {
+    word-break: break-word; /* Bricht lange Hashes sauber um */
+    vertical-align: middle;
+}
+
+/* --- Korrektur für das "dynamisch bewegend ladbar"-Gefühl --- */
+#boxchain-explorer-target, #account-section {
+    transition: opacity 0.5s ease-in-out; /* Lässt die Module sanft einblenden */
+}
+
+/* --- Korrektur für das Account-System-Layout --- */
+#account-section #logged-out-view button,
+#account-section #logged-in-view button {
+    /* Stellt sicher, dass Buttons auf kleinen Bildschirmen nicht zu groß sind */
+    padding: 8px 12px;
+    font-size: 0.9em;
+}
+
+#account-section #profile-console-container .console-view {
+    border: 1px solid #ced4da;
+    padding: 1rem;
+    margin-top: 1rem;
+    background: white;
+    text-align: left;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
