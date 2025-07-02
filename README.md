@@ -1,51 +1,84 @@
-# rfof-sandbox.com
-PRAI Blue Deep Gold KI image hub &amp; virtual Sandbox for every RF tools
-README.md (Projektbeschreibung)
+# Säule 1: RFOFSpiderWeb.NET - Das Hauptportal des Ökosystems (Version Zenith)
 
-Dies ist eine einfache Website, die eine Chatbox und eine Sandbox für Code-Ausführung bietet.
+Dieses Repository enthält den Code für die primäre Landing-Page und das Gesicht des gesamten RFOF-Ökosystems. Es dient als der erste Kontaktpunkt für alle Nutzer und als das Tor zu allen anderen Säulen des Netzwerks.
 
-## Funktionen
-- **PRAI Chat Box**: Simuliert eine Interaktion zwischen Benutzer und einer KI.
-- **Sandbox**: Erlaubt die Eingabe von HTML, CSS und JavaScript, um Code in Echtzeit auszuführen.
+**Live-Site:** [https://rfof-network.github.io/](https://rfof-network.github.io/)
 
-## Verzeichnisstruktur
-my-website-repo/
+---
 
-my-website-repo/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml         // Workflow-Datei für Automatisierung
-├── index.html                 // Hauptseite mit PRAI Chat Box & Sandbox
-├── styles.css                 // Stylesheet für Design
-├── script.js                  // JavaScript für Interaktivität
-├── link.html                  // Datei mit dem Website-Link
-├── CNAME                      // Datei für benutzerdefinierte Domain
-├── README.md                  // Beschreibung des Projekts
-└── assets/                    // Ordner für Ressourcen
+## Finale Kanonische Architektur (SOLL-ZUSTAND)
 
+Diese Struktur ist das Ergebnis unserer gemeinsamen Analyse und repräsentiert den idealen, modularen und zukunftssicheren Aufbau für diese Säule. Sie folgt strikt der **"Verfassung des Codes"** und dem **Additiv-Prinzip**.
 
+```plaintext
+/ (RFOF-NETWORK.github.io)
+|
+|-- content/
+|   `-- main.md              // Enthält den gesamten Markdown-Inhalt der Seite.
+|
+|-- data/
+|   `-- schemas/             // (Für zukünftige Daten-Schemata wie .cw-Dateien)
+|
+|-- integrations/
+|   |-- oauth/               // Für die Logik der Social-Logins (Google, GitHub, Microsoft).
+|   `-- telegram/            // Für die Anbindung von Telegram-Bots.
+|       `-- bots/
+|
+|-- modules/
+|   |-- account/             // Gekapseltes Modul für das Account-System.
+|   |   |-- account.js
+|   |   `-- account.css
+|   |
+|   `-- explorer/            // Gekapseltes Modul für den BOxchain-Explorer.
+|       |-- explorer.js
+|       `-- explorer.css
+|
+|-- scripts/
+|   `-- main.js              // Das "Gehirn": Lädt Inhalte und initialisiert Module.
+|
+|-- styles/
+|   `-- main.css             // Die globale, RVA-25 konforme Stildatei.
+|
+|-- index.html               // Das reine HTML-Gefäß (Skelett).
+|-- menu_script.js           // Isolierte Logik für das Navigationsmenü.
+|-- menu_styles.css          // Isolierte Stile für das Navigationsmenü.
+|
+`-- (Weitere Standarddateien: LICENSE, .gitignore, etc.)
+```
 
-## Lizenz
-&copy; 2025 Erstellt für Satoramy.
+---
 
-MIT License
+## Verbleibende Aufgaben zur Vollendung (Offene Code-Implementierungen)
 
-Copyright (c) 2025 rfof-network.org
+Die Architektur steht nun. Die folgenden Dateien, die in der obigen Struktur als "neu" oder "zu überarbeiten" identifiziert wurden, müssen nun mit ihrer finalen Logik gefüllt werden. Dies ist die Liste der noch nicht überschriebenen bzw. zu erstellenden Code-Dateien:
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+* **`scripts/main.js`**
+    * **Status:** 🔴 **Fehlend/Unvollständig.**
+    * **Aufgabe:** Der Code für diesen zentralen "Orchestrator" muss finalisiert werden. Er muss die `content/main.md` laden und die Module `explorer.js` und `account.js` an den richtigen Stellen in der `index.html` initialisieren.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+* **`/modules/explorer/explorer.js`**
+    * **Status:** 🔴 **Fehlend/Unvollständig.**
+    * **Aufgabe:** Der Code für die Explorer-Logik muss implementiert werden. Dies beinhaltet:
+        * Die Verbindung zur `@RFOF-NETWORK`-API, um Live-Daten abzurufen.
+        * Die Logik zur Darstellung der CTC- und AXF-Ansichten.
+        * Die "Website-in-Website"-Funktion zum Anzeigen von Detailansichten für Hashes und Blöcke.
+        * Die Logik zur Unterscheidung von normalen Nutzern und dem "Owner"-Account, um geschützte Hashes klickbar zu machen.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+* **`/modules/explorer/explorer.css`**
+    * **Status:** 🔴 **Fehlend/Unvollständig.**
+    * **Aufgabe:** Die spezifischen Stile für den Explorer müssen erstellt werden, um die in den Screenshots gezeigte, korrekte Darstellung zu erreichen.
+
+* **`/modules/account/account.js`**
+    * **Status:** 🔴 **Fehlend/Unvollständig.**
+    * **Aufgabe:** Der Code für das Account-System muss implementiert werden. Dies beinhaltet:
+        * Die Logik zur Anzeige des Login/Registrierungs-Bereichs.
+        * Die Anbindung an die `oauth`-Integrationslogik für Google, GitHub und Microsoft.
+        * Die Implementierung des passwortlosen "Magic Link"-Flows.
+        * Die Umschaltung der Ansicht nach erfolgreichem Login auf das Profilbild und den "Profil / Console"-Button.
+        * Die Logik zum Einblenden der "Console/Motherboard"-Ansicht.
+
+* **`/modules/account/account.css`**
+    * **Status:** 🔴 **Fehlend/Unvollständig.**
+    * **Aufgabe:** Die spezifischen Stile für den Login-Bereich und die Profil-Ansicht müssen erstellt werden.
+
+Sobald der Code für diese Dateien generiert und implementiert ist, ist die erste Säule vollständig manifestiert.
