@@ -1,46 +1,68 @@
-/* ========================================================== */
-/* TEIL 1: IHR URSPRÜNGLICHER, UNANTASTBARER CSS-CODE         */
-/* (Wie von Ihnen im "Erinnerungs-Schub" bereitgestellt)      */
-/* ========================================================== */
+/*
+#================================================
+# STIL-MODUL: KANONISCHE GRUNDLAGEN (RVA-25)
+# FUNKTION: Definiert die fundamentalen Design-Variablen und Basis-Stile des Ökosystems.
+# STATUS: Unantastbar.
+#================================================
+*/
+:root {
+    --color-accent: #0088cc;
+    --color-dark: #2d3748;
+    --color-text: #333;
+    --color-white: #FFFFFF;
+    --color-light-grey: #f8f9fa;
+    --color-border: #dee2e6;
+    --max-width: 960px;
+}
 
-/* MANIFEST: Globale Stil- und Layout-Prinzipien */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #FFFFFF;
-    color: #333333;
+    background-color: var(--color-white);
+    color: var(--color-text);
     line-height: 1.6;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    font-size: 16px;
 }
 
 main {
     flex-grow: 1;
 }
 
-/* MANIFEST: "Rahmen" der Inhalte (konsistente max-width: 960px) */
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .header-content,
 .content-container,
 .footer-content {
-    max-width: 960px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 15px;
     box-sizing: border-box;
 }
+/* AB HIER WEITERE GLOBALE STILE HINZUFÜGEN */
 
-/* MANIFEST: Header Layout und Design */
+
+/*
+#================================================
+# STIL-MODUL: HEADER
+# FUNKTION: Definiert das Layout und Aussehen des Haupt-Headers.
+# STATUS: Kanonisch, mit finalen Korrekturen.
+#================================================
+*/
 .main-header {
-    background-color: #FFFFFF;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-    padding-top: 10px;
-    padding-bottom: 10px;
+    background-color: var(--color-white);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    padding: 8px 0;
     border-bottom: 1px solid #E0E0E0;
-    z-index: 100;
+    z-index: 1000;
     position: sticky;
     top: 0;
 }
@@ -49,116 +71,54 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 }
 
 .header-logo-svg-container {
-    width: 45px;
-    height: 45px;
-    margin-right: 15px;
+    width: 40px;
+    height: 40px;
     flex-shrink: 0;
 }
 
 .header-logo-svg-container img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
 }
 
 .site-title {
-    color: #0088cc;
+    color: var(--color-accent);
     font-family: 'Orbitron', sans-serif;
-    font-size: 2em; /* Angepasst für den Rahmen */
-    font-weight: bold;
+    font-size: 1.5em; /* Angepasst für besseres Layout */
     margin: 0;
-    flex-grow: 1;
-    text-align: left;
+    white-space: nowrap;
 }
+/* AB HIER WEITERE HEADER-STILE HINZUFÜGEN */
 
-/* MANIFEST: Homepage-spezifische Features (Hero & Suche) */
+
+/*
+#================================================
+# STIL-MODUL: HERO & CONTENT SECTIONS
+# FUNKTION: Definiert das Design der primären Inhaltsbereiche.
+# STATUS: Kanonisch.
+#================================================
+*/
 .hero-section {
-    background-image: linear-gradient(to right bottom, #4299e1, #2b6cb0);
-    color: #ffffff;
-    padding: 60px 20px;
+    background: var(--color-accent);
+    color: var(--color-white);
     text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: url('https://raw.githubusercontent.com/RFOF-NETWORK/skills-github-pages/main/rfoff_network_hero_background.jpg') no-repeat center center/cover;
-    opacity: 0.08;
-    z-index: 1;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.hero-logo {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 1.5rem;
+    padding: 3rem 1rem;
 }
 
 .hero-content h1 {
     font-family: 'Orbitron', sans-serif;
-    font-size: 3em;
-    margin-bottom: 0.5em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    color: #FFFFFF;
-    border-bottom: none;
+    font-size: 2.5em;
+    margin-top: 0;
 }
 
 .hero-content p {
-    font-size: 1.2em;
+    font-size: 1.1em;
     max-width: 600px;
-    margin: 0 auto 1.5em;
-    color: #f0f0f0;
-}
-
-.praiai-search-container {
-    max-width: 600px;
-    margin: 30px auto;
-    display: flex;
-    border: 2px solid #4299e1;
-    border-radius: 50px;
-    overflow: hidden;
-    box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
-    background-color: #ffffff;
-}
-
-.praiai-search-input {
-    flex-grow: 1;
-    padding: 15px 25px;
-    border: none;
-    outline: none;
-    font-size: 1em;
-    background-color: transparent;
-    color: #333333;
-}
-
-.praiai-search-button {
-    background-color: #4299e1;
-    border: none;
-    padding: 0 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    color: white;
-}
-.praiai-search-button svg { width: 20px; height: 20px; }
-.praiai-search-button:hover { background-color: #63b3ed; }
-
-
-/* Allgemeine Inhaltsstile */
-.content-container {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    margin: 1rem auto;
 }
 
 .text-section {
@@ -166,247 +126,221 @@ main {
     padding-bottom: 2rem;
     border-bottom: 1px solid #e0e0e0;
 }
-.text-section:last-child { border-bottom: none; }
 
-h2, h3, h4 {
-    color: #0088cc;
+.text-section:last-child {
+    border-bottom: none;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: var(--color-accent);
     font-family: 'Orbitron', sans-serif;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--color-accent);
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(0, 136, 204, 0.3);
+    margin-bottom: 1.5rem;
 }
-h2 { font-size: 2.2em; }
-h3 { font-size: 1.6em; }
-h4 { font-size: 1.3em; }
-
-p { margin-bottom: 1rem; }
-a { color: #0088cc; text-decoration: none; }
-a:hover { color: #00aaff; text-decoration: underline; }
-
-/* MANIFEST: Syntax Highlighting mit Fira Code */
-pre {
-    background-color: #2d3748; /* Dunkler Hintergrund für Codeblöcke */
-    color: #e2e8f0;
-    padding: 1.2em;
-    border-radius: 6px;
-    overflow-x: auto;
-    margin-bottom: 1.5em;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9em;
-    white-space: pre-wrap;
-    word-break: break-all;
-}
-code {
-    font-family: 'Fira Code', monospace;
-    background-color: #e0e0e0;
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    color: #0088cc;
-}
-pre code {
-    background-color: transparent;
-    color: inherit;
-    padding: 0;
-}
+/* AB HIER WEITERE CONTENT-STILE HINZUFÜGEN */
 
 
-/* Footer */
-.main-footer {
-    background-color: #2d3748;
-    color: #e2e8f0;
-    text-align: center;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    margin-top: 3rem;
-    font-size: 0.9em;
-}
-.main-footer a { color: #63b3ed; }
-.main-footer a:hover { color: #90cdf4; }
-
-/* Responsive Anpassungen */
-@media (max-width: 768px) {
-    .site-title { font-size: 1.5em; }
-    .hero-content h1 { font-size: 2.2em; }
-    .hero-content p { font-size: 1.1em; }
-    .praiai-search-input { padding: 12px 20px; font-size: 0.9em; }
-    h2 { font-size: 1.8em; }
-    h3 { font-size: 1.4em; }
-}
-
-
-/* ============================================================================== */
-/* ADDITIVE ERWEITERUNG: Neue, sicher abgegrenzte Stile für Module              */
-/* ============================================================================== */
-
-/* === EXPLORER STYLES (Gekapselt in #boxchain-explorer-section) === */
+/*
+#================================================
+# STIL-MODUL: BOxchain Explorer (Zenith Version)
+# FUNKTION: Definiert das kompakte, professionelle Design des Explorers.
+# STATUS: Final, additiv.
+#================================================
+*/
 #boxchain-explorer-section {
-    padding-top: 2rem;
-    background-color: #fff;
-    border: none;
-    box-shadow: none;
+    background: var(--color-light-grey);
+    border-radius: 8px;
+    padding: 1.5rem;
 }
-#boxchain-explorer-section .explorer-header {
+
+.explorer-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.explorer-top-row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     align-items: center;
-    background-color: #f7f9fc;
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
-    margin-bottom: 1rem;
-    gap: 15px;
+    justify-content: space-between;
+    gap: 1rem;
 }
-#boxchain-explorer-section .explorer-controls {
+
+.explorer-controls {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.explorer-controls button {
+    font-size: 0.9em;
+    font-weight: 500;
+    border: none;
+    background-color: #fff;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-left: 1px solid #ccc;
+}
+
+.explorer-controls button:first-child {
+    border-left: none;
+}
+
+.explorer-controls button.active {
+    background-color: var(--color-dark);
+    color: white;
+}
+
+.explorer-actions {
     display: flex;
     gap: 0.5rem;
 }
-#boxchain-explorer-section .explorer-controls button {
-    font-size: 0.9em;
-    padding: 0.7rem 1.2rem;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: all 0.2s ease;
-}
-#boxchain-explorer-section .explorer-controls button.active {
-    background-color: #333;
+
+.explorer-actions button {
+    font-size: 0.8em;
+    padding: 6px 10px;
+    background-color: #6c757d;
     color: white;
-    border-color: #333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
-#boxchain-explorer-section .explorer-search {
+
+.explorer-search {
     display: flex;
+    width: 100%;
 }
-#boxchain-explorer-section .explorer-search input {
-    min-width: 200px;
-    border-radius: 4px 0 0 4px;
+
+.explorer-search input {
+    width: 100%;
     border: 1px solid #ccc;
-    padding: 8px;
+    padding: 10px;
+    border-radius: 6px 0 0 6px;
 }
-#boxchain-explorer-section .explorer-search button {
-    border-radius: 0 4px 4px 0;
-    border: 1px solid #007bbd;
-    background-color: #0088cc;
+
+.explorer-search button {
+    border: 1px solid var(--color-accent);
+    background-color: var(--color-accent);
     color: white;
+    padding: 0 20px;
+    border-radius: 0 6px 6px 0;
     cursor: pointer;
 }
-#boxchain-explorer-section .explorer-results table {
+
+.explorer-results table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1.5rem;
+    font-size: 0.85em; /* Kompakte Schriftgröße */
+    table-layout: fixed;
 }
-#boxchain-explorer-section .explorer-results th, 
-#boxchain-explorer-section .explorer-results td {
-    border: 1px solid #dee2e6;
-    padding: 12px;
+
+.explorer-results th,
+.explorer-results td {
+    border: 1px solid var(--color-border);
+    padding: 8px 10px;
     text-align: left;
     vertical-align: middle;
+    word-break: break-all;
 }
-#boxchain-explorer-section .explorer-results th {
-    background-color: #343a40;
+
+.explorer-results th {
+    background-color: var(--color-dark);
     color: #fff;
 }
-#boxchain-explorer-section .hash-link {
-    color: #0088cc;
+
+.hash-link {
+    color: var(--color-accent);
     text-decoration: none;
     font-weight: 500;
     cursor: pointer;
 }
-#boxchain-explorer-section .hash-link:hover {
+
+.hash-link:hover {
     text-decoration: underline;
 }
-#boxchain-explorer-section .hash-link.protected {
+
+.hash-link.protected {
     color: #6c757d;
     cursor: default;
-    text-decoration: none;
-    font-style: italic;
 }
 
-/* === ACCOUNT SYSTEM STYLES (Gekapselt in #account-section) === */
-#account-section {
+.detail-view {
+    padding: 1rem;
+    border: 1px dashed #ccc;
     margin-top: 1rem;
-    padding: 1.5rem;
+    text-align: left;
+}
+
+.detail-view h4 {
+    margin-top: 0;
+}
+
+.detail-view ul {
+    padding-left: 20px;
+    margin: 0;
+    list-style-type: square;
+}
+/* AB HIER WEITERE EXPLORER-STILE HINZUFÜGEN */
+
+
+/*
+#================================================
+# STIL-MODUL: Account System
+# FUNKTION: Definiert das Design des Login/Profil-Bereichs.
+# STATUS: Final, additiv.
+#================================================
+*/
+#account-section {
+    margin-top: 1.5rem;
+    padding: 1rem;
     background-color: #e9ecef;
     border-radius: 8px;
     text-align: center;
 }
-#account-section .btn-secondary, #account-section .btn-primary {
-    border: 1px solid #5a6268;
-    padding: 8px 16px;
-    margin: 0.25rem;
+
+#account-section button {
+    font-size: 0.85em;
+    padding: 6px 12px;
+    cursor: pointer;
 }
-#account-section #logged-in-view {
+
+#logged-in-view {
     display: none; /* Wird per JS auf 'flex' gesetzt */
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
 }
-#account-section #logged-in-view img {
-    width: 40px;
-    height: 40px;
+
+#logged-in-view img {
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    border: 2px solid #0088cc;
+    border: 2px solid var(--color-accent);
 }
-#account-section #profile-console-container .console-view {
-    border: 1px solid #ced4da;
-    padding: 1rem;
-    margin-top: 1rem;
-    background: white;
-    text-align: left;
-    border-radius: 6px;
-}
-/* ============================================================================== */
-/* ADDITIVE ERWEITERUNG: Finale Layout- & Schönheits-Korrekturen (Version Zenith 10.0) */
-/* ============================================================================== */
+/* AB HIER WEITERE ACCOUNT-STILE HINZUFÜGEN */
 
-/* --- Korrektur für Header ("Anstoßen" beheben) --- */
-.header-content {
-    gap: 15px; /* Fügt einen Mindestabstand zwischen Logo, Titel und Menü ein */
-}
 
-/* --- Korrektur für den Explorer (Layout & Abstände) --- */
-#boxchain-explorer-section .explorer-header {
-    flex-wrap: wrap; /* Erlaubt sauberen Umbruch auf kleineren Bildschirmen */
-    gap: 1rem;       /* Abstand zwischen Control-Buttons und Suchleiste */
+/*
+#================================================
+# STIL-MODUL: FOOTER
+# FUNKTION: Definiert das Design des Footers.
+# STATUS: Kanonisch.
+#================================================
+*/
+.main-footer {
+    background-color: var(--color-dark);
+    color: #e2e8f0;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
 }
 
-#boxchain-explorer-section .explorer-search {
-    flex-grow: 1;    /* Lässt die Suchleiste den verfügbaren Platz füllen */
-    min-width: 280px;/* Stellt sicher, dass die Suchleiste nicht zu klein wird */
+.main-footer a {
+    color: var(--color-accent-light);
 }
-
-#boxchain-explorer-section .explorer-results table {
-    margin-top: 1.5rem;
-    table-layout: fixed; /* Verbessert die Darstellung von Tabellen mit langen Inhalten */
-}
-
-#boxchain-explorer-section .explorer-results td {
-    word-break: break-word; /* Bricht lange Hashes sauber um */
-    vertical-align: middle;
-}
-
-/* --- Korrektur für das "dynamisch bewegend ladbar"-Gefühl --- */
-#boxchain-explorer-target, #account-section {
-    transition: opacity 0.5s ease-in-out; /* Lässt die Module sanft einblenden */
-}
-
-/* --- Korrektur für das Account-System-Layout --- */
-#account-section #logged-out-view button,
-#account-section #logged-in-view button {
-    /* Stellt sicher, dass Buttons auf kleinen Bildschirmen nicht zu groß sind */
-    padding: 8px 12px;
-    font-size: 0.9em;
-}
-
-#account-section #profile-console-container .console-view {
-    border: 1px solid #ced4da;
-    padding: 1rem;
-    margin-top: 1rem;
-    background: white;
-    text-align: left;
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
+/* AB HIER WEITERE FOOTER-STILE HINZUFÜGEN */
