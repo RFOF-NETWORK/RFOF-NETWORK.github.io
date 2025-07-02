@@ -1,4 +1,4 @@
-# Säule 1: RFOFSpiderWeb.NET - Das Hauptportal des Ökosystems (Version Zenith)
+# Säule 1: RFOFSpiderWeb.NET - Das Hauptportal des Ökosystems
 
 Dieses Repository enthält den Code für die primäre Landing-Page und das Gesicht des gesamten RFOF-Ökosystems. Es dient als der erste Kontaktpunkt für alle Nutzer und als das Tor zu allen anderen Säulen des Netzwerks.
 
@@ -6,45 +6,49 @@ Dieses Repository enthält den Code für die primäre Landing-Page und das Gesic
 
 ---
 
-## Finale Kanonische Architektur (SOLL-ZUSTAND)
+## Finale Architektur (SOLL-ZUSTAND - Version Zenith 9.0)
 
-Diese Struktur ist das Ergebnis unserer gemeinsamen Analyse und repräsentiert den idealen, modularen und zukunftssicheren Aufbau für diese Säule. Sie folgt strikt der **"Verfassung des Codes"** und dem **Additiv-Prinzip**.
+Dieses Repository folgt der kanonischen Architektur des RFOF-Ökosystems. Die Struktur ist darauf ausgelegt, eine stabile, von Satoramy J.K. entworfene Basis (`index.html`, `styles.css` etc.) zu bewahren und gleichzeitig durch eine zentrale `scripts.js`-Datei unendlich erweiterbar zu sein.
 
 ```plaintext
 / (RFOF-NETWORK.github.io)
 |
+|-- .github/
+|   `-- workflows/
+|       `-- pages.yml       // (Beispiel für GitHub Pages Deployment)
+|
 |-- content/
-|   `-- main.md              // Enthält den gesamten Markdown-Inhalt der Seite.
+|   `-- main.md             // (Für zukünftige, dynamisch geladene Inhalte)
 |
 |-- data/
-|   `-- schemas/             // (Für zukünftige Daten-Schemata wie .cw-Dateien)
+|   `-- schemas/            // (Für .cw Daten-Schemata)
 |
 |-- integrations/
-|   |-- oauth/               // Für die Logik der Social-Logins (Google, GitHub, Microsoft).
-|   `-- telegram/            // Für die Anbindung von Telegram-Bots.
-|       `-- bots/
+|   |-- oauth/              // (Für die Logik der Social Logins)
+|   `-- telegram/           // (Für die Anbindung von TG BOX'S)
 |
 |-- modules/
-|   |-- account/             // Gekapseltes Modul für das Account-System.
-|   |   |-- account.js
-|   |   `-- account.css
-|   |
-|   `-- explorer/            // Gekapseltes Modul für den BOxchain-Explorer.
-|       |-- explorer.js
-|       `-- explorer.css
+|   |-- explorer/
+|   |   |-- explorer.js
+|   |   `-- explorer.css
+|   `-- account/
+|       |-- account.js
+|       `-- account.css
 |
-|-- scripts/
-|   `-- main.js              // Das "Gehirn": Lädt Inhalte und initialisiert Module.
+|-- index.html              // Das Haupt-HTML-Dokument (unantastbare Basis).
+|-- styles.css              // Die Haupt-Stildatei (wird nur additiv erweitert).
+|-- menu_styles.css         // Dedizierte Stile für das globale Menü.
+|-- menu_script.js          // Dedizierte Logik für das globale Menü.
+|-- scripts.js              // Das "Gehirn" der Seite, lädt und steuert alle Module.
 |
-|-- styles/
-|   `-- main.css             // Die globale, RVA-25 konforme Stildatei.
-|
-|-- index.html               // Das reine HTML-Gefäß (Skelett).
-|-- menu_script.js           // Isolierte Logik für das Navigationsmenü.
-|-- menu_styles.css          // Isolierte Stile für das Navigationsmenü.
-|
-`-- (Weitere Standarddateien: LICENSE, .gitignore, etc.)
+|-- .gitignore              // Definiert von Git zu ignorierende Dateien.
+|-- .nojekyll               // Wichtige Datei, um GitHub Pages zu signalisieren, die Seite ohne Jekyll zu bauen.
+`-- CNAME                   // Definiert die Custom Domain (z.B. rfof-network.org), sobald diese aufgeschaltet ist.
 ```
+
+### Funktionsweise
+
+Die `index.html` bleibt in ihrer Grundstruktur erhalten. Neue, interaktive Funktionen wie der **BOxchain Explorer** und das **Account-System** werden nicht durch Umbau, sondern durch die `scripts.js`-Datei realisiert, die die notwendigen Module aus dem `/modules`-Ordner in die dafür vorgesehenen Container in der `index.html` lädt. Dies ist die Manifestation des **Additiv-Prinzips**.
 
 ---
 
