@@ -1,16 +1,7 @@
-/* ========================================================== */
-/* Ihr gesamter ursprünglicher CSS-Code für Header, Hero, etc. */
-/* ========================================================== */
-body {
-    font-family: 'Roboto', sans-serif;
-    /* ... etc. ... */
-}
-.hero-section {
-    background-image: linear-gradient(to right bottom, #4299e1, #2b6cb0);
-    /* ... etc. ... */
-}
+/* ============================================================================== */
+/* TEIL 1: IHR URSPRÜNGLICHER, UNANTASTBARER CSS-CODE                             */
+/* ============================================================================== */
 
-/* ... (Ihr kompletter Original-CSS-Code hier) ... */
 /* MANIFEST: Globale Stil- und Layout-Prinzipien */
 body {
     font-family: 'Roboto', sans-serif;
@@ -75,7 +66,7 @@ main {
 .site-title {
     color: #0088cc;
     font-family: 'Orbitron', sans-serif;
-    font-size: 2em; /* Angepasst für den Rahmen */
+    font-size: 2em;
     font-weight: bold;
     margin: 0;
     flex-grow: 1;
@@ -134,11 +125,11 @@ main {
     max-width: 600px;
     margin: 30px auto;
     display: flex;
-    border: 2px solid #4299e1;
     border-radius: 50px;
     overflow: hidden;
     box-shadow: 0 0 15px rgba(66, 153, 225, 0.7);
     background-color: #ffffff;
+    border: 2px solid #4299e1;
 }
 
 .praiai-search-input {
@@ -242,19 +233,131 @@ pre code {
     h3 { font-size: 1.4em; }
 }
 
+/* ============================================================================== */
+/* ADDITIVE ERWEITERUNG: Neue, sicher abgegrenzte Stile für Module              */
+/* ============================================================================== */
 
-/* ========================================================== */
-/* ADDITIVE ERWEITERUNG: Stile für die neuen Module           */
-/* ========================================================== */
-
+/* === EXPLORER STYLES (Gekapselt in #boxchain-explorer-section) === */
+#boxchain-explorer-section {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+#boxchain-explorer-section h2 {
+    margin-top: 0;
+}
 #boxchain-explorer-section .explorer-header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    /* ... etc. alle Explorer-Stile ... */
+    gap: 1rem;
+    flex-wrap: wrap;
+    border-bottom: 2px solid var(--color-accent-primary);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+#boxchain-explorer-section .explorer-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+#boxchain-explorer-section .explorer-controls button {
+    font-size: 0.9em;
+    padding: 0.7rem 1.2rem;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+#boxchain-explorer-section .explorer-controls button.active {
+    background-color: var(--color-accent-primary);
+    color: white;
+    border-color: var(--color-accent-primary);
+}
+#boxchain-explorer-section .explorer-search {
+    display: flex;
+}
+#boxchain-explorer-section .explorer-search input {
+    min-width: 200px;
+    border-radius: 4px 0 0 4px;
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+#boxchain-explorer-section .explorer-search button {
+    border-radius: 0 4px 4px 0;
+    border: 1px solid #007bbd;
+    background-color: var(--color-accent-primary);
+    color: white;
+    cursor: pointer;
+}
+#boxchain-explorer-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+}
+#boxchain-explorer-section th,
+#boxchain-explorer-section td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+#boxchain-explorer-section th {
+    background-color: #343a40;
+    color: #fff;
+}
+#boxchain-explorer-section .hash-link {
+    color: var(--color-accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+#boxchain-explorer-section .hash-link:hover {
+    text-decoration: underline;
+}
+#boxchain-explorer-section .hash-link.protected {
+    color: #6c757d;
+    cursor: default;
+    text-decoration: none;
+    font-style: italic;
 }
 
+/* === ACCOUNT SYSTEM STYLES (Gekapselt in #account-section) === */
 #account-section {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     padding: 1rem;
-    /* ... etc. alle Account-Stile ... */
+    background-color: #e9ecef;
+    border-radius: 8px;
+    text-align: center;
 }
+#account-section #logged-out-view button,
+#account-section #logged-in-view button {
+    padding: 8px 16px;
+    border: 1px solid #6c757d;
+    background-color: #6c757d;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+#account-section #logged-in-view {
+    display: none; /* Wird per JS auf 'flex' gesetzt */
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+#account-section #logged-in-view img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--color-accent-primary);
+}
+#account-section #profile-console-container .console {
+    border: 1px solid #ced4da;
+    padding: 1rem;
+    margin-top: 1rem;
+    background: white;
+    text-align: left;
+}
+
