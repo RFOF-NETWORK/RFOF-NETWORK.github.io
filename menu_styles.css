@@ -1,17 +1,23 @@
-/* MANIFEST: Dropdown-Menü (Globale Navigation) */
+/*
+#================================================
+# STIL-MODUL: Globale Navigation (Hamburger-Menü)
+# FUNKTION: Definiert das Aussehen und das responsive Verhalten des Hauptmenüs.
+# STATUS: Kanonisch, unverändert.
+#================================================
+*/
 
 .navbar {
+    position: relative;
     display: flex;
     align-items: center;
-    margin-left: auto; /* Positioniert die Navbar rechts */
 }
 
 .hamburger-icon {
-    display: none; /* Auf Desktop ausgeblendet */
+    display: none;
     flex-direction: column;
     justify-content: space-around;
-    width: 28px;
-    height: 24px;
+    width: 24px;
+    height: 20px;
     cursor: pointer;
     z-index: 1001;
 }
@@ -19,7 +25,7 @@
 .hamburger-icon .bar {
     width: 100%;
     height: 3px;
-    background-color: #0088cc; /* Baby Blau */
+    background-color: #0088cc;
     border-radius: 2px;
     transition: all 0.3s ease-in-out;
 }
@@ -29,27 +35,28 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex; /* Horizontale Liste auf Desktop */
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .nav-list li a {
     color: #333333;
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 8px 12px;
     display: block;
     font-weight: 500;
-    font-size: 0.95em;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 0.9em;
     border-radius: 4px;
+    transition: background-color 0.2s ease;
 }
 
 .nav-list li a:hover {
-    background-color: rgba(0, 136, 204, 0.1);
-    color: #0088cc;
+    background-color: rgba(0, 136, 204, 0.05);
 }
 
-/* Mobile Navigation */
-@media (max-width: 900px) { /* Breiterer Breakpoint für Menü */
+/* Mobile Navigation - wird bei Bedarf per JS sichtbar gemacht */
+@media (max-width: 960px) {
     .hamburger-icon {
         display: flex;
     }
@@ -57,17 +64,16 @@
     .nav-list {
         display: none;
         flex-direction: column;
-        width: 280px;
         position: fixed;
         top: 0;
         right: -280px; /* Startet außerhalb des Bildschirms */
-        height: 100%;
+        width: 280px;
+        height: 100vh;
         background-color: #2d3748; /* Dunkelgrau/Schwarz für mobiles Menü */
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.4);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
         z-index: 1000;
-        transition: right 0.3s ease-in-out;
         padding-top: 60px;
-        border-left: 1px solid #4a5568;
+        transition: right 0.35s ease-in-out;
     }
 
     .nav-list.active {
@@ -77,16 +83,17 @@
 
     .nav-list li {
         width: 100%;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .nav-list li:last-child { border-bottom: none; }
 
     .nav-list li a {
-        padding: 18px 25px;
-        text-align: left;
         color: #e2e8f0; /* Heller Text für dunklen Hintergrund */
         font-weight: bold;
+        padding: 18px 25px;
+        border-bottom: 1px solid #4a5568;
         border-radius: 0;
+    }
+    .nav-list li:last-child a {
+        border-bottom: none;
     }
 
     .nav-list li a:hover {
@@ -94,14 +101,16 @@
         color: #63b3ed;
     }
     
-    .hamburger-icon.active {
-        position: fixed;
-        right: 20px;
-        top: 22px; /* Position anpassen an Header-Höhe */
+    /* Animation für das Hamburger-Icon zu einem "X" */
+    .hamburger-icon.active .bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
     }
-
-    /* Hamburger "X" Animation */
-    .hamburger-icon.active .bar:nth-child(2) { opacity: 0; }
-    .hamburger-icon.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .hamburger-icon.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .hamburger-icon.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-icon.active .bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
 }
+/* AB HIER WEITERE MENÜ-STILE HINZUFÜGEN */
+
