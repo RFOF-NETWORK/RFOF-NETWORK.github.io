@@ -5,74 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>RFOFSpiderWeb.NET - The New Internet</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Orbitron:wght@700&family=Fira+Code&display=swap" rel="stylesheet">
 
     <style>
-        /* IHR URSPRÜNGLICHER CODE - 100% ERHALTEN */
-        body { font-family: 'Roboto', sans-serif; background-color: #FFFFFF; color: #333333; line-height: 1.6; margin: 0; padding: 0; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
-        main { flex-grow: 1; }
-        .header-content, .content-container, .footer-content { max-width: 960px; margin: 0 auto; padding: 0 15px; box-sizing: border-box; }
-        .main-header { background-color: #FFFFFF; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07); padding: 10px 0; border-bottom: 1px solid #E0E0E0; z-index: 100; position: sticky; top: 0; }
-        .header-content { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-        .header-logo-svg-container { width: 45px; height: 45px; flex-shrink: 0; }
-        .header-logo-svg-container img { width: 100%; height: 100%; }
-        .site-title { color: #0088cc; font-family: 'Orbitron', sans-serif; font-size: 1.8em; margin: 0; white-space: nowrap; }
-        
-        /* IHR URSPRÜNGLICHES MENÜ-STYLING - 100% ERHALTEN */
-        .navbar { position: relative; }
-        .hamburger-icon { display: none; flex-direction: column; justify-content: space-around; width: 28px; height: 24px; cursor: pointer; z-index: 1001; }
-        .hamburger-icon .bar { width: 100%; height: 3px; background-color: #0088cc; border-radius: 2px; transition: all 0.3s ease-in-out; }
-        .nav-list { list-style: none; margin: 0; padding: 0; display: flex; }
-        .nav-list li a { color: #333333; text-decoration: none; padding: 8px 12px; display: block; font-weight: 500; }
-        @media (max-width: 960px) {
-            .hamburger-icon { display: flex; }
-            .nav-list { display: none; flex-direction: column; position: absolute; top: 40px; right: 0; width: 250px; background-color: #2d3748; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1000; }
-            .nav-list.active { display: flex; }
-            .nav-list li a { color: #e2e8f0; padding: 15px 20px; }
+        :root {
+            --color-accent: #0088cc;
+            --color-accent-light: #63b3ed;
+            --color-dark: #2d3748;
+            --color-light: #e2e8f0;
+            --color-text: #333;
+            --color-white: #FFFFFF;
+            --max-width: 960px;
         }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--color-white); color: var(--color-text); line-height: 1.6; margin: 0; padding: 0; overflow-x: hidden; font-size: 16px; }
+        main { flex-grow: 1; }
+        .header-content, .content-container, .footer-content { max-width: var(--max-width); margin: 0 auto; padding: 0 15px; box-sizing: border-box; }
+        .main-header { background-color: var(--color-white); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08); padding: 8px 0; border-bottom: 1px solid #e0e0e0; z-index: 100; position: sticky; top: 0; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+        .header-logo-svg-container { width: 40px; height: 40px; flex-shrink: 0; }
+        .header-logo-svg-container img { width: 100%; height: 100%; }
+        .site-title { color: var(--color-accent); font-family: 'Orbitron', sans-serif; font-size: 1.5em; margin: 0; white-space: nowrap; flex-shrink: 1; min-width: 0; }
+        .navbar { position: relative; }
+        .hamburger-icon { display: none; flex-direction: column; justify-content: space-around; width: 24px; height: 20px; cursor: pointer; z-index: 1001; }
+        .hamburger-icon .bar { width: 100%; height: 3px; background-color: var(--color-accent); border-radius: 2px; transition: all 0.3s ease-in-out; }
+        .nav-list { list-style: none; margin: 0; padding: 0; display: flex; }
+        .nav-list li a { color: var(--color-text); text-decoration: none; padding: 8px 12px; display: block; font-weight: 500; font-size: 0.9em; }
+        
+        .hero-section { background: var(--color-accent); color: var(--color-white); text-align: center; padding: 3rem 1rem; }
+        .hero-content h1 { font-family: 'Orbitron', sans-serif; font-size: 2.2em; }
+        .hero-content p { font-size: 1.1em; max-width: 600px; margin: 1rem auto; }
+        .praiai-search-container { max-width: 550px; margin: 2rem auto; display: flex; background-color: var(--color-white); border-radius: 50px; overflow: hidden; }
+        .praiai-search-input { flex-grow: 1; padding: 12px 20px; border: none; outline: none; font-size: 1em; color: var(--color-text); }
+        .praiai-search-button { background-color: var(--color-accent-light); border: none; padding: 0 20px; cursor: pointer; color: var(--color-white); }
+        .praiai-search-button svg { width: 18px; height: 18px; }
 
-        /* IHR URSPRÜNGLICHES HERO-DESIGN - 100% ERHALTEN */
-        .hero-section { background: #0088cc; color: white; text-align: center; padding: 4rem 1rem; }
-        .hero-content { display: flex; flex-direction: column; align-items: center; }
-        .hero-logo { width: 100px; height: 100px; margin-bottom: 1rem; }
-        .hero-content h1 { font-family: 'Orbitron', sans-serif; font-size: 2.5em; }
-        .hero-content p { font-size: 1.2em; max-width: 600px; }
-        .praiai-search-container { max-width: 600px; margin: 30px auto; display: flex; background-color: #ffffff; border-radius: 50px; overflow: hidden; border: 2px solid #63b3ed; box-shadow: 0 0 15px rgba(100, 180, 240, 0.7); }
-        .praiai-search-input { flex-grow: 1; padding: 15px 25px; border: none; outline: none; font-size: 1em; color: #333; }
-        .praiai-search-button { background-color: #0088cc; border: none; padding: 0 25px; cursor: pointer; color: white; }
-        .praiai-search-button svg { width: 20px; height: 20px; }
-
-        /* IHR URSPRÜNGLICHER TEXT-STIL - 100% ERHALTEN */
         .text-section { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e0e0; }
         .text-section:last-child { border-bottom: none; }
-        h2 { font-size: 2.2em; color: #0088cc; font-family: 'Orbitron', sans-serif; border-bottom: 1px solid rgba(0, 136, 204, 0.3); padding-bottom: 0.5rem; }
-        pre { background-color: #2d3748; color: #e2e8f0; padding: 1.2em; border-radius: 6px; overflow-x: auto; }
-        code { font-family: 'Fira Code', monospace; }
-        .main-footer { background-color: #2d3748; color: #e2e8f0; text-align: center; padding: 1.5rem 0; margin-top: 3rem; }
-        .main-footer a { color: #63b3ed; }
-
-        /* ADDITIVE STILE ZUR KORREKTUR UND ERWEITERUNG */
-        #boxchain-explorer-section { background: #f8f9fa; border-radius: 8px; padding: 2rem; }
+        h2 { font-size: 1.8em; color: var(--color-accent); font-family: 'Orbitron', sans-serif; border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+        
+        /* EXPLORER & ACCOUNT STYLES - FINAL VERSION */
+        #boxchain-explorer-section { background: #f8f9fa; border-radius: 8px; padding: 1.5rem; }
         .explorer-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
         .explorer-controls { display: flex; border: 1px solid #ccc; border-radius: 6px; overflow: hidden; }
-        .explorer-controls button { font-size: 1em; font-weight: 500; border: none; background-color: #fff; padding: 10px 20px; cursor: pointer; transition: background-color 0.2s ease; }
-        .explorer-controls button.active { background-color: #343a40; color: white; }
+        .explorer-controls button { font-size: 0.9em; font-weight: 500; border: none; background-color: #fff; padding: 8px 15px; cursor: pointer; }
+        .explorer-controls button.active { background-color: var(--color-dark); color: white; }
         .explorer-search { display: flex; }
-        .explorer-search input { border: 1px solid #ccc; padding: 10px; border-radius: 6px 0 0 6px; min-width: 300px; }
-        .explorer-search button { border: 1px solid #0088cc; background-color: #0088cc; color: white; padding: 0 20px; border-radius: 0 6px 6px 0; cursor: pointer; }
-        .explorer-results table { width: 100%; border-collapse: collapse; }
-        .explorer-results th, .explorer-results td { border: 1px solid #dee2e6; padding: 12px 15px; text-align: left; vertical-align: middle; }
-        .explorer-results th { background-color: #343a40; color: #fff; }
-        .explorer-results td { background-color: #fff; }
-        .hash-link { color: #0088cc; text-decoration: none; font-weight: 500; cursor: pointer; }
+        .explorer-search input { border: 1px solid #ccc; padding: 8px; border-radius: 6px 0 0 6px; min-width: 250px; }
+        .explorer-search button { border: 1px solid var(--color-accent); background-color: var(--color-accent); color: white; padding: 0 15px; border-radius: 0 6px 6px 0; cursor: pointer; }
+        .explorer-actions { display: flex; gap: 0.5rem; }
+        .explorer-actions button { font-size: 0.8em; padding: 6px 10px; background-color: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .explorer-results table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.9em; }
+        .explorer-results th, .explorer-results td { border: 1px solid #dee2e6; padding: 8px 10px; text-align: left; vertical-align: middle; }
+        .explorer-results th { background-color: var(--color-dark); color: var(--color-light); }
+        .hash-link { color: var(--color-accent); text-decoration: none; font-weight: 500; cursor: pointer; }
         .hash-link:hover { text-decoration: underline; }
-        .hash-link.protected { color: #6c757d; cursor: default; font-style: italic; }
-        #account-section { margin-top: 2rem; padding: 1.5rem; background-color: #e9ecef; border-radius: 8px; text-align: center; }
-        #logged-in-view { display: none; align-items: center; justify-content: center; gap: 15px; }
-        #logged-in-view img { width: 40px; height: 40px; border-radius: 50%; }
-        .detail-view { padding: 1.5rem; border: 1px dashed #ccc; margin-top: 1.5rem; }
-        .console-view { border: 1px solid #ced4da; padding: 1rem; margin-top: 1rem; background: white; text-align: left; border-radius: 6px; }
+        .hash-link.protected { color: #6c757d; cursor: default; }
+        #account-section { margin-top: 1.5rem; padding: 1rem; background-color: #e9ecef; border-radius: 8px; text-align: center; }
+        #logged-in-view { display: none; align-items: center; justify-content: center; gap: 10px; }
+        #logged-in-view img { width: 32px; height: 32px; border-radius: 50%; }
+        .detail-view { padding: 1rem; border: 1px dashed #ccc; margin-top: 1rem; text-align: left; }
+        .main-footer { background-color: var(--color-dark); color: var(--color-light); text-align: center; padding: 1.5rem 0; margin-top: 3rem; }
+        .main-footer a { color: var(--color-accent-light); }
 
+        @media (max-width: 960px) {
+            .hamburger-icon { display: flex; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); }
+            .nav-list { display: none; flex-direction: column; position: fixed; top: 0; right: -280px; width: 280px; height: 100vh; background-color: var(--color-dark); padding-top: 60px; z-index: 1000; transition: right 0.3s ease; }
+            .nav-list.active { right: 0; }
+            .nav-list li a { color: var(--color-light); padding: 15px 25px; }
+        }
     </style>
 </head>
 <body>
@@ -85,21 +85,10 @@
             <h1 class="site-title">RFOFSpiderWeb.NET</h1>
             <nav class="navbar">
                 <div class="hamburger-icon" id="hamburger">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div>
                 </div>
                 <ul class="nav-list" id="navLinks">
-                    <li><a href="https://rfof-network.github.io/">RFOFSpiderWeb.NET</a></li>
-                    <li><a href="https://rfof-network-ready-for-our-future.github.io/RFOF-spider-NET-/">Ready Four Our Future</a></li>
-                    <li><a href="https://qch-l-c.github.io/PRAI-KI-/">PRAI-OS</a></li>
-                    <li><a href="https://rfof-network.github.io/RFOF-NETWORK/">RFOF-NETWORK</a></li>
-                    <li><a href="https://rfof-network.github.io/Comprensive-rfof-bitcoin.org-PRAI-BOx-Blockchain-System_Programm-Fusions-Reactor-System/">RPFOF</a></li>
-                    <li><a href="https://rfof-network-ready-for-our-future.github.io/QCHC/">QCH-L-C</a></li>
-                    <li><a href="https://rfof-network.github.io/Crypto-Hustler/">rfof-bitcoin.org</a></li>
-                    <li><a href="https://rfof-network.github.io/DDEUGGP/">Golden Times</a></li>
-                    <li><a href="https://rfof-network.github.io/RFOF-x-PRAI_DOC_Ready-For-Our-Future/">DOC's & FAQ's</a></li>
-                </ul>
+                    </ul>
             </nav>
         </div>
     </header>
@@ -113,9 +102,7 @@
                 <div class="praiai-search-container">
                     <input type="text" id="praiai-search-input" class="praiai-search-input" placeholder="Search the BOxchain or the web with PRAI..." onkeydown="if(event.key === 'Enter') RFOF_APP.performGlobalSearch();">
                     <button class="praiai-search-button" onclick="RFOF_APP.performGlobalSearch()" aria-label="Search">
-                        <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                            <path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
-                        </svg>
+                        <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg>
                     </button>
                 </div>
             </div>
@@ -124,14 +111,12 @@
         <div class="content-container">
             <section id="about" class="text-section">
                 <h2>About RFOFSpiderWeb.NET</h2>
-                <p>We strive to enhance The Open Network (TON) and foster the growth of games and capital, enabling TON to draw energy from all other decentralized Chains or Networks. Our aim is to win the Telegram Blockchain Contest, with missions focused on Bridging our RFOF NETWORK to serve as an extension of the TON Chain. Let's grow!</p>
-                <p>RFOFSpiderWeb.NET is designed to become the new internet, providing a secure operating environment for all private and public clouds, internet services, web apps, dApps, AI tools, Blockchains, and Quantum Ready Security.</p>
+                <p>We strive to enhance The Open Network (TON)...</p>
             </section>
             
             <section id="vision-mission" class="text-section">
                 <h2>Vision & Mission: The AXF Token</h2>
-                <p>Our core vision is to enable true <strong>telekinetic interaction</strong> via <strong>PRAI PZQQET AXIOMATIKX</strong>. This involves intercepting and encrypting all data remnants, then securely incinerating them to mint resilient, genuine tokens: the <strong>AXF Token (ABillity XP Fps Token)</strong>. This process transforms data residue into tangible matter or recycled NDT mass.</p>
-                <p>We are building an internet where data waste fuels a new decentralized economy, empowering users with unprecedented control and security. This platform will serve as the <strong>central hub for all our projects</strong>.</p>
+                <p>Our core vision is to enable true <strong>telekinetic interaction</strong>...</p>
             </section>
 
             <section id="boxchain-explorer-section" class="text-section">
@@ -142,19 +127,14 @@
     </main>
 
     <footer class="main-footer">
-        <div class="footer-content">
-            <p>&copy; 2025 RFOF-NETWORK. All rights reserved.</p>
-            <p><a href="https://github.com/RFOF-NETWORK/RFOF-NETWORK.github.io" target="_blank">GitHub Repository</a></p>
-        </div>
-    </footer>
+        </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
 
         const RFOF_APP = {};
 
-        // ################### MENU LOGIC ###################
+        // ############# MENU LOGIC #############
         const hamburger = document.getElementById('hamburger');
         const navList = document.getElementById('navLinks');
         if (hamburger && navList) {
@@ -162,19 +142,18 @@
                 e.stopPropagation();
                 navList.classList.toggle('active');
             });
+            document.addEventListener('click', (e) => {
+                if (navList.classList.contains('active') && !navList.contains(e.target) && !hamburger.contains(e.target)) {
+                    navList.classList.remove('active');
+                }
+            });
         }
-        document.addEventListener('click', (e) => {
-            if (navList && navList.classList.contains('active') && !navList.contains(e.target) && !hamburger.contains(e.target)) {
-                navList.classList.remove('active');
-            }
-        });
 
-        // ################### ACCOUNT SYSTEM LOGIC ###################
+        // ############# ACCOUNT SYSTEM LOGIC #############
         class AccountSystem {
-            constructor(target) { this.container = target; this.user = null; this.init(); }
+             constructor(target) { this.container = target; this.user = null; this.init(); }
             init() { this.render(); }
             login(type, isOwner = false) {
-                // In einer echten App würde hier der OAuth-Flow oder ein API-Call stattfinden
                 this.user = isOwner ? 
                     { name: 'Satoramy', email: 'rfof236286@gmail.com', role: 'SATORAMY_PRIME', pfp: 'https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK/main/assets/rotating_cyber_brain.svg' } :
                     { name: 'User_42', email: 'user@example.com', role: 'USER', pfp: `https://avatar.vercel.sh/${Math.random()}.svg?text=U` };
@@ -188,16 +167,15 @@
             }
             renderLoggedOutView() {
                 return `
-                    <div id="logged-out-view" style="text-align:center;">
-                        <p>Loggen Sie sich ein, um alle Features freizuschalten.</p>
+                    <div id="logged-out-view">
                         <button onclick="RFOF_APP.account.login('GitHub')">Mit GitHub</button>
                         <button onclick="RFOF_APP.account.login('Google')">Mit Google</button>
                         <button onclick="RFOF_APP.account.login('Microsoft')">Mit Microsoft</button>
                     </div>`;
             }
             renderLoggedInView() {
-                return `
-                    <div id="logged-in-view" style="display:flex; align-items:center; justify-content:center; gap:15px;">
+                 return `
+                    <div id="logged-in-view" style="display:flex;">
                         <img src="${this.user.pfp}" alt="Profilbild">
                         <span>Willkommen, <strong>${this.user.name}</strong></span>
                         <button id="profile-btn">Profil / Console</button>
@@ -208,63 +186,63 @@
                 const consoleContainer = document.getElementById('profile-console-container');
                 if (consoleContainer.innerHTML === '') {
                     const consoleTitle = this.user.role === 'SATORAMY_PRIME' ? 'Mothership-Konsole' : 'RFOF-Console';
-                    consoleContainer.innerHTML = `<div class="console-view"><h4>${consoleTitle}</h4><p>Account: ${this.user.email}</p><button id="logout-btn">Logout</button></div>`;
+                    consoleContainer.innerHTML = `<div class="detail-view"><h4>${consoleTitle}</h4><p>Account: ${this.user.email}</p><button id="logout-btn">Logout</button></div>`;
                     document.getElementById('logout-btn').addEventListener('click', () => this.logout());
                 } else { consoleContainer.innerHTML = ''; }
             }
-            addEventListeners() {
-                if (this.user) {
-                    document.getElementById('profile-btn').addEventListener('click', () => this.toggleProfileConsole());
-                }
-            }
+            addEventListeners() { if (this.user) { document.getElementById('profile-btn').addEventListener('click', () => this.toggleProfileConsole()); } }
         }
 
-        // ################### BOxCHAIN EXPLORER LOGIC ###################
+        // ############# BOxCHAIN EXPLORER LOGIC #############
         class BOxchainExplorer {
             constructor(target) {
                 this.container = target; this.view = 'CTC'; this.detailView = null;
                 this.dummyData = {
                     'CTC': [
-                        { txHash: '0x42abc...', from: '0xSatoramy...', to: '0xDAO...', value: '1,000,000 Bubatz-Coin', majoranaStatus: '✅ Geschützt' },
-                        { txHash: '0x00def...', from: '0xBridge...', to: '0xUserWallet...', value: '1.2 rBTC', majoranaStatus: '✅ Geschützt' }
+                        { txHash: '0x42abc...', from: '0xSatoramy...', to: '0xDAO...', value: '1,000,000 Bubatz-Coin', majoranaStatus: '✅ Geschützt', subHash: '0xsubC1...' },
+                        { txHash: 'ARC-GEN-001', from: 'Bitcoin-Genesis', to: 'RFOF-Bridge', value: '21,000,000 rBTC', majoranaStatus: '✅ Kanonisiert' },
+                        { txHash: 'ARC-FUS-001', from: 'TON-Bridge', to: 'RFOF-Bridge', value: '420,000 rTON', majoranaStatus: '✅ Kanonisiert' },
+                        { txHash: 'ARC-GFS-001', from: 'Satoramy', to: 'RFOF-Kernel', value: '1 Einheit (BOx)', majoranaStatus: '⚛️ Fusioniert' }
                     ],
                     'AXF': [
-                        { dataHash: '0xabc123...', type: '.cw (Log-Datei)', axiometixSize: '4.2 Giga-QuEkta', vector: 'A:0.2|X:0.9|F:0.8', isProtected: true },
-                        { dataHash: '0xdef456...', type: '.cw (User-Profil)', axiometixSize: '1.3 Kilo-QuEkta', vector: 'A:0.5|X:0.5|F:0.9', isProtected: false }
+                        { dataHash: '0xabc123...', type: '.cw (Log-Datei)', axiometixSize: '4.2 GQe', vector: 'A:0.2|X:0.9|F:0.8', isProtected: true, subHashes: Array(10).fill(0).map((_,i) => `0xsubA${i}...`) },
+                        { dataHash: '0xdef456...', type: '.cw (User-Profil)', axiometixSize: '1.3 kQe', vector: 'A:0.5|X:0.5|F:0.9', isProtected: false, subHashes: Array(10).fill(0).map((_,i) => `0xsubB${i}...`) }
                     ]
                 };
             }
             init() { this.render(); }
-            isExplorerQuery(query) { return query.trim().startsWith('0x') || /^\d+$/.test(query.trim()); }
             search(query) { this.detailView = null; this.render({ query }); }
             showDetailView(type, id) { this.detailView = { type, id }; this.render(); }
-            async fetchData() { return new Promise(resolve => setTimeout(() => resolve(this.dummyData), 250)); }
+            async fetchData() { return new Promise(resolve => setTimeout(() => resolve(this.dummyData), 150)); }
             
             render(params = {}) {
-                let html = this.renderHeader(params.query || '');
-                if (this.detailView) {
-                    html += this.renderDetailView();
-                } else {
-                    this.fetchData().then(data => {
-                        this.container.innerHTML = this.renderHeader(params.query || '') + this.renderListView(data);
-                        this.addEventListeners();
-                    });
-                    return;
-                }
-                this.container.innerHTML = html;
-                this.addEventListeners();
+                 this.fetchData().then(data => {
+                    let html = this.renderHeader(params.query || '');
+                    if (this.detailView) {
+                        html += this.renderDetailView();
+                    } else {
+                        html += this.renderListView(data);
+                    }
+                    this.container.innerHTML = html;
+                    this.addEventListeners();
+                });
             }
             
             renderHeader(query) {
                 return `
+                    <h2>BOxchain RF&lt;-Explore-viewer-&gt;OF</h2>
                     <div class="explorer-header">
                         <div class="explorer-controls">
-                            <button id="btn-ctc-view">CTC Explorer (Werte)</button>
-                            <button id="btn-axf-view">AXF Explorer (Daten)</button>
+                            <button id="btn-ctc-view">CTC Explorer</button>
+                            <button id="btn-axf-view">AXF Explorer</button>
                         </div>
                         <div class="explorer-search">
                            <input type="text" id="explorer-search-input-internal" placeholder="Suche im Explorer..." value="${query}">
                            <button id="explorer-search-btn">Suchen</button>
+                        </div>
+                        <div class="explorer-actions">
+                            <button onclick="alert('Token-Kreations-Modul wird geöffnet...')">Token Kreieren</button>
+                            <button onclick="alert('Minting-Prozess wird gestartet...')">Minten</button>
                         </div>
                     </div>`;
             }
@@ -275,14 +253,15 @@
                 if (this.view === 'CTC') {
                     tableHtml = `<table><thead><tr><th>Tx Hash</th><th>Von</th><th>Nach</th><th>Wert</th><th>Integrität</th></tr></thead><tbody>`;
                     data.CTC.forEach(tx => {
-                        tableHtml += `<tr><td><span class="hash-link" onclick="RFOF_APP.explorer.showDetailView('Transaktion', '${tx.txHash}')">${tx.txHash}</span></td><td><span class="hash-link" onclick="RFOF_APP.explorer.showDetailView('Adresse', '${tx.from}')">${tx.from}</span></td><td><span class.hash-link" onclick="RFOF_APP.explorer.showDetailView('Adresse', '${tx.to}')">${tx.to}</span></td><td>${tx.value}</td><td>${tx.majoranaStatus}</td></tr>`;
+                        const hashDisplay = `<span class="hash-link" onclick="RFOF_APP.explorer.showDetailView('Transaktion', '${tx.txHash}')">${tx.txHash.substring(0,10)}...</span>`;
+                        tableHtml += `<tr><td>${hashDisplay}</td><td>${tx.from.substring(0,10)}...</td><td>${tx.to.substring(0,10)}...</td><td>${tx.value}</td><td>${tx.majoranaStatus}</td></tr>`;
                     });
                 } else {
                     tableHtml = `<table><thead><tr><th>Daten-Hash</th><th>Typ</th><th>Axiometix Größe</th><th>Zustand (A/X/F)</th></tr></thead><tbody>`;
                     data.AXF.forEach(d => {
                         let hashDisplay = d.isProtected 
-                            ? (isOwner ? `<span class="hash-link" onclick="RFOF_APP.explorer.showDetailView('Daten', '${d.dataHash}')">${d.dataHash} (Owner)</span>` : `<span class="hash-link protected">${d.dataHash} (Geschützt)</span>`)
-                            : `<span class="hash-link" onclick="RFOF_APP.explorer.showDetailView('Daten', '${d.dataHash}')">${d.dataHash}</span>`;
+                            ? (isOwner ? `<span class="hash-link" onclick="RFOF_APP.explorer.showDetailView('Daten', '${d.dataHash}')">${d.dataHash.substring(0,10)}... (Owner)</span>` : `<span class="hash-link protected">${d.dataHash.substring(0,10)}... (Geschützt)</span>`)
+                            : `<span class="hash-link" onclick="RFOF_APP.explorer.showDetailView('Daten', '${d.dataHash}')">${d.dataHash.substring(0,10)}...</span>`;
                         tableHtml += `<tr><td>${hashDisplay}</td><td>${d.type}</td><td>${d.axiometixSize}</td><td>${d.vector}</td></tr>`;
                     });
                 }
@@ -290,44 +269,42 @@
             }
 
             renderDetailView() {
+                let detailContent = `<p>Spezifische Live-Daten für ${this.detailView.type} <strong>${this.detailView.id}</strong> werden geladen...</p>`;
+                if (this.detailView.type === 'Daten') {
+                    const item = this.dummyData.AXF.find(d => d.dataHash === this.detailView.id);
+                    if (item && item.subHashes) {
+                        detailContent += '<h4>Verknüpfte Hashes:</h4><ul>';
+                        item.subHashes.forEach(sh => { detailContent += `<li>${sh}</li>`; });
+                        detailContent += '</ul>';
+                    }
+                }
                 return `<div class="explorer-results detail-view">
-                            <button id="back-to-list-btn">← Zurück</button>
-                            <h3>Detailansicht: ${this.detailView.id}</h3>
-                            <p>Live-Daten für ${this.detailView.type} werden geladen...</p>
+                            <h3>Detailansicht</h3>
+                            <div>${detailContent}</div>
+                            <button id="back-to-list-btn" style="margin-top: 1rem;">← Zurück zur Übersicht</button>
                         </div>`;
             }
 
             addEventListeners() {
-                if(this.detailView) {
+                if (this.detailView) {
                      document.getElementById('back-to-list-btn').addEventListener('click', () => { this.detailView = null; this.render(); });
                 } else {
-                    document.getElementById('btn-ctc-view').addEventListener('click', () => { if(this.view !== 'CTC') { this.view = 'CTC'; this.render(); } });
-                    document.getElementById('btn-axf-view').addEventListener('click', () => { if(this.view !== 'AXF') { this.view = 'AXF'; this.render(); } });
+                    document.getElementById('btn-ctc-view').addEventListener('click', () => { this.view = 'CTC'; this.render(); });
+                    document.getElementById('btn-axf-view').addEventListener('click', () => { this.view = 'AXF'; this.render(); });
                     document.getElementById('explorer-search-btn').addEventListener('click', () => this.search(document.getElementById('explorer-search-input-internal').value));
+                    document.getElementById(this.view === 'CTC' ? 'btn-ctc-view' : 'btn-axf-view').classList.add('active');
                 }
             }
         }
 
         // ################### INITIALISIERUNG & GLOBALE FUNKTIONEN ###################
-        const explorerTarget = document.getElementById('boxchain-explorer-target');
-        if (explorerTarget) {
-            RFOF_APP.explorer = new BOxchainExplorer(explorerTarget);
-            RFOF_APP.explorer.init();
-        }
         const accountTarget = document.getElementById('account-section');
-        if(accountTarget) {
-            RFOF_APP.account = new AccountSystem(accountTarget);
-        }
+        if(accountTarget) RFOF_APP.account = new AccountSystem(accountTarget);
         
-        window.performPraiaiSearch = () => {
-            const query = document.getElementById('praiai-search-input').value;
-            if (RFOF_APP.explorer && RFOF_APP.explorer.isExplorerQuery(query)) {
-                RFOF_APP.explorer.search(query);
-            } else {
-                window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
-            }
-        };
-        window.RFOF_APP = RFOF_APP;
+        const explorerTarget = document.getElementById('boxchain-explorer-target');
+        if (explorerTarget) RFOF_APP.explorer = new BOxchainExplorer(explorerTarget);
+        
+        window.RFOF_APP = RFOF_APP; // Mache die App global verfügbar
     });
     </script>
 </body>
