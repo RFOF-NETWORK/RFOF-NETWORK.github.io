@@ -417,3 +417,139 @@ pre code {
     border-radius: 50%;
     border: 2px solid #0088cc;
 }
+/*
+#================================================
+# FINALES STABILITÄTS-PROTOKOLL (ZENITH CSS V11.0)
+# FUNKTION: Härtet das Layout, behebt visuelle Fehler und perfektioniert die Ästhetik.
+# STATUS: Additive Erweiterung.
+#================================================
+*/
+
+/* --- Universelle Regel 1: Intelligentes Box-Modell --- */
+/* Dies stellt sicher, dass Padding und Border niemals die Gesamtbreite eines Elements sprengen. */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* --- Universelle Regel 2: Kompakte & Lesbare Typografie --- */
+/* Macht Schriftgrößen flüssig und passt sie an die Bildschirmbreite an. */
+body {
+    font-size: 15px; /* Eine etwas kompaktere Grundschriftgröße */
+}
+h1 { font-size: clamp(2em, 5vw, 2.8em); } /* Skaliert zwischen 2em und 2.8em */
+h2 { font-size: clamp(1.5em, 4vw, 2em); } /* Skaliert zwischen 1.5em und 2em */
+p { font-size: 0.95em; line-height: 1.65; }
+
+/* --- Korrektur 1: Der Header ("NET anstoßen") --- */
+/* Gibt dem Titel Raum zum Atmen und verhindert, dass er das Menü verdrängt. */
+.header-content {
+    gap: 1rem;
+}
+.site-title {
+    flex-shrink: 1; /* Erlaubt dem Titel bei Bedarf zu schrumpfen */
+    min-width: 0;   /* Verhindert Überlaufen in Flexbox */
+}
+@media (max-width: 960px) {
+    .hamburger-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .nav-list {
+        padding-top: 50px; /* Gibt dem Menü oben etwas mehr Platz */
+    }
+}
+
+
+/* --- Korrektur 2: Der Explorer (Finale "Tonviewer"-Ästhetik) --- */
+/* Macht den Explorer kompakt, ordentlich und dynamisch. */
+#boxchain-explorer-section {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+.explorer-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.explorer-top-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.explorer-controls {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+    align-self: flex-start;
+}
+.explorer-controls button {
+    font-size: 0.85em; /* Kompakter */
+    font-weight: 500;
+    border: none;
+    background-color: #fff;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-left: 1px solid #ccc;
+    white-space: nowrap;
+}
+.explorer-controls button:first-child { border-left: none; }
+.explorer-controls button.active { background-color: #343a40; color: white; }
+
+.explorer-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-self: flex-start;
+}
+.explorer-actions button {
+    font-size: 0.8em;
+    padding: 6px 12px;
+}
+.explorer-search {
+    display: flex;
+    width: 100%;
+}
+.explorer-search input {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 6px 0 0 6px;
+    font-size: 0.9em;
+}
+.explorer-search button {
+    padding: 0 20px;
+}
+.explorer-results table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em; /* Kompakter */
+    table-layout: auto; /* Lässt Spalten atmen */
+}
+.explorer-results th, 
+.explorer-results td {
+    padding: 10px; /* Etwas mehr Luft */
+}
+/* Korrektur für "Integrität"-Spalte */
+.explorer-results th:last-child,
+.explorer-results td:last-child {
+    text-align: center;
+    width: 120px; /* Feste Breite, um Umbruch zu verhindern */
+}
+
+/* --- Korrektur 3: Das Account-System --- */
+#account-section #logged-in-view {
+    font-size: 0.9em; /* Kompakter */
+}
+#account-section #logged-in-view button {
+    font-size: 0.9em; /* Passt sich an */
+}
