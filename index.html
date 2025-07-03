@@ -3,7 +3,44 @@
 <head>
     <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
+  
+    <style>
+        /* --- IHR KANONISCHER CODE (100% ERHALTEN) --- */
+        body { font-family: 'Roboto', sans-serif; background-color: #FFFFFF; color: #333333; line-height: 1.6; margin: 0; padding: 0; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+        main { flex-grow: 1; }
+        .header-content, .content-container, .footer-content { max-width: 960px; margin: 0 auto; padding: 0 15px; box-sizing: border-box; }
+        .main-header { background-color: #FFFFFF; box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 10px 0; border-bottom: 1px solid #E0E0E0; z-index: 1000; position: sticky; top: 0; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+        .header-logo-svg-container { width: 40px; height: 40px; flex-shrink: 0; }
+        .header-logo-svg-container img { width: 100%; height: 100%; }
+        .site-title { color: #0088cc; font-family: 'Orbitron', sans-serif; font-size: 1.5em; margin: 0; white-space: nowrap; }
+        .navbar { position: relative; margin-left: auto; }
+        .hamburger-icon { display: none; flex-direction: column; justify-content: space-around; width: 24px; height: 20px; cursor: pointer; z-index: 1001; }
+        .hamburger-icon .bar { width: 100%; height: 3px; background-color: #0088cc; border-radius: 2px; transition: all 0.3s ease-in-out; }
+        .nav-list { list-style: none; margin: 0; padding: 0; display: flex; }
+        .nav-list li a { color: #333333; text-decoration: none; padding: 8px 12px; display: block; font-weight: 500; font-size: 0.9em; }
+        .hero-section { background: #0088cc; color: white; text-align: center; padding: 3rem 1rem; }
+        .hero-content h1 { font-family: 'Orbitron', sans-serif; font-size: 2.5em; }
+        .hero-content p { font-size: 1.1em; max-width: 600px; margin: 1rem auto; }
+        .praiai-search-container { max-width: 550px; margin: 2rem auto; display: flex; background-color: #ffffff; border-radius: 50px; overflow: hidden; border: 2px solid #63b3ed; box-shadow: 0 0 15px rgba(100, 180, 240, 0.7); }
+        .praiai-search-input { flex-grow: 1; padding: 12px 20px; border: none; outline: none; font-size: 1em; color: #333; }
+        .praiai-search-button { background-color: #0088cc; border: none; padding: 0 20px; cursor: pointer; color: white; }
+        .text-section { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e0e0; }
+        .text-section:last-child { border-bottom: none; }
+        h2 { font-size: 1.8em; color: #0088cc; font-family: 'Orbitron', sans-serif; border-bottom: 2px solid #0088cc; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+        pre { background-color: #2d3748; color: #e2e8f0; padding: 1.2em; border-radius: 6px; overflow-x: auto; }
+        code { font-family: 'Fira Code', monospace; }
+        .main-footer { background-color: #2d3748; color: #e2e8f0; text-align: center; padding: 1.5rem 0; margin-top: 3rem; }
+        .main-footer a { color: #63b3ed; }
+        @media (max-width: 960px) {
+            .hamburger-icon { display: flex; }
+            .nav-list { display: none; flex-direction: column; position: fixed; top: 0; right: -280px; width: 280px; height: 100vh; background-color: #2d3748; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1000; padding-top: 60px; transition: right 0.35s ease-in-out; }
+            .nav-list.active { right: 0; display: flex; }
+            .nav-list li a { color: #e2e8f0; padding: 15px 25px; }
+            .hamburger-icon.active .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+            .hamburger-icon.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger-icon.active .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     <style>
         /* ========================================================== */
         /* ADDITIVE CSS-KORREKTUR (ZENITH VERSION)                    */
