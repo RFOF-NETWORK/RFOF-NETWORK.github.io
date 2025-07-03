@@ -70,7 +70,7 @@ main {
 .site-title {
     color: #0088cc;
     font-family: 'Orbitron', sans-serif;
-    font-size: 2em; /* Angepasst für den Rahmen */
+    font-size: 2em;
     font-weight: bold;
     margin: 0;
     flex-grow: 1;
@@ -171,15 +171,15 @@ main {
 }
 .text-section:last-child { border-bottom: none; }
 
-h2, h3, h4 {
+h2 {
     color: #0088cc;
     font-family: 'Orbitron', sans-serif;
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid rgba(0, 136, 204, 0.3);
+    font-size: 2.2em;
 }
-h2 { font-size: 2.2em; }
 h3 { font-size: 1.6em; }
 h4 { font-size: 1.3em; }
 
@@ -213,7 +213,6 @@ pre code {
     padding: 0;
 }
 
-
 /* Footer */
 .main-footer {
     background-color: #2d3748;
@@ -237,39 +236,65 @@ pre code {
     h3 { font-size: 1.4em; }
 }
 
-/* #================================================
-# TEIL 2: ADDITIVE ERWEITERUNG (ZENITH-VERSION 11.0)
-# FUNKTION: Definiert das korrigierte, kompakte und professionelle Design der neuen Module.
-# STATUS: Final, additiv.
+
+/*
+#================================================
+# TEIL 2: ADDITIVE CSS-HÄRTUNG (ZENITH 12.0)
+# FUNKTION: Behebt alle visuellen Fehler und setzt das finale,
+#           kompakte "Tonviewer"-Design um.
 #================================================
 */
 
-/* --- Globale Layout-Korrekturen --- */
-.site-title {
-    flex-shrink: 1; /* Erlaubt dem Titel zu schrumpfen, falls nötig */
-    min-width: 0;   /* Verhindert Überlaufen in Flexbox-Containern */
+/* --- Universelle Regel für Box-Modell --- */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
-/* --- EXPLORER & ACCOUNT STYLES (Final, Kompakt & Abgegrenzt) --- */
+/* --- Globale Kompaktheit --- */
+body {
+    font-size: 15px; /* Etwas kompaktere Basis */
+}
+
+/* --- KORREKTUR 1: Header & Hero Section --- */
+.header-content {
+    gap: 1rem; /* Abstand zwischen Header-Elementen */
+}
+.site-title {
+    font-size: 1.4em; /* Verhindert Umbruch des Titels */
+    flex-shrink: 1;
+    min-width: 0;
+}
+.hero-content h1 {
+    font-size: clamp(2em, 7vw, 2.8em); /* Skaliert sauber auf allen Geräten */
+    word-break: break-word;
+}
+.praiai-search-input::placeholder {
+    color: #999; /* Macht den Placeholder lesbarer */
+}
+.praiai-search-input {
+    padding: 14px 22px; /* Stellt sicher, dass Text nicht anstößt */
+}
+
+/* --- KORREKTUR 2: Finales Explorer & Account Design --- */
 #boxchain-explorer-section {
     background: #f8f9fa;
+    border: 1px solid #dee2e6;
     border-radius: 8px;
     padding: 1.5rem;
-    border: 1px solid #dee2e6;
 }
-
 #boxchain-explorer-section h2 {
+    font-size: clamp(1.4em, 5vw, 1.6em);
     margin-top: 0;
-    font-size: 1.6em; /* Kompaktere Überschrift */
 }
-
 .explorer-header {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
-
 .explorer-top-row {
     display: flex;
     flex-wrap: wrap;
@@ -277,7 +302,6 @@ pre code {
     justify-content: space-between;
     gap: 1rem;
 }
-
 .explorer-controls {
     display: flex;
     border: 1px solid #ccc;
@@ -285,9 +309,8 @@ pre code {
     overflow: hidden;
     align-self: flex-start;
 }
-
 .explorer-controls button {
-    font-size: 0.9em;
+    font-size: 0.85em;
     font-weight: 500;
     border: none;
     background-color: #fff;
@@ -295,128 +318,31 @@ pre code {
     cursor: pointer;
     border-left: 1px solid #ccc;
 }
-.explorer-controls button:first-child {
-    border-left: none;
-}
-.explorer-controls button.active {
-    background-color: #343a40;
-    color: white;
-}
+.explorer-controls button:first-child { border-left: none; }
+.explorer-controls button.active { background-color: #343a40; color: white; }
 
-.explorer-actions {
-    display: flex;
-    gap: 0.5rem;
-    align-self: flex-start;
-}
+.explorer-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-self: flex-start; }
+.explorer-actions button { font-size: 0.8em; padding: 6px 12px; background-color: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer; }
 
-.explorer-actions button {
-    font-size: 0.8em;
-    padding: 6px 12px;
-    background-color: #6c757d;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+.explorer-search { display: flex; width: 100%; }
+.explorer-search input { width: 100%; border: 1px solid #ccc; padding: 10px; border-radius: 6px 0 0 6px; font-size: 0.9em; }
+.explorer-search button { border: 1px solid #0088cc; background-color: #0088cc; color: white; padding: 0 20px; border-radius: 0 6px 6px 0; cursor: pointer; }
 
-.explorer-search {
-    display: flex;
-    width: 100%;
-}
+.explorer-results table { width: 100%; border-collapse: collapse; font-size: 0.8em; table-layout: fixed; }
+.explorer-results th, .explorer-results td { border-bottom: 1px solid #dee2e6; padding: 10px; text-align: left; vertical-align: middle; word-break: break-all; }
+.explorer-results th { background-color: transparent; color: #6c757d; text-transform: uppercase; font-size: 0.9em; border-bottom: 2px solid #343a40; }
+.explorer-results tr:nth-child(even) { background-color: #f8f9fa; }
+.explorer-results td:last-child, .explorer-results th:last-child { text-align: right; } /* Korrigiert "Anstoßen" der Integrität-Spalte */
 
-.explorer-search input {
-    width: 100%;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 6px 0 0 6px;
-    font-size: 0.9em;
-}
+.detail-view { padding: 1rem; border: 1px solid #dee2e6; background-color: #fff; margin-top: 1rem; text-align: left; font-size: 0.9em; }
 
-.explorer-search button {
-    border: 1px solid #0088cc;
-    background-color: #0088cc;
-    color: white;
-    padding: 0 20px;
-    border-radius: 0 6px 6px 0;
-    cursor: pointer;
-}
+#account-section { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #dee2e6; text-align: center; }
+#logged-out-view { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+#logged-out-view .social-logins { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+#account-section button { font-size: 0.85em; padding: 8px 14px; cursor: pointer; border-radius: 4px; border: 1px solid #6c757d; background: #fff; color: #6c757d; font-weight: 500; }
+#account-section button.rfof-login { background-color: var(--color-accent); border-color: var(--color-accent); color: white; margin-bottom: 10px; }
 
-.explorer-results table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.85em; /* Kompaktere Schriftgröße */
-    table-layout: fixed;
-}
-
-.explorer-results th, 
-.explorer-results td {
-    border: 1px solid #dee2e6;
-    padding: 8px 10px; /* Kompakteres Padding */
-    text-align: left;
-    vertical-align: middle;
-    word-break: break-all;
-}
-
-.explorer-results th {
-    background-color: #343a40;
-    color: #fff;
-}
-
-.hash-link {
-    color: #0088cc;
-    text-decoration: none;
-    font-weight: 500;
-    cursor: pointer;
-}
-.hash-link:hover {
-    text-decoration: underline;
-}
-.hash-link.protected {
-    color: #6c757d;
-    cursor: default;
-}
-
-.detail-view {
-    padding: 1rem;
-    border: 1px dashed #ccc;
-    margin-top: 1rem;
-    text-align: left;
-}
-.detail-view h4 { font-size: 1.1em; }
-.detail-view ul { padding-left: 20px; margin: 0; font-family: 'Fira Code', monospace; }
-
-#account-section {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background-color: #e9ecef;
-    border-radius: 8px;
-    text-align: center;
-}
-
-#account-section button {
-    font-size: 0.85em;
-    padding: 6px 12px;
-    margin: 0 5px;
-    cursor: pointer;
-    border: 1px solid #6c757d;
-    background-color: #6c757d;
-    color: white;
-    border-radius: 4px;
-}
-
-#logged-in-view {
-    display: none; /* Wird per JS auf 'flex' gesetzt */
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-#logged-in-view img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 2px solid #0088cc;
-}
-.explorer-search button {
-    padding: 0 20px;
-}
+#logged-in-view { display: none; }
+#logged-in-view.active { display: flex; align-items: center; justify-content: center; gap: 10px; }
+#logged-in-view img { width: 32px; height: 32px; border-radius: 50%; }
+.console-view { border: 1px solid #ced4da; padding: 1rem; margin-top: 1rem; background: white; text-align: left; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
