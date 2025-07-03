@@ -7,7 +7,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
     const navList = document.getElementById('navLinks');
-    const body = document.body;
 
     // Toggle für das mobile Menü
     if (hamburger && navList) {
@@ -28,6 +27,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-
-    // Die ursprüngliche Such-Funktionalität wird nun von der neuen, zentralen scripts.js gehandhabt.
 });
