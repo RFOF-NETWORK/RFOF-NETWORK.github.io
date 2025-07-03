@@ -1,7 +1,7 @@
 //================================================
-// # SATORAMISCHE KODIFIZIERUNG: scripts.js v12.0
-// # FUNKTION: Das zentrale Gehirn für Säule 1. Orchestriert alle Module.
-// # ABHÄNGIGKEIT: index.html, menu_script.js
+// # KANONISCHER CODE: Haupt-Anwendungslogik v12.0 (Zenith)
+// # FUNKTION: Steuert alle interaktiven Module der ersten Säule.
+// # STATUS: Final, perfektioniert.
 //================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,79 +9,97 @@ document.addEventListener('DOMContentLoaded', () => {
     // Globaler Namespace für alle App-Komponenten
     const RFOF_APP = {};
 
-    // #--- Dynamische Sichtbarkeit: Verstecke die alte Struktur ---#
-    const oldStructureSection = document.getElementById('structure');
-    if (oldStructureSection) {
-        oldStructureSection.style.display = 'none';
-    }
-
     // #================================================
-    // # MODUL: AccountSystem (Zenith Version)
+    // # MODUL: AccountSystem (FINAL ZENITH)
+    // # FUNKTION: Verwaltet Login, Logout und die Anzeige des User-/Owner-Profils.
     // #================================================
     class AccountSystem {
         constructor(target) {
             this.container = target;
-            this.user = null; // { name, email, role, pfp }
+            this.user = null; // Hält den Zustand des eingeloggten Nutzers
             this.init();
         }
-        init() { this.render(); }
-        login(type, isOwner = false) {
-            // Erkennt den Owner-Account, egal mit welcher Methode er sich anmeldet
-            const email = (type === 'Satoramy') ? 'rfof236286@gmail.com' : `simulated_${type.toLowerCase()}@user.com`;
-            const isActuallyOwner = (email === 'rfof236286@gmail.com');
+
+        init() {
+            this.render();
+        }
+
+        login(type) {
+            // Simuliert die Anmeldung und prüft, ob es der Owner ist
+            const email = (type === 'Satoramy' || type === 'RFOF') ? 'rfof236286@gmail.com' : `simulated_${type.toLowerCase()}_user@email.com`;
+            const isOwner = (email === 'rfof236286@gmail.com');
             
-            this.user = isActuallyOwner ? 
-                { name: 'Satoramy', email: email, role: 'SATORAMY_PRIME', pfp: 'https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK/main/assets/rotating_cyber_brain.svg' } :
-                { name: `User_${type}`, email: email, role: 'USER', pfp: `https://avatar.vercel.sh/${email}.svg?size=32` };
+            this.user = isOwner 
+                ? { name: 'Satoramy', email: email, role: 'SATORAMY_PRIME', pfp: 'https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK/main/assets/rotating_cyber_brain.svg' } 
+                : { name: `User_${type}`, email: email, role: 'USER', pfp: `https://avatar.vercel.sh/${type}.svg?size=32` };
             
             this.render();
             if (RFOF_APP.explorer) RFOF_APP.explorer.render();
         }
-        logout() { this.user = null; this.render(); if (RFOF_APP.explorer) RFOF_APP.explorer.render(); }
+
+        logout() {
+            this.user = null;
+            this.render();
+            if (RFOF_APP.explorer) RFOF_APP.explorer.render();
+        }
+
         render() {
             this.container.innerHTML = (this.user) ? this.renderLoggedInView() : this.renderLoggedOutView();
             this.addEventListeners();
         }
+
         renderLoggedOutView() {
-            // Zeigt den Explorer immer an, aber die Login-Optionen darunter.
-            if (RFOF_APP.explorer) RFOF_APP.explorer.render();
+            // Stellt die Login-Buttons dar, mit "Mit RFOF" hervorgehoben
             return `
-                <div id="logged-out-view" style="text-align:center; padding-top: 1rem; border-top: 1px solid #dee2e6;">
-                    <button onclick="RFOF_APP.account.login('GitHub')">Mit GitHub</button>
-                    <button onclick="RFOF_APP.account.login('Google')">Mit Google</button>
-                    <button onclick="RFOF_APP.account.login('Microsoft')">Mit Microsoft</button>
+                <div id="logged-out-view">
+                    <button class="rfof-login" onclick="RFOF_APP.account.login('RFOF')">Mit RFOF Account</button>
+                    <div class="social-logins">
+                        <button onclick="RFOF_APP.account.login('GitHub')">Mit GitHub</button>
+                        <button onclick="RFOF_APP.account.login('Google')">Mit Google</button>
+                        <button onclick="RFOF_APP.account.login('Microsoft')">Mit Microsoft</button>
+                    </div>
                 </div>`;
         }
+
         renderLoggedInView() {
+            // Stellt die eingeloggte Ansicht mit Profilbild und Button dar
+            const view = document.getElementById('logged-in-view');
+            if(view) view.classList.add('active');
             return `
-                <div id="logged-in-view" style="display:flex; align-items:center; justify-content:center; gap:10px; padding-top: 1rem; border-top: 1px solid #dee2e6;">
-                    <img src="${this.user.pfp}" alt="Profilbild" style="width:32px; height:32px; border-radius:50%;">
+                <div id="logged-in-view" class="active">
+                    <img src="${this.user.pfp}" alt="Profilbild">
                     <span>Willkommen, <strong>${this.user.name}</strong></span>
                     <button id="profile-btn">Profil / Console</button>
                 </div>
                 <div id="profile-console-container"></div>`;
         }
+
         toggleProfileConsole() {
             const consoleContainer = document.getElementById('profile-console-container');
             if (consoleContainer.innerHTML === '') {
                 const consoleTitle = this.user.role === 'SATORAMY_PRIME' ? 'Mothership-Konsole' : 'RFOF-Console';
-                consoleContainer.innerHTML = `<div class="detail-view"><h4>${consoleTitle}</h4><p>Account: ${this.user.email}</p><button id="logout-btn">Logout</button></div>`;
+                consoleContainer.innerHTML = `<div class="console-view"><h4>${consoleTitle}</h4><p>Account: ${this.user.email}</p><button id="logout-btn">Logout</button></div>`;
                 document.getElementById('logout-btn').addEventListener('click', () => this.logout());
             } else { consoleContainer.innerHTML = ''; }
         }
+
         addEventListeners() {
             if (this.user) {
-                document.getElementById('profile-btn').addEventListener('click', () => this.toggleProfileConsole());
+                const profileBtn = document.getElementById('profile-btn');
+                if(profileBtn) profileBtn.addEventListener('click', () => this.toggleProfileConsole());
             }
         }
     }
 
     // #================================================
-    // # MODUL: BOxchainExplorer (Zenith Version)
+    // # MODUL: BOxchainExplorer (FINAL ZENITH)
+    // # FUNKTION: Der hochinteraktive, datenreiche Explorer.
     // #================================================
     class BOxchainExplorer {
         constructor(target) {
-            this.container = target; this.view = 'CTC'; this.detailView = null;
+            this.container = target; 
+            this.view = 'CTC'; 
+            this.detailView = null;
             this.dummyData = {
                 'CTC': [
                     { txHash: '0x42abc...', from: '0xSatoramy...', to: '0xDAO...', value: '1,000,000 Bubatz-Coin', majoranaStatus: '✅ Geschützt', subHash: '0xSUB_MAJO_CTC_1' },
@@ -95,22 +113,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 ]
             };
         }
+
         init() { this.render(); }
         search(query) { this.detailView = null; this.render({ query }); }
         showDetailView(type, id) { this.detailView = { type, id }; this.render(); }
-        async fetchData() { return new Promise(resolve => setTimeout(() => resolve(this.dummyData), 150)); }
         
         render(params = {}) {
-            this.fetchData().then(data => {
-                let html = this.renderHeader(params.query || '');
-                html += this.detailView ? this.renderDetailView() : this.renderListView(data);
-                this.container.innerHTML = html;
-                this.addEventListeners();
-            });
+            let html = this.renderHeader(params.query || '');
+            html += this.detailView ? this.renderDetailView() : this.renderListView(this.dummyData);
+            this.container.innerHTML = html;
+            this.addEventListeners();
         }
         
         renderHeader(query) {
              return `
+                <h2>BOxchain RF&lt;-Explore-viewer-&gt;OF</h2>
                 <div class="explorer-header">
                     <div class="explorer-top-row">
                         <div class="explorer-controls">
@@ -118,8 +135,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             <button id="btn-axf-view">AXF Explorer</button>
                         </div>
                         <div class="explorer-actions">
-                            <button onclick="alert('Token-Kreations-Modul wird geöffnet...')">Token Kreieren</button>
-                            <button onclick="alert('Minting-Prozess wird gestartet...')">Minten</button>
+                            <button onclick="alert('Wallet verbinden...')">Wallet</button>
+                            <button onclick="alert('Kreieren...')">Create</button>
+                            <button onclick="alert('Minting...')">Mint</button>
+                            <button onclick="alert('Burning...')">Burn</button>
+                            <button onclick="alert('Mining...')">Mine</button>
                         </div>
                     </div>
                     <div class="explorer-search">
@@ -142,12 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td>${tx.value}</td><td>${tx.majoranaStatus}</td>
                     </tr>`;
                 });
-            } else { // AXF View
-                tableHtml = `<table><thead><tr><th>Daten-Hash</th><th>Typ</th><th>Axiometix Größe</th><th>Zustand (A/X/F)</th></tr></thead><tbody>`;
+            } else {
+                tableHtml = `<table><thead><tr><th>Daten-Hash</th><th>Typ</th><th>Größe</th><th>Zustand</th></tr></thead><tbody>`;
                 data.AXF.forEach(d => {
                     let hashDisplay = d.isProtected && !isOwner
                         ? `<span class="hash-link protected">${d.dataHash.substring(0,10)}...</span>`
-                        : `<span class="hash-link" onclick="RFOF_APP.explorer.showDetailView('Daten', '${d.dataHash}')">${d.dataHash.substring(0,10)}... ${isOwner ? '(Owner)' : ''}</span>`;
+                        : `<span class="hash-link" onclick="RFOF_APP.explorer.showDetailView('Daten', '${d.dataHash}')">${d.dataHash.substring(0,10)}...</span>`;
                     tableHtml += `<tr><td>${hashDisplay}</td><td>${d.type}</td><td>${d.axiometixSize}</td><td>${d.vector}</td></tr>`;
                 });
             }
@@ -160,28 +180,26 @@ document.addEventListener('DOMContentLoaded', () => {
             let sourceItem;
             if (this.detailView.type === 'Transaktion') {
                 sourceItem = this.dummyData.CTC.find(tx => tx.txHash === this.detailView.id);
-                if (sourceItem) {
-                    detailContent += `<h5>Verknüpfter Majorana-Anker:</h5><ul><li>${sourceItem.subHash}</li></ul>`;
-                }
+                if (sourceItem) { detailContent += `<h5>Verknüpfter Majorana-Anker:</h5><ul><li>${sourceItem.subHash}</li></ul>`; }
             } else if (this.detailView.type === 'Daten') {
                 sourceItem = this.dummyData.AXF.find(d => d.dataHash === this.detailView.id);
                 if (sourceItem && sourceItem.isProtected && !isOwner) {
-                    detailContent = '<p style="color:red;">Zugriff auf geschützte Daten verweigert. Owner-Login erforderlich.</p>';
+                    detailContent = '<p style="color:red;">Zugriff auf geschützte Daten verweigert.</p>';
                 } else if (sourceItem && sourceItem.subHashes) {
                     detailContent += `<h5>Verknüpfte Sub-Hashes (${sourceItem.subHashes.length}):</h5><ul>`;
                     sourceItem.subHashes.forEach(sh => { detailContent += `<li>${sh}</li>`; });
                     detailContent += '</ul>';
                 }
             }
-            return `<div class="detail-view">${detailContent}<button id="back-to-list-btn">← Zurück zur Übersicht</button></div>`;
+            return `<div class="detail-view">${detailContent}<button id="back-to-list-btn" style="margin-top: 1rem;">← Zurück</button></div>`;
         }
 
         addEventListeners() {
             if (this.detailView) {
-                 document.getElementById('back-to-list-btn').addEventListener('click', () => { this.detailView = null; this.render(); });
+                document.getElementById('back-to-list-btn').addEventListener('click', () => { this.detailView = null; this.render(); });
             } else {
-                document.getElementById('btn-ctc-view').addEventListener('click', () => { if (this.view !== 'CTC') { this.view = 'CTC'; this.render(); } });
-                document.getElementById('btn-axf-view').addEventListener('click', () => { if (this.view !== 'AXF') { this.view = 'AXF'; this.render(); } });
+                document.getElementById('btn-ctc-view').addEventListener('click', () => { this.view = 'CTC'; this.render(); });
+                document.getElementById('btn-axf-view').addEventListener('click', () => { this.view = 'AXF'; this.render(); });
                 document.getElementById('explorer-search-btn').addEventListener('click', () => this.search(document.getElementById('explorer-search-input-internal').value));
                 document.getElementById(this.view === 'CTC' ? 'btn-ctc-view' : 'btn-axf-view').classList.add('active');
             }
@@ -189,31 +207,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // #================================================
-    // # INITIALISIERUNG & GLOBALE ANBINDUNG
+    // # INITIALISIERUNG & GLOBALE FUNKTIONEN
     // #================================================
-    const accountTarget = document.getElementById('account-section');
-    if (accountTarget) RFOF_APP.account = new AccountSystem(accountTarget);
+    RFOF_APP.account = new AccountSystem(document.getElementById('account-section'));
+    RFOF_APP.explorer = new BOxchainExplorer(document.getElementById('boxchain-explorer-target'));
     
-    const explorerTarget = document.getElementById('boxchain-explorer-target');
-    if (explorerTarget) {
-        RFOF_APP.explorer = new BOxchainExplorer(explorerTarget);
-        // Initialisiere Explorer nur, wenn die Sektion nicht versteckt ist
-        const explorerSection = document.getElementById('boxchain-explorer-section');
-        if (explorerSection) RFOF_APP.explorer.init();
-    }
-    
-    // Globale Suchfunktion für das 'onclick' im Haupt-HTML
-    window.performPraiaiSearch = () => {
-        if (RFOF_APP.explorer) {
-            const query = document.getElementById('praiai-search-input').value;
+    window.RFOF_APP = RFOF_APP;
+    window.performGlobalSearch = () => {
+        const query = document.getElementById('praiai-search-input').value.trim();
+        if (query) {
             RFOF_APP.explorer.search(query);
+            document.getElementById('boxchain-explorer-section').scrollIntoView({ behavior: 'smooth' });
         }
     };
+
+    if (typeof hljs !== 'undefined') { hljs.highlightAll(); }
     
-    window.RFOF_APP = RFOF_APP; // Mache die App global verfügbar
-    hljs.highlightAll(); // Initialisiere Syntax Highlighting
+    RFOF_APP.explorer.init();
+    RFOF_APP.account.init();
 });
 </script>
-
-</body>
-</html>
