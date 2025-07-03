@@ -2,10 +2,39 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>RFOFSpiderWeb.NET - The New Internet</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Orbitron:wght@700&family=Fira+Code&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <style>
+        /* ========================================================== */
+        /* ADDITIVE CSS-KORREKTUR (ZENITH VERSION)                    */
+        /* ========================================================== */
+
+        /* --- KORREKTUR 1: Header & Globale Kompaktheit --- */
+        .site-title { font-size: 1.5em; flex-shrink: 1; min-width: 0; }
+        .hero-content h1 { font-size: clamp(2em, 7vw, 2.5em); } /* Schrift skaliert jetzt besser */
+        .hero-content p { font-size: 1.05em; }
+        .praiai-search-input { padding: 14px 22px; } /* Verhindert, dass "PRAI" anstößt */
+
+        /* --- KORREKTUR 2: Finale "Tonviewer"-Ästhetik für Explorer & Account-System --- */
+        #boxchain-explorer-section h2 { font-size: 1.6em; }
+        .explorer-header { flex-direction: column; gap: 1rem; align-items: stretch; margin-bottom: 1rem; padding: 0; border: none; background: none; }
+        .explorer-top-row { display: flex; justify-content: space-between; align-items: center; }
+        .explorer-controls { border: 1px solid #ccc; border-radius: 6px; overflow: hidden; align-self: flex-start; }
+        .explorer-controls button { font-size: 0.85em; padding: 8px 15px; }
+        .explorer-actions { gap: 0.5rem; }
+        .explorer-actions button { font-size: 0.8em; padding: 6px 12px; }
+        .explorer-search { margin-top: 1rem; }
+        .explorer-results table { font-size: 0.8em; }
+        .explorer-results th:last-child, .explorer-results td:last-child { text-align: center; width: 100px; }
+        #account-section { text-align: center; }
+        #logged-out-view button, #logged-in-view button { font-size: 0.85em; padding: 6px 12px; }
+        #logged-in-view { display: none; } /* Standardmäßig ausblenden */
+        #logged-in-view.active { display: flex; align-items: center; justify-content: center; gap: 10px; }
+        #logged-in-view img { width: 32px; height: 32px; }
+        .detail-view { font-size: 0.9em; }
+        .detail-view h5 { margin-top: 1rem; margin-bottom: 0.5rem; }
+        .detail-view ul { margin-top: 0; padding-left: 20px; }
+    </style>
 
     <style>
         /* --- IHR KANONISCHER CODE (100% ERHALTEN) --- */
