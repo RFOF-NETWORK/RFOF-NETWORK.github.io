@@ -10,7 +10,6 @@
     <style>
         :root {
             --color-accent: #0088cc;
-            --color-accent-light: #63b3ed;
             --color-dark: #2d3748;
             --color-light: #e2e8f0;
             --color-text: #333;
@@ -20,11 +19,11 @@
         html { box-sizing: border-box; }
         *, *:before, *:after { box-sizing: inherit; }
 
-        body { font-family: 'Roboto', sans-serif; background-color: var(--color-white); color: var(--color-text); line-height: 1.6; margin: 0; padding: 0; overflow-x: hidden; font-size: 16px; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--color-white); color: var(--color-text); line-height: 1.6; margin: 0; padding: 0; overflow-x: hidden; font-size: 15px; }
         main { flex-grow: 1; }
         .header-content, .content-container, .footer-content { max-width: var(--max-width); margin: 0 auto; padding: 0 15px; }
         
-        /* HEADER & NAVIGATION (FINAL) */
+        /* HEADER & NAVIGATION (FINAL ZENITH) */
         .main-header { background-color: var(--color-white); box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 10px 0; border-bottom: 1px solid #E0E0E0; z-index: 1000; position: sticky; top: 0; }
         .header-content { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
         .header-logo-svg-container { width: 40px; height: 40px; flex-shrink: 0; }
@@ -35,26 +34,24 @@
         .hamburger-icon .bar { width: 100%; height: 3px; background-color: var(--color-accent); border-radius: 2px; transition: all 0.3s ease-in-out; }
         .nav-list { list-style: none; margin: 0; padding: 0; display: flex; }
         .nav-list li a { color: var(--color-text); text-decoration: none; padding: 8px 12px; display: block; font-weight: 500; font-size: 0.9em; }
-        .nav-list li a:hover { background-color: rgba(0, 136, 204, 0.05); }
 
-        /* HERO & INTERNET SEARCH (FINAL) */
+        /* HERO & INTERNET SEARCH (FINAL ZENITH) */
         .hero-section { background: var(--color-accent); color: var(--color-white); text-align: center; padding: 3rem 1rem; }
         .hero-logo { width: 100px; height: 100px; margin-bottom: 1rem; }
-        .hero-content h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(2em, 7vw, 2.5em); }
+        .hero-content h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(2em, 7vw, 2.8em); word-break: break-word; }
         .hero-content p { font-size: 1.1em; max-width: 600px; margin: 1rem auto; }
         .praiai-search-container { max-width: 550px; margin: 2rem auto; display: flex; background-color: var(--color-white); border-radius: 50px; overflow: hidden; }
-        .praiai-search-input { flex-grow: 1; padding: 14px 22px; border: none; outline: none; font-size: 1em; color: var(--color-text); background: transparent; }
+        .praiai-search-input { flex-grow: 1; padding: 14px 22px; border: none; outline: none; font-size: 0.9em; color: var(--color-text); background: transparent; }
         .praiai-search-button { background-color: var(--color-accent); border: none; padding: 0 20px; cursor: pointer; color: var(--color-white); }
         .praiai-search-button svg { width: 18px; height: 18px; vertical-align: middle; }
 
         /* TEXTSEKTIONEN (FINAL) */
         .text-section { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e0e0; }
         .text-section:last-child { border-bottom: none; }
-        h2 { font-size: clamp(1.6em, 5vw, 1.8em); color: var(--color-accent); font-family: 'Orbitron', sans-serif; border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+        h2 { font-size: clamp(1.4em, 5vw, 1.6em); color: var(--color-accent); font-family: 'Orbitron', sans-serif; border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; word-break: break-word; }
         
-        /* EXPLORER & ACCOUNT SYSTEM (ZENITH 12.0) */
+        /* EXPLORER & ACCOUNT SYSTEM (FINAL ZENITH) */
         #boxchain-explorer-section { background: #f8f9fa; border-radius: 8px; padding: 1.5rem; }
-        #boxchain-explorer-section h2 { font-size: clamp(1.2em, 5vw, 1.4em); word-break: break-word; }
         .explorer-header { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
         .explorer-top-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
         .explorer-controls { display: flex; border: 1px solid #ccc; border-radius: 6px; overflow: hidden; align-self: flex-start; }
@@ -73,10 +70,11 @@
         .hash-link:hover { text-decoration: underline; }
         .hash-link.protected { color: #6c757d; cursor: default; }
         .detail-view { padding: 1rem; border: 1px dashed #ccc; margin-top: 1rem; text-align: left; font-size: 0.9em; }
-        .detail-view h5 { margin-bottom: 0.5rem; }
         #account-section { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #dee2e6; text-align: center; }
-        #logged-out-view { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-        #logged-out-view button, #logged-in-view button { font-size: 0.85em; padding: 6px 12px; cursor: pointer; border-radius: 4px; border: 1px solid #6c757d; }
+        #logged-out-view { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        #logged-out-view .social-logins { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+        #logged-out-view button, #logged-in-view button { font-size: 0.85em; padding: 8px 14px; cursor: pointer; border-radius: 4px; border: 1px solid #6c757d; background: #6c757d; color: white; }
+        #logged-out-view button.rfof-login { background-color: var(--color-accent); border-color: var(--color-accent); margin-bottom: 10px; }
         #logged-in-view { display: none; align-items: center; justify-content: center; gap: 10px; }
         #logged-in-view.active { display: flex; }
         #logged-in-view img { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--color-accent); }
@@ -86,14 +84,13 @@
         .main-footer { background-color: var(--color-dark); color: var(--color-light); text-align: center; padding: 1.5rem 0; margin-top: 3rem; }
         .main-footer a { color: var(--color-accent-light); }
         
-        /* RESPONSIVE & MOBILE MENU (FINAL) */
+        /* RESPONSIVE & MOBILE MENU (FINAL ZENITH) */
         @media (max-width: 960px) {
             .site-title { font-size: 1.2em; }
             .hamburger-icon { display: flex; }
             .nav-list { display: none; flex-direction: column; position: fixed; top: 0; right: -285px; width: 280px; height: 100vh; background-color: var(--color-dark); box-shadow: -5px 0 15px rgba(0,0,0,0.5); z-index: 1001; padding-top: 20px; transition: right 0.35s ease-in-out; }
             .nav-list.active { right: 0; display: flex; }
             .nav-list li a { color: var(--color-light); padding: 15px 25px; border-bottom: 1px solid #4a5568; }
-            /* KORREKTUR: "X" Button IM Menü positionieren */
             .hamburger-icon.active { position: fixed; top: 20px; right: 20px; }
             .hamburger-icon.active .bar { background-color: var(--color-light); }
             .hamburger-icon.active .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -136,13 +133,12 @@
                 <h1>Welcome to RFOFSpiderWeb.NET</h1>
                 <p>The new internet that brings security, decentralization, and innovation to every digital interaction, powered by PRAI.</p>
                 <div class="praiai-search-container">
-                    <input type="text" id="praiai-search-input" class="praiai-search-input" placeholder="Search the BOxchain or the web with PRAI...">
+                    <input type="text" id="praiai-search-input" class="praiai-search-input" placeholder="Search the new internet with PRAI...">
                     <button class="praiai-search-button" onclick="RFOF_APP.performGlobalSearch()" aria-label="Search">
                         <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg>
                     </button>
                 </div>
-            </div>
-        </section>
+            </section>
 
         <div class="content-container">
             <section id="about" class="text-section">
@@ -194,26 +190,16 @@
             });
         }
 
-        // #--- MODUL: AccountSystem (FINAL) ---#
+        // #--- MODUL: AccountSystem (FINAL ZENITH) ---#
         class AccountSystem {
             constructor(target) { this.container = target; this.user = null; this.init(); }
             init() { this.render(); }
             login(type) {
-                let email, name;
-                // Simuliert die Anmeldung und prüft, ob es der Owner ist
-                if (type === 'Satoramy') {
-                    email = 'rfof236286@gmail.com';
-                    name = 'Satoramy';
-                } else {
-                    email = `simulated_${type.toLowerCase()}_user@email.com`;
-                    name = `User_${type}`;
-                }
+                const email = (type === 'Satoramy') ? 'rfof236286@gmail.com' : `simulated_${type.toLowerCase()}_user@email.com`;
                 const isOwner = (email === 'rfof236286@gmail.com');
-                
-                this.user = isOwner ? 
-                    { name: 'Satoramy', email: email, role: 'SATORAMY_PRIME', pfp: 'https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK/main/assets/rotating_cyber_brain.svg' } :
-                    { name: name, email: email, role: 'USER', pfp: `https://avatar.vercel.sh/${name}.svg?size=32` };
-                
+                this.user = isOwner 
+                    ? { name: 'Satoramy', email: email, role: 'SATORAMY_PRIME', pfp: 'https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK/main/assets/rotating_cyber_brain.svg' } 
+                    : { name: `User_${type}`, email: email, role: 'USER', pfp: `https://avatar.vercel.sh/${type}.svg?size=32` };
                 this.render();
                 if (RFOF_APP.explorer) RFOF_APP.explorer.render();
             }
@@ -225,27 +211,24 @@
             renderLoggedOutView() {
                 return `
                     <div id="logged-out-view">
-                        <button onclick="RFOF_APP.account.login('RFOF')">Mit RFOF</button>
-                        <button onclick="RFOF_APP.account.login('GitHub')">Mit GitHub</button>
-                        <button onclick="RFOF_APP.account.login('Google')">Mit Google</button>
-                        <button onclick="RFOF_APP.account.login('Microsoft')">Mit Microsoft</button>
+                        <button class="rfof-login" onclick="RFOF_APP.account.login('RFOF')">Mit RFOF Account</button>
+                        <div class="social-logins">
+                            <button onclick="RFOF_APP.account.login('GitHub')">Mit GitHub</button>
+                            <button onclick="RFOF_APP.account.login('Google')">Mit Google</button>
+                            <button onclick="RFOF_APP.account.login('Microsoft')">Mit Microsoft</button>
+                        </div>
                     </div>`;
             }
             renderLoggedInView() {
-                const loggedInView = document.createElement('div');
-                loggedInView.id = 'logged-in-view';
-                loggedInView.classList.add('active');
-                loggedInView.innerHTML = `
-                    <img src="${this.user.pfp}" alt="Profilbild">
-                    <span>Willkommen, <strong>${this.user.name}</strong></span>
-                    <button id="profile-btn">Profil / Console</button>
-                `;
-                const consoleContainer = document.createElement('div');
-                consoleContainer.id = 'profile-console-container';
-                this.container.innerHTML = ''; // Clear previous state
-                this.container.appendChild(loggedInView);
-                this.container.appendChild(consoleContainer);
-                return ''; // Return empty because we are manipulating the DOM directly
+                const view = document.getElementById('logged-in-view');
+                if(view) view.classList.add('active');
+                return `
+                    <div id="logged-in-view" class="active">
+                        <img src="${this.user.pfp}" alt="Profilbild">
+                        <span>Willkommen, <strong>${this.user.name}</strong></span>
+                        <button id="profile-btn">Profil / Console</button>
+                    </div>
+                    <div id="profile-console-container"></div>`;
             }
             toggleProfileConsole() {
                 const consoleContainer = document.getElementById('profile-console-container');
@@ -263,7 +246,7 @@
             }
         }
 
-        // #--- MODUL: BOxchainExplorer (FINAL) ---#
+        // #--- MODUL: BOxchainExplorer (FINAL ZENITH) ---#
         class BOxchainExplorer {
             constructor(target) {
                 this.container = target; this.view = 'CTC'; this.detailView = null;
@@ -299,7 +282,7 @@
                                 <button id="btn-axf-view">AXF Explorer</button>
                             </div>
                             <div class="explorer-actions">
-                                <button onclick="alert('Wallet verbinden...')">Wallet verbinden</button>
+                                <button onclick="alert('Wallet verbinden...')">Wallet</button>
                                 <button onclick="alert('Kreieren...')">Create</button>
                                 <button onclick="alert('Minting...')">Mint</button>
                                 <button onclick="alert('Burning...')">Burn</button>
@@ -346,7 +329,7 @@
                 } else if (this.detailView.type === 'Daten') {
                     sourceItem = this.dummyData.AXF.find(d => d.dataHash === this.detailView.id);
                     if (sourceItem && sourceItem.isProtected && !isOwner) {
-                        detailContent = '<p style="color:red;">Zugriff auf geschützte Daten verweigert. Owner-Login erforderlich.</p>';
+                        detailContent = '<p style="color:red;">Zugriff auf geschützte Daten verweigert.</p>';
                     } else if (sourceItem && sourceItem.subHashes) {
                         detailContent += `<h5>Verknüpfte Sub-Hashes (${sourceItem.subHashes.length}):</h5><ul>`;
                         sourceItem.subHashes.forEach(sh => { detailContent += `<li>${sh}</li>`; });
@@ -374,15 +357,13 @@
         window.RFOF_APP = RFOF_APP;
         window.performGlobalSearch = () => {
             const query = document.getElementById('praiai-search-input').value.trim();
-            if (query && RFOF_APP.explorer) {
+            if (query) {
                 RFOF_APP.explorer.search(query);
                 document.getElementById('boxchain-explorer-section').scrollIntoView({ behavior: 'smooth' });
             }
         };
 
-        if (typeof hljs !== 'undefined') {
-            hljs.highlightAll();
-        }
+        if (typeof hljs !== 'undefined') { hljs.highlightAll(); }
         
         RFOF_APP.explorer.init();
         RFOF_APP.account.init();
