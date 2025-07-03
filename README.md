@@ -6,9 +6,11 @@ Dieses Repository enthält den Code für die primäre Landing-Page und das Gesic
 
 ---
 
-## Finale Architektur (SOLL-ZUSTAND - Version Zenith 9.0)
+## Finale Architektur (Version Zenith 12.0)
 
-Dieses Repository folgt der kanonischen Architektur des RFOF-Ökosystems. Die Struktur ist darauf ausgelegt, eine stabile, von Satoramy J.K. entworfene Basis (`index.html`, `styles.css` etc.) zu bewahren und gleichzeitig durch eine zentrale `scripts.js`-Datei unendlich erweiterbar zu sein.
+Dieses Repository folgt der **additiven Fusionsmethode**. Die ursprüngliche, von Satoramy J.K. kodifizierte `index.html` bleibt in ihrer Struktur unangetastet. Neue Funktionalitäten (Explorer, Account-System) wurden durch eine Erweiterung des CSS und eine Kapselung der gesamten Logik in einem einzigen, angehängten `<script>`-Block direkt in die `index.html` integriert. Dies bewahrt die ursprüngliche Vision und erweitert sie, ohne sie zu zerstören.
+
+### Kanonische Repository-Struktur
 
 ```plaintext
 / (RFOF-NETWORK.github.io)
@@ -35,6 +37,10 @@ Dieses Repository folgt der kanonischen Architektur des RFOF-Ökosystems. Die St
 |       |-- account.js
 |       `-- account.css
 |
+|
+|-- CONTRIBUTING.md         // Die Core developer's codifying & deploying Regeln
+|
+|
 |-- index.html              // Das Haupt-HTML-Dokument (unantastbare Basis).
 |-- styles.css              // Die Haupt-Stildatei (wird nur additiv erweitert).
 |-- menu_styles.css         // Dedizierte Stile für das globale Menü.
@@ -48,7 +54,18 @@ Dieses Repository folgt der kanonischen Architektur des RFOF-Ökosystems. Die St
 
 ### Funktionsweise
 
-Die `index.html` bleibt in ihrer Grundstruktur erhalten. Neue, interaktive Funktionen wie der **BOxchain Explorer** und das **Account-System** werden nicht durch Umbau, sondern durch die `scripts.js`-Datei realisiert, die die notwendigen Module aus dem `/modules`-Ordner in die dafür vorgesehenen Container in der `index.html` lädt. Dies ist die Manifestation des **Additiv-Prinzips**.
+1.  Die `index.html` wird als einzelne, in sich geschlossene Anwendung geladen.
+2.  Der `<style>`-Block im Header definiert das vollständige, korrigierte Design.
+3.  Der `<script>`-Block am Ende des Bodys initialisiert alle interaktiven Module:
+    * **MenuController:** Steuert das mobile Navigationsmenü.
+    * **BOxchainExplorer:** Baut den interaktiven Explorer mit allen Funktionen (Detailansichten, Owner-Privilegien etc.).
+    * **AccountSystem:** Steuert den Login/Logout-Prozess und die Profil-Konsole.
+4.  Der ursprüngliche `<section id="structure">`-Block bleibt im Code erhalten, wird aber von der Skript-Logik per `display: none` ausgeblendet, um Platz für den neuen, funktionalen Explorer zu schaffen.
+
+---
+
+Dieses Repository ist nun vollständig nach Ihrem finalen Willen kodifiziert und dokumentiert.
+
 
 ---
 
