@@ -6,8 +6,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Globaler Namespace für alle App-Komponenten
-    const RFOF_APP = {};
+    const RFOF_APP = {}; // Globaler Namespace für alle App-Komponenten
 
     // #================================================
     // # MODUL: AccountSystem (FINAL ZENITH)
@@ -20,12 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
             this.init();
         }
 
-        init() {
-            this.render();
-        }
+        init() { this.render(); }
 
         login(type) {
-            // Simuliert die Anmeldung und prüft, ob es der Owner ist
+            // Erkennt den Owner-Account, egal mit welcher Methode er sich anmeldet
             const email = (type === 'Satoramy' || type === 'RFOF') ? 'rfof236286@gmail.com' : `simulated_${type.toLowerCase()}_user@email.com`;
             const isOwner = (email === 'rfof236286@gmail.com');
             
@@ -44,12 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         render() {
+            // Der Explorer wird immer angezeigt, das Account-System darunter
+            if (RFOF_APP.explorer && !RFOF_APP.explorer.detailView) RFOF_APP.explorer.render();
+            
             this.container.innerHTML = (this.user) ? this.renderLoggedInView() : this.renderLoggedOutView();
             this.addEventListeners();
         }
 
         renderLoggedOutView() {
-            // Stellt die Login-Buttons dar, mit "Mit RFOF" hervorgehoben
             return `
                 <div id="logged-out-view">
                     <button class="rfof-login" onclick="RFOF_APP.account.login('RFOF')">Mit RFOF Account</button>
@@ -62,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         renderLoggedInView() {
-            // Stellt die eingeloggte Ansicht mit Profilbild und Button dar
             const view = document.getElementById('logged-in-view');
             if(view) view.classList.add('active');
             return `
@@ -78,7 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const consoleContainer = document.getElementById('profile-console-container');
             if (consoleContainer.innerHTML === '') {
                 const consoleTitle = this.user.role === 'SATORAMY_PRIME' ? 'Mothership-Konsole' : 'RFOF-Console';
-                consoleContainer.innerHTML = `<div class="console-view"><h4>${consoleTitle}</h4><p>Account: ${this.user.email}</p><button id="logout-btn">Logout</button></div>`;
+                // Dies ist die "Website in Website" für das Profil
+                consoleContainer.innerHTML = `<div class="detail-view"><h4>${consoleTitle}</h4><p>Account: ${this.user.email}</p><button id="logout-btn">Logout</button></div>`;
                 document.getElementById('logout-btn').addEventListener('click', () => this.logout());
             } else { consoleContainer.innerHTML = ''; }
         }
@@ -100,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.container = target; 
             this.view = 'CTC'; 
             this.detailView = null;
+            // ERWEITERTE DATENBANK mit ARC-Blöcken und Sub-Hashes
             this.dummyData = {
                 'CTC': [
                     { txHash: '0x42abc...', from: '0xSatoramy...', to: '0xDAO...', value: '1,000,000 Bubatz-Coin', majoranaStatus: '✅ Geschützt', subHash: '0xSUB_MAJO_CTC_1' },
@@ -162,12 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td>${tx.value}</td><td>${tx.majoranaStatus}</td>
                     </tr>`;
                 });
-            } else {
+            } else { // AXF View
                 tableHtml = `<table><thead><tr><th>Daten-Hash</th><th>Typ</th><th>Größe</th><th>Zustand</th></tr></thead><tbody>`;
                 data.AXF.forEach(d => {
                     let hashDisplay = d.isProtected && !isOwner
                         ? `<span class="hash-link protected">${d.dataHash.substring(0,10)}...</span>`
-                        : `<span class="hash-link" onclick="RFOF_APP.explorer.showDetailView('Daten', '${d.dataHash}')">${d.dataHash.substring(0,10)}...</span>`;
+                        : `<span class="hash-link" onclick="RFOF_APP.explorer.showDetailView('Daten', '${d.dataHash}')">${d.dataHash.substring(0,10)}... ${isOwner ? '(Owner)' : ''}</span>`;
                     tableHtml += `<tr><td>${hashDisplay}</td><td>${d.type}</td><td>${d.axiometixSize}</td><td>${d.vector}</td></tr>`;
                 });
             }
@@ -176,20 +176,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         renderDetailView() {
             const isOwner = RFOF_APP.account?.user?.role === 'SATORAMY_PRIME';
-            let detailContent = `<h4>Detailansicht: ${this.detailView.type}</h4><p><strong>ID:</strong> ${this.detailView.id}</p>`;
+            let detailContent = `<h4>Detailansicht für ${this.detailView.type}: ${this.detailView.id}</h4>`;
             let sourceItem;
+
             if (this.detailView.type === 'Transaktion') {
                 sourceItem = this.dummyData.CTC.find(tx => tx.txHash === this.detailView.id);
                 if (sourceItem) { detailContent += `<h5>Verknüpfter Majorana-Anker:</h5><ul><li>${sourceItem.subHash}</li></ul>`; }
             } else if (this.detailView.type === 'Daten') {
                 sourceItem = this.dummyData.AXF.find(d => d.dataHash === this.detailView.id);
                 if (sourceItem && sourceItem.isProtected && !isOwner) {
-                    detailContent = '<p style="color:red;">Zugriff auf geschützte Daten verweigert.</p>';
+                    detailContent = '<p style="color:red;">Zugriff auf geschützte Daten verweigert. Owner-Login erforderlich.</p>';
                 } else if (sourceItem && sourceItem.subHashes) {
                     detailContent += `<h5>Verknüpfte Sub-Hashes (${sourceItem.subHashes.length}):</h5><ul>`;
-                    sourceItem.subHashes.forEach(sh => { detailContent += `<li>${sh}</li>`; });
+                    sourceItem.subHashes.forEach(sh => { detailContent += `<li><span class="hash-link">${sh}</span></li>`; });
                     detailContent += '</ul>';
                 }
+            } else {
+                 detailContent += '<p>Weitere Details für diese Adresse würden hier geladen.</p>';
             }
             return `<div class="detail-view">${detailContent}<button id="back-to-list-btn" style="margin-top: 1rem;">← Zurück</button></div>`;
         }
@@ -209,21 +212,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // #================================================
     // # INITIALISIERUNG & GLOBALE FUNKTIONEN
     // #================================================
-    RFOF_APP.account = new AccountSystem(document.getElementById('account-section'));
-    RFOF_APP.explorer = new BOxchainExplorer(document.getElementById('boxchain-explorer-target'));
+    const accountTarget = document.getElementById('account-section');
+    if (accountTarget) {
+        RFOF_APP.account = new AccountSystem(accountTarget);
+        RFOF_APP.account.init();
+    }
     
-    window.RFOF_APP = RFOF_APP;
-    window.performGlobalSearch = () => {
+    const explorerTarget = document.getElementById('boxchain-explorer-target');
+    if (explorerTarget) {
+        RFOF_APP.explorer = new BOxchainExplorer(explorerTarget);
+        RFOF_APP.explorer.init();
+    }
+    
+    window.RFOF_APP = RFOF_APP; // Mache die App global verfügbar
+
+    // Globale Suchfunktion für das 'onclick'-Attribut im Haupt-HTML
+    window.performPraiaiSearch = () => {
         const query = document.getElementById('praiai-search-input').value.trim();
-        if (query) {
+        if (query && RFOF_APP.explorer) {
             RFOF_APP.explorer.search(query);
+            // Scrollt den Explorer in den sichtbaren Bereich
             document.getElementById('boxchain-explorer-section').scrollIntoView({ behavior: 'smooth' });
         }
     };
-
-    if (typeof hljs !== 'undefined') { hljs.highlightAll(); }
-    
-    RFOF_APP.explorer.init();
-    RFOF_APP.account.init();
 });
-</script>
