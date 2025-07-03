@@ -6,31 +6,13 @@
 #================================================
 */
 
+/* --- Desktop Navigation --- */
 .navbar {
     display: flex;
     align-items: center;
     margin-left: auto; /* Positioniert die Navbar rechts */
 }
 
-.hamburger-icon {
-    display: none; /* Auf Desktop ausgeblendet */
-    flex-direction: column;
-    justify-content: space-around;
-    width: 28px;
-    height: 24px;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-.hamburger-icon .bar {
-    width: 100%;
-    height: 3px;
-    background-color: #0088cc; /* Baby Blau */
-    border-radius: 2px;
-    transition: all 0.3s ease-in-out;
-}
-
-/* Desktop Navigation */
 .nav-list {
     list-style: none;
     margin: 0;
@@ -54,8 +36,26 @@
     color: #0088cc;
 }
 
-/* Mobile Navigation */
-@media (max-width: 900px) { /* Breiterer Breakpoint für Menü */
+/* --- Mobile Navigation & Hamburger --- */
+.hamburger-icon {
+    display: none; /* Auf Desktop ausgeblendet */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 28px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 1002; /* Muss über dem Menü liegen */
+}
+
+.hamburger-icon .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #0088cc; /* Baby Blau */
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 900px) {
     .hamburger-icon {
         display: flex;
     }
@@ -67,13 +67,13 @@
         position: fixed;
         top: 0;
         right: -280px; /* Startet außerhalb des Bildschirms */
-        height: 100%;
+        height: 100vh; /* Nimmt die volle Höhe ein */
         background-color: #2d3748; /* Dunkelgrau/Schwarz für mobiles Menü */
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.4);
-        z-index: 1000;
-        transition: right 0.3s ease-in-out;
-        padding-top: 60px;
-        border-left: 1px solid #4a5568;
+        z-index: 1001; /* Liegt unter dem Hamburger-Icon */
+        transition: right 0.35s ease-in-out;
+        padding-top: 60px; /* Platz für den "X"-Button */
+        box-sizing: border-box;
     }
 
     .nav-list.active {
@@ -83,32 +83,39 @@
 
     .nav-list li {
         width: 100%;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .nav-list li:last-child { border-bottom: none; }
-
+    
     .nav-list li a {
         padding: 18px 25px;
         text-align: left;
         color: #e2e8f0; /* Heller Text für dunklen Hintergrund */
         font-weight: bold;
         border-radius: 0;
+        border-bottom: 1px solid #4a5568;
     }
+     .nav-list li:last-child a { 
+        border-bottom: none; 
+    }
+
 
     .nav-list li a:hover {
         background-color: #4a5568;
         color: #63b3ed;
     }
     
+    /* KORREKTUR: "X" Button wird im geöffneten Zustand neu positioniert */
     .hamburger-icon.active {
         position: fixed;
         right: 20px;
-        top: 22px; /* Position anpassen an Header-Höhe */
+        top: 22px;
     }
 
-    /* Hamburger "X" Animation */
+    /* "X" Animation */
+    .hamburger-icon.active .bar {
+        background-color: #e2e8f0; /* Ändert die Farbe zu weiß auf dunklem Grund */
+    }
     .hamburger-icon.active .bar:nth-child(2) { 
-        opacity: 0;
+        opacity: 0; 
     }
     .hamburger-icon.active .bar:nth-child(1) { 
         transform: translateY(8px) rotate(45deg); 
@@ -117,3 +124,4 @@
         transform: translateY(-8px) rotate(-45deg); 
     }
 }
+/* AB HIER WEITERE MENÜ-STILE HINZUFÜGEN */
