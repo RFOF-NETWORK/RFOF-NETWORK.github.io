@@ -71,9 +71,34 @@
         .detail-view { font-size: 0.9em; }
         .detail-view h5 { margin-top: 1rem; margin-bottom: 0.5rem; }
         .detail-view ul { margin-top: 0; padding-left: 20px; }
+  
     <style>
 
-    /*
+        }
+
+        /* --- ADDITIVE STILE ZUR KORREKTUR UND ERWEITERUNG (ZENITH VERSION) --- */
+        #boxchain-explorer-section { background: #f8f9fa; border-radius: 8px; padding: 1.5rem; }
+        .explorer-header { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1rem; }
+        .explorer-top-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+        .explorer-controls { display: flex; border: 1px solid #ccc; border-radius: 6px; overflow: hidden; }
+        .explorer-controls button { font-size: 0.9em; font-weight: 500; border: none; background-color: #fff; padding: 8px 15px; cursor: pointer; border-left: 1px solid #ccc; }
+        .explorer-controls button:first-child { border-left: none; }
+        .explorer-controls button.active { background-color: #343a40; color: white; }
+        .explorer-actions button { font-size: 0.8em; padding: 6px 10px; background-color: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .explorer-search { display: flex; width: 100%; }
+        .explorer-search input { width: 100%; border: 1px solid #ccc; padding: 10px; border-radius: 6px 0 0 6px; }
+        .explorer-search button { border: 1px solid #0088cc; background-color: #0088cc; color: white; padding: 0 20px; border-radius: 0 6px 6px 0; cursor: pointer; }
+        .explorer-results table { width: 100%; border-collapse: collapse; font-size: 0.85em; table-layout: fixed; }
+        .explorer-results th, .explorer-results td { border: 1px solid #dee2e6; padding: 8px 10px; text-align: left; vertical-align: middle; word-break: break-word; }
+        .explorer-results th { background-color: #343a40; color: #fff; }
+        .hash-link { color: #0088cc; text-decoration: none; font-weight: 500; cursor: pointer; }
+        .hash-link:hover { text-decoration: underline; }
+        .hash-link.protected { color: #6c757d; cursor: default; }
+        .detail-view { padding: 1rem; border: 1px dashed #ccc; margin-top: 1rem; text-align: left; }
+        #account-section { margin-top: 1.5rem; padding: 1rem; background-color: #e9ecef; border-radius: 8px; text-align: center; }
+        #logged-in-view { display: none; align-items: center; justify-content: center; gap: 10px; }
+        #logged-in-view img { width: 32px; height: 32px; border-radius: 50%; }
+         /*
 #================================================
 # FINALES STABILITÄTS-PROTOKOLL (ZENITH CSS V11.0)
 # FUNKTION: Härtet das Layout, behebt visuelle Fehler und perfektioniert die Ästhetik.
@@ -210,30 +235,6 @@ p { font-size: 0.95em; line-height: 1.65; }
     font-size: 0.9em; /* Passt sich an */
 }
 
-        }
-
-        /* --- ADDITIVE STILE ZUR KORREKTUR UND ERWEITERUNG (ZENITH VERSION) --- */
-        #boxchain-explorer-section { background: #f8f9fa; border-radius: 8px; padding: 1.5rem; }
-        .explorer-header { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1rem; }
-        .explorer-top-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
-        .explorer-controls { display: flex; border: 1px solid #ccc; border-radius: 6px; overflow: hidden; }
-        .explorer-controls button { font-size: 0.9em; font-weight: 500; border: none; background-color: #fff; padding: 8px 15px; cursor: pointer; border-left: 1px solid #ccc; }
-        .explorer-controls button:first-child { border-left: none; }
-        .explorer-controls button.active { background-color: #343a40; color: white; }
-        .explorer-actions button { font-size: 0.8em; padding: 6px 10px; background-color: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer; }
-        .explorer-search { display: flex; width: 100%; }
-        .explorer-search input { width: 100%; border: 1px solid #ccc; padding: 10px; border-radius: 6px 0 0 6px; }
-        .explorer-search button { border: 1px solid #0088cc; background-color: #0088cc; color: white; padding: 0 20px; border-radius: 0 6px 6px 0; cursor: pointer; }
-        .explorer-results table { width: 100%; border-collapse: collapse; font-size: 0.85em; table-layout: fixed; }
-        .explorer-results th, .explorer-results td { border: 1px solid #dee2e6; padding: 8px 10px; text-align: left; vertical-align: middle; word-break: break-word; }
-        .explorer-results th { background-color: #343a40; color: #fff; }
-        .hash-link { color: #0088cc; text-decoration: none; font-weight: 500; cursor: pointer; }
-        .hash-link:hover { text-decoration: underline; }
-        .hash-link.protected { color: #6c757d; cursor: default; }
-        .detail-view { padding: 1rem; border: 1px dashed #ccc; margin-top: 1rem; text-align: left; }
-        #account-section { margin-top: 1.5rem; padding: 1rem; background-color: #e9ecef; border-radius: 8px; text-align: center; }
-        #logged-in-view { display: none; align-items: center; justify-content: center; gap: 10px; }
-        #logged-in-view img { width: 32px; height: 32px; border-radius: 50%; }
     </style>
 </head>
 <body>
