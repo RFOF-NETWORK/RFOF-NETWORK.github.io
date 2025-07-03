@@ -237,6 +237,186 @@ pre code {
     h3 { font-size: 1.4em; }
 }
 
+/* #================================================
+# TEIL 2: ADDITIVE ERWEITERUNG (ZENITH-VERSION 11.0)
+# FUNKTION: Definiert das korrigierte, kompakte und professionelle Design der neuen Module.
+# STATUS: Final, additiv.
+#================================================
+*/
+
+/* --- Globale Layout-Korrekturen --- */
+.site-title {
+    flex-shrink: 1; /* Erlaubt dem Titel zu schrumpfen, falls nötig */
+    min-width: 0;   /* Verhindert Überlaufen in Flexbox-Containern */
+}
+
+/* --- EXPLORER & ACCOUNT STYLES (Final, Kompakt & Abgegrenzt) --- */
+#boxchain-explorer-section {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #dee2e6;
+}
+
+#boxchain-explorer-section h2 {
+    margin-top: 0;
+    font-size: 1.6em; /* Kompaktere Überschrift */
+}
+
+.explorer-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.explorer-top-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.explorer-controls {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+    align-self: flex-start;
+}
+
+.explorer-controls button {
+    font-size: 0.9em;
+    font-weight: 500;
+    border: none;
+    background-color: #fff;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-left: 1px solid #ccc;
+}
+.explorer-controls button:first-child {
+    border-left: none;
+}
+.explorer-controls button.active {
+    background-color: #343a40;
+    color: white;
+}
+
+.explorer-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-self: flex-start;
+}
+
+.explorer-actions button {
+    font-size: 0.8em;
+    padding: 6px 12px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.explorer-search {
+    display: flex;
+    width: 100%;
+}
+
+.explorer-search input {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 6px 0 0 6px;
+    font-size: 0.9em;
+}
+
+.explorer-search button {
+    border: 1px solid #0088cc;
+    background-color: #0088cc;
+    color: white;
+    padding: 0 20px;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+}
+
+.explorer-results table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em; /* Kompaktere Schriftgröße */
+    table-layout: fixed;
+}
+
+.explorer-results th, 
+.explorer-results td {
+    border: 1px solid #dee2e6;
+    padding: 8px 10px; /* Kompakteres Padding */
+    text-align: left;
+    vertical-align: middle;
+    word-break: break-all;
+}
+
+.explorer-results th {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.hash-link {
+    color: #0088cc;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+.hash-link:hover {
+    text-decoration: underline;
+}
+.hash-link.protected {
+    color: #6c757d;
+    cursor: default;
+}
+
+.detail-view {
+    padding: 1rem;
+    border: 1px dashed #ccc;
+    margin-top: 1rem;
+    text-align: left;
+}
+.detail-view h4 { font-size: 1.1em; }
+.detail-view ul { padding-left: 20px; margin: 0; font-family: 'Fira Code', monospace; }
+
+#account-section {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#account-section button {
+    font-size: 0.85em;
+    padding: 6px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 1px solid #6c757d;
+    background-color: #6c757d;
+    color: white;
+    border-radius: 4px;
+}
+
+#logged-in-view {
+    display: none; /* Wird per JS auf 'flex' gesetzt */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#logged-in-view img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #0088cc;
+}
 /*
 #================================================
 # FINALES STABILITÄTS-PROTOKOLL (ZENITH CSS V11.0)
