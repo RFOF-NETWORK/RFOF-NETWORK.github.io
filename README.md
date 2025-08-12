@@ -12,7 +12,7 @@ Dieses Repository folgt der **additiven Fusionsmethode**. Die ursprüngliche, vo
 
 ### Kanonische Repository-Struktur
 
-```plaintext
+````plaintext
 / (RFOF-NETWORK.github.io)
 |
 |-- .github/
@@ -50,7 +50,8 @@ Dieses Repository folgt der **additiven Fusionsmethode**. Die ursprüngliche, vo
 |-- .gitignore              // Definiert von Git zu ignorierende Dateien.
 |-- .nojekyll               // Wichtige Datei, um GitHub Pages zu signalisieren, die Seite ohne Jekyll zu bauen.
 `-- CNAME                   // Definiert die Custom Domain (z.B. rfof-network.org), sobald diese aufgeschaltet ist.
-```
+
+````
 
 ### Funktionsweise
 
