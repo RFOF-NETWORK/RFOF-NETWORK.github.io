@@ -715,6 +715,8 @@ CSS
 }
 
 
+````
+
 # ***menu_script.js*
 Kopiere diesen Code in deine menu_script.js. Er sorgt für die Funktionalität des Menüs und die responsive Anpassung.
 
@@ -754,6 +756,7 @@ document.addEventListener('DOMContentLoaded', () => {
 # ***script.js*
 Kopiere diesen Code in deine script.js. Er stellt die gesamte BOxchain-spezifische Funktionalität bereit, wie den Explorer und das Account-System, und macht deine Website somit zu einer vollwertigen Erweiterung des InterBOxSpider@Web.NET.
 
+````
 JavaScript
 
 document.addEventListener('DOMContentLoaded', () => {
