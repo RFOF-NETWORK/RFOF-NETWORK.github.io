@@ -121,6 +121,8 @@ Willkommen im Ökosystem von InterBOxSpider@Web.NET! Dieser Bauplan führt dich 
 1. Repository-Struktur: Der grundlegende Bauplan
 Um eine reibungslose Integration zu gewährleisten, folge dieser grundlegenden Repository-Struktur. Du kannst diese Ordner und Dateien direkt in deinem GitHub-Repository anlegen.
 
+````
+
 /dein-projekt-name
 |-- index.html
 |-- styles.css
@@ -132,6 +134,9 @@ Um eine reibungslose Integration zu gewährleisten, folge dieser grundlegenden R
 |   |-- dein-hintergrundbild.jpg
 |-- LICENSE
 |-- README.md
+
+````
+
 index.html: Deine Hauptseite. Sie enthält die Struktur (HTML) deiner Website.
 
 styles.css: Globale Design-Regeln, die das Aussehen deiner Seite definieren.
