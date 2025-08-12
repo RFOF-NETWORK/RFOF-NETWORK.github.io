@@ -150,9 +150,10 @@ README.md: Diese Datei, die als Anleitung dient.
 2. Code-Schablonen: Deine Bausteine
 Kopiere die folgenden Code-Schablonen in die entsprechenden Dateien deines Repositories. Ersetze die Platzhalter ([...Dein Text...]) durch deine eigenen Inhalte. Das Design und die Funktionalität der InterBOxSpider@Web.NET-Plattform bleiben dabei vollständig erhalten.
 
-index.html
+# ***index.html*
 Kopiere diesen Code in deine index.html. Dies ist die Struktur, die deine Inhalte, den Suchbereich und den BOxchain-Explorer miteinander verbindet.
 
+````
 HTML
 
 <!DOCTYPE html>
@@ -233,9 +234,13 @@ HTML
     <script src="menu_script.js"></script>
 </body>
 </html>
-styles.css
+
+````
+
+# ***styles.css*
 Kopiere diesen Code in deine styles.css. Er enthält die gesamte visuelle Gestaltung deiner Website und wurde so angepasst, dass er als robuste Schablone dient.
 
+````
 CSS
 
 /*
@@ -576,6 +581,11 @@ pre code {
 menu_styles.css
 Kopiere diesen Code in deine menu_styles.css. Er ist nur für die Optik des mobilen Menüs zuständig.
 
+````
+
+# ***menu_styles.css*
+
+````
 CSS
 
 /*
@@ -703,9 +713,12 @@ CSS
         transform: translateY(-8px) rotate(-45deg); 
     }
 }
-menu_script.js
+
+
+# ***menu_script.js*
 Kopiere diesen Code in deine menu_script.js. Er sorgt für die Funktionalität des Menüs und die responsive Anpassung.
 
+````
 JavaScript
 
 /*
@@ -735,7 +748,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-script.js
+
+````
+
+# ***script.js*
 Kopiere diesen Code in deine script.js. Er stellt die gesamte BOxchain-spezifische Funktionalität bereit, wie den Explorer und das Account-System, und macht deine Website somit zu einer vollwertigen Erweiterung des InterBOxSpider@Web.NET.
 
 JavaScript
