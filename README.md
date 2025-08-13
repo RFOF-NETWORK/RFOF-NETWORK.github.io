@@ -1,3 +1,5 @@
+# ***Quantum Ready OrganiZation Ready For Our Future*
+
 # Säule 1: RFOFSpiderWeb.NET - Das Hauptportal des Ökosystems
 
 Dieses Repository enthält den Code für die primäre Landing-Page und das Gesicht des gesamten RFOF-Ökosystems. Es dient als der erste Kontaktpunkt für alle Nutzer und als das Tor zu allen anderen Säulen des Netzwerks.
