@@ -1,0 +1,2 @@
+Name: _github-pages-challenge-RFOF-NETWORK.rfof-network.org
+Value: b3503b4034df4dc682d4b842e8dd01
