@@ -1,3 +1,6 @@
+Name: _github-pages-challenge-RFOF-NETWORK.ci.rfof-network.org
+Value: 4106afc0139760116052fb197f0ecf
+
 Name: _github-pages-challenge-RFOF-NETWORK-Ready-for-our-future.rfof-network.org
 Value: e26569844681b9127c5a706750ab6d
 
