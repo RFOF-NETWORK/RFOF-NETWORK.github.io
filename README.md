@@ -161,9 +161,9 @@ Die zunehmende Zentralisierung von Cloud-Diensten gefährdet digitale Souveräni
 
 🧮 Vergleich: Azure vs. RFOF PASEL 256
 
-| Kriterium | Azure | RFOF PASEL 256 |
+| Kriterium | Azure | PASEL  |
 |-----------|-------|----------------|
-| Eigentum | Microsoft | RFOF-NETWORK |
+| Eigentum | @Microsoft 356 | @RFOF-NETWORK 256 |
 | Modularität | eingeschränkt | vollständig versionierbar |
 | Quantum-Ready | nein | ja (QRFOF) |
 | Tokenisierung | optional | nativ integriert |
