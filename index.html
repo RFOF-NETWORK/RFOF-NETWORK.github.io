@@ -213,9 +213,9 @@
                     <div id="logged-out-view">
                         <button class="rfof-login" onclick="RFOF_APP.account.login('RFOF')">Mit RFOF Account</button>
                         <div class="social-logins">
-                            <button onclick="RFOF_APP.account.login('GitHub')">Mit GitHub</button>
-                            <button onclick="RFOF_APP.account.login('Google')">Mit Google</button>
-                            <button onclick="RFOF_APP.account.login('Microsoft')">Mit Microsoft</button>
+                            <button onclick="RFOF_APP.account.login('GitHub')">With GitHub</button>
+                            <button onclick="RFOF_APP.account.login('Google')">With Google</button>
+                            <button onclick="RFOF_APP.account.login('Microsoft')">With Microsoft</button>
                         </div>
                     </div>`;
             }
@@ -291,7 +291,7 @@
                         </div>
                         <div class="explorer-search">
                            <input type="text" id="explorer-search-input-internal" placeholder="Suche Block, Hash, Adresse..." value="${query}">
-                           <button id="explorer-search-btn">Suchen</button>
+                           <button id="explorer-search-btn">search</button>
                         </div>
                     </div>`;
             }
@@ -325,11 +325,11 @@
                 let sourceItem;
                 if (this.detailView.type === 'Transaktion') {
                     sourceItem = this.dummyData.CTC.find(tx => tx.txHash === this.detailView.id);
-                    if (sourceItem) { detailContent += `<h5>Verknüpfter Majorana-Anker:</h5><ul><li>${sourceItem.subHash}</li></ul>`; }
+                    if (sourceItem) { detailContent += `<h5>Linked Majorana anchor:</h5><ul><li>${sourceItem.subHash}</li></ul>`; }
                 } else if (this.detailView.type === 'Daten') {
                     sourceItem = this.dummyData.AXF.find(d => d.dataHash === this.detailView.id);
                     if (sourceItem && sourceItem.isProtected && !isOwner) {
-                        detailContent = '<p style="color:red;">Zugriff auf geschützte Daten verweigert.</p>';
+                        detailContent = '<p style="color:red;">Access to protected data denied.</p>';
                     } else if (sourceItem && sourceItem.subHashes) {
                         detailContent += `<h5>Verknüpfte Sub-Hashes (${sourceItem.subHashes.length}):</h5><ul>`;
                         sourceItem.subHashes.forEach(sh => { detailContent += `<li>${sh}</li>`; });
